@@ -29,7 +29,6 @@ void help () {
 
 
 int main ( int argc, char *argv[]) {
-  
   switch(argc) {
       case 4: {
           calculadora_t A(argv[1], argv[2], argv[3]);
@@ -37,7 +36,6 @@ int main ( int argc, char *argv[]) {
               }
       default: help();
   }
-
 
 
 }
