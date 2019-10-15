@@ -9,6 +9,9 @@
 //                            estado_t.hpp
 
 #pragma once
+#include <iostream>
+#include <map>
+#include "alfabeto_t.hpp"
 
 class estado_t {
  private:
@@ -16,7 +19,17 @@ class estado_t {
   bool acept_;
 
  public:
-  estado_t(unsigned id, bool acep
+  estado_t() {}
+  ~estado() {}
+
+  estado_t(unsigned id, bool acept, std::map<char,unsigned> transiciones):
+      id_(id),
+      acept_(acept),
+      transiciones_(transiciones){}
+
+
+  unsigned int get_id();
+  bool get_acept();
 };
 
 

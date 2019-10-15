@@ -1,19 +1,19 @@
 
 
 
-#include "../include/automata_t.h"
+#include "../include/dfa_t.hpp"
 
 
 
 
-automata_t::automata_t(std::string aux, alfabeto_t Al) {
+automata_t::dfa_t(std::string aux, alfabeto_t Al) {
   Al_ = Al;
   fileIn_ = std::ifstream(aux);
   read_file();
 }
 
 
-void automata_t::read_file() {
+void dfa_t::read_file() {
   //char aux;
   int aux;
   if(fileIn_.is_open()) {
@@ -30,7 +30,7 @@ void automata_t::read_file() {
 }
 
 
-bool automata_t::compara(int aux) {
+bool dfa_t::compara(int aux) {
   std::set<int>::iterator it = Al_.find_symbol(aux);
   if ( it != Al_.end() ) return true;
       else return false;

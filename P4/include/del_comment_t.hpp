@@ -8,10 +8,14 @@
  *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #pragma once
-
+#include<iostream>
+#include "automata_t.hpp"
+#include "alfabeto_t.hpp"
+#include "estado_t.hpp"
 
 class del_comment_t {
-
+ private:
+  
 
 
 };
