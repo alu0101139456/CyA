@@ -19,7 +19,7 @@
 int main (int argc, char* argv[])
 {
   alfabeto_t A;
-  std::ifstream in (argv[1]);
+  std::ifstream in(argv[1]);
   std::ofstream out(argv[2]);
   del_comment_t a(in, out);
 }

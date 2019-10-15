@@ -20,21 +20,22 @@
 #include <fstream>
 #include <map>
 
+typedef std::pair<char, unsigned> trans_t;
 class del_comment_t {
  private:
   dfa_t automata_;
   std::map<char, unsigned> transiciones_;
   alfabeto_t alfa_;
-  std::ifstream fileIN_;
-  std::ofstream fileOUT_;
 
  public:
   del_comment_t() {}
   del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT);
   ~del_comment_t() {}
 
-  void read_file();
+  void read_file(std::ifstream& fileIN);
   bool compara(int aux);
+  std::ostream& write (std::ostream& os) const;
+
 
  private:
   void definir_automata();

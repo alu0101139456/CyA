@@ -25,6 +25,6 @@ class dfa_t {
  public:
   dfa_t() {}
   ~dfa_t() {}
-
+  void insert_estado( estado_t estado);
 
 };

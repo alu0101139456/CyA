@@ -9,7 +9,9 @@
 //                              dfa_t.cpp
 
 
-
+void dfa_t::insert_estado(estado_t estado) {
+  
+}
 
 
 
