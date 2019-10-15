@@ -14,6 +14,7 @@
 #include<fstream>
 
 #include "alfabeto_t.hpp"
+
 #include "estado_t.hpp"
 
 class dfa_t {
@@ -22,13 +23,16 @@ class dfa_t {
   std::set<estado_t> estados_;
   unsigned estArranque_;
   char buff;
-  estado_t estActual;
+  estado_t const* estActual;
 
  public:
   dfa_t() {}
   ~dfa_t() {}
   void insert_estado( estado_t estado);
-  void set_arranque( unsigned estado) {estArranque_ = estado;}
+  void set_arranque( unsigned estado) {
+    estArranque_ = estado;
+    estActual = &(*estados_.find(estArranque_));
+  }
   bool analiza( char caracter);
 
 

@@ -28,13 +28,12 @@ class estado_t {
   ~estado_t() {}
 
   estado_t(unsigned id, bool acept, std::map<char,unsigned> transiciones, 
-      unsigned default_id):
+      unsigned default_):
       id_(id),
       acept_(acept),
       transiciones_(transiciones),
-      default_(default_id){}
+      default_(id){}
 
-  unsigned get_default() const {return default_; }
 
   unsigned int get_id() const { return id_; }
 

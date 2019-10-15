@@ -33,8 +33,8 @@ class del_comment_t {
   del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT);
   ~del_comment_t() {}
 
-  void read_file(std::ifstream& fileIN);
-  bool compara(int aux);
+  void read_file(std::ifstream& fileIN, std::ofstream& fileOUT);
+  char compara(char aux);
   std::ostream& write (std::ostream& os) const;
 
 

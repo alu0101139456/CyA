@@ -18,15 +18,15 @@
 
 class alfabeto_t {
  private:
-  std::set<int> alfa_;
+  std::set<char> alfa_;
 
  public:
 
   alfabeto_t();
   ~alfabeto_t() {}
 
-  std::set<int>::iterator find_symbol(int sym);
-  std::set<int>::iterator end();
-  bool pertenece( int caracter);
+  std::set<char>::iterator find_symbol(char sym);
+  std::set<char>::iterator end();
+  bool pertenece( char caracter);
 
 };
