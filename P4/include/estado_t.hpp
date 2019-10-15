@@ -12,6 +12,8 @@
 
 #include <map>
 
+typedef std::map<char, unsigned> trans_map;
+
 
 class estado_t {
  private:
@@ -20,7 +22,7 @@ class estado_t {
   std::map<char, unsigned> transiciones_;
 
  public:
-  estado_t() {}
+  estado_t(): id_(0) {}
   ~estado_t() {}
 
   estado_t(unsigned id, bool acept, std::map<char,unsigned> transiciones):
@@ -29,8 +31,14 @@ class estado_t {
       transiciones_(transiciones){}
 
 
-  unsigned int get_id() { return id_; }
-  bool get_acept() { return acept_; }
+  unsigned int get_id() const { return id_; }
+
+  bool get_acept() const { return acept_; }
+
+  bool operator<(const estado_t& rhs) const {
+    return (this->get_id() < rhs.get_id());}
+
+  const trans_map& get_tran() const {return transiciones_;}
 
 };
 

@@ -23,6 +23,7 @@ void del_comment_t::definir_automata() {
   std::map<char, unsigned> transiciones0;  //Definimos un mapa para contener
                                            //todas las transiciones
   //Insertamos todas las transiones para luego mandar todo al constructor
+  automata_.set_arranque(0);
   transiciones0.insert(trans_t('/',1));
   transiciones0.insert(trans_t('"',2));
   transiciones0.insert(trans_t('o',0));
@@ -85,13 +86,15 @@ void del_comment_t::definir_automata() {
 
 void del_comment_t::read_file(std::ifstream& fileIN) {
    int aux;
+
    if(fileIN.is_open()) {
      while (!fileIN.eof()) {
        aux = fileIN.get();
        if ( compara(aux) ) {
          char a = aux;
          if (aux == '\n')
-           std::cout << "encontre salto de linea\n";
+            automata_.analiza('\n');
+           //std::cout << "encontre salto de linea\n";
            else std::cout << "encontre " << a << " \n";
        }
      }
@@ -104,3 +107,16 @@ void del_comment_t::read_file(std::ifstream& fileIN) {
    if ( it != alfa_.end() ) return true;
        else return false;
  }
+
+
+
+
+
+
+
+
+
+
+
+
+

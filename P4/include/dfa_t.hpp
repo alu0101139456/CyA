@@ -21,10 +21,15 @@ class dfa_t {
   alfabeto_t Al_;
   std::set<estado_t> estados_;
   unsigned estArranque_;
+  char buff;
+  estado_t estActual;
 
  public:
   dfa_t() {}
   ~dfa_t() {}
   void insert_estado( estado_t estado);
+  void set_arranque( unsigned estado) {estArranque_ = estado;}
+  bool analiza( char caracter);
+
 
 };

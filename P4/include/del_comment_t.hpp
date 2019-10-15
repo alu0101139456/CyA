@@ -27,6 +27,7 @@ class del_comment_t {
   std::map<char, unsigned> transiciones_;
   alfabeto_t alfa_;
 
+
  public:
   del_comment_t() {}
   del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT);
