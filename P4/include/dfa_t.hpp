@@ -8,7 +8,6 @@ class automata_t {
  private:
   std::ifstream fileIn_;
   alfabeto_t Al_;
-
  public:
   automata_t() {};
    ~automata_t() {}
