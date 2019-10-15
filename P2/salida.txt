@@ -1,0 +1,27 @@
+WHILE
+SIG (
+PAL x
+OP <=
+OP >=
+INT 5
+SIG )
+SIG {
+PAL Caracola1233
+DESCONOCIDA Üña
+PAL hola
+PAL mundo
+OP +
+PAL cruel
+IF
+SIG (
+INT
+INT 1
+DESCONOCIDA :
+PAL Computabilidad
+OP -
+PAL y
+OP /
+PAL Algoritmia
+FLOAT 3.1416
+SIG }
+SIG }
