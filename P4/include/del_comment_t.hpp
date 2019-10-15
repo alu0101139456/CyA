@@ -29,8 +29,8 @@ class del_comment_t {
   std::ofstream fileOUT_;
 
  public:
-  //del_comment_t() {}
-  del_comment_t(std::ifstream fileIN, std::ofstream fileOut);
+  del_comment_t() {}
+  del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT);
   ~del_comment_t() {}
 
   void read_file();

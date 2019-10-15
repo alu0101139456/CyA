@@ -9,16 +9,17 @@
  * ***************************************************************************/
 
 //Librerias de la carpeta INCLUDE
-#include "../include/alfabeto_t.hpp"
-#include "../include/automata_t.hpp"
-#include "../include/del_comment_t.hpp"
-#include <fstream>
 
+#include "../include/del_comment_t.hpp"
+#include "../include/alfabeto_t.hpp"
+
+#include <fstream>
 #include<iostream>
 
-int main ()
+int main (int argc, char* argv[])
 {
   alfabeto_t A;
-
-  automata_t a("prueba.cpp", A);
+  std::ifstream in (argv[1]);
+  std::ofstream out(argv[2]);
+  del_comment_t a(in, out);
 }

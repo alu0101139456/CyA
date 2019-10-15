@@ -10,7 +10,7 @@
 
 #include "../include/del_comment_t.hpp"
 
-del_comment_t::del_comment_t(std::ifstream fileIN, std::ofstream fileOUT) {
+del_comment_t::del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT) {
 
 }
 
