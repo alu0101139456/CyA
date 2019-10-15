@@ -1,1 +1,0 @@
-mentiendo en cya
