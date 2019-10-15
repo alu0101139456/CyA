@@ -10,6 +10,7 @@
  * ****************************************************************************/
 //                        estado_t.cpp
 
+
 #include "../include/estado_t.hpp"
 
 unsigned estado_t::get_id() {
@@ -17,7 +18,7 @@ unsigned estado_t::get_id() {
 }
 
 
-bool estado_t::get_bool() {
+bool estado_t::get_acept() {
   return acept_;
 }
 

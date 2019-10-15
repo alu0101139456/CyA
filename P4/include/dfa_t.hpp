@@ -1,21 +1,29 @@
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶
+ * Autor: Ángel Julián Bolaño Campos                                          *
+ * Asignatura: Computabilidad y Algoritmia                                    *
+ * Curso: 2º Ingeniería Informática                                           *
+ * Editor: VIM                                                                *
+ * Estilo Google C++ Style Guide                                              *
+ * Práctica 4: Eliminador de comentarios                                      *
+ * ***************************************************************************/
+//                              dfa_t.hpp
+
 #pragma once
 
 #include<iostream>
 #include<fstream>
 #include "alfabeto_t.hpp"
+#include "estado_t.hpp"
 
-class automata_t {
+class dfa_t {
  private:
-  std::ifstream fileIn_;
   alfabeto_t Al_;
+  std::set<estado_t> estados_;
+  unsigned estArranque_;
+
  public:
-  automata_t() {};
-   ~automata_t() {}
+  dfa_t() {}
+  dfa_t(alfabeto_t A);
+  ~dfa_t() {}
 
-   automata_t(std::string aux, alfabeto_t Al);
-
-   bool compara( int aux);
-
- private:
-   void read_file();
 };
