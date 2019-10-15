@@ -8,9 +8,10 @@
  * ****************************************************************************/
 //                            estado_t.hpp
 
-#include <iostream>
+#pragma once
+
 #include <map>
-#include "alfabeto_t.hpp"
+
 
 class estado_t {
  private:
@@ -28,8 +29,9 @@ class estado_t {
       transiciones_(transiciones){}
 
 
-  unsigned int get_id();
-  bool get_acept();
+  unsigned int get_id() { return id_; }
+  bool get_acept() { return acept_; }
+
 };
 
 

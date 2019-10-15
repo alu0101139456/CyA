@@ -1,11 +1,11 @@
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶ 
- * Autor: Ángel Julián Bolaño Campos                                          * 
- * Asignatura: Computabilidad y Algoritmia                                    * include "../include/del_comment_t.hpp"
- * Curso: 2º Ingeniería Informática                                           * 
- * Editor: VIM                                                                * 
- * Estilo Google C++ Style Guide                                              * 
- * Práctica 4: Eliminador de comentarios                                      * 
- *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/ 
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶
+ * Autor: Ángel Julián Bolaño Campos                                          *
+ * Asignatura: Computabilidad y Algoritmia                                    *
+ * Curso: 2º Ingeniería Informática                                           *
+ * Editor: VIM                                                                *
+ * Estilo Google C++ Style Guide                                              *
+ * Práctica 4: Eliminador de comentarios                                      *
+ *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //                         del_comment_t.hpp
 
 #include "../include/del_comment_t.hpp"

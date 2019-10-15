@@ -22,7 +22,7 @@
 
 class del_comment_t {
  private:
-  //dfa_t automata_;
+  dfa_t automata_;
   std::map<char, unsigned> transiciones_;
   alfabeto_t alfa_;
   std::ifstream fileIN_;

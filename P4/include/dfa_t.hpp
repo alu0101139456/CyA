@@ -8,10 +8,11 @@
  * ***************************************************************************/
 //                              dfa_t.hpp
 
-#pragma once
 
+#include<set>
 #include<iostream>
 #include<fstream>
+
 #include "alfabeto_t.hpp"
 #include "estado_t.hpp"
 
@@ -23,7 +24,7 @@ class dfa_t {
 
  public:
   dfa_t() {}
-  dfa_t(alfabeto_t A);
   ~dfa_t() {}
+
 
 };
