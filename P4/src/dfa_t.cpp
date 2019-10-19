@@ -16,23 +16,21 @@ void dfa_t::insert_estado( estado_t estado) {
 }
 
 
-bool dfa_t::analiza(char caracter) {
+
+void dfa_t::analiza(char caracter) {
 
   auto siguiente = estActual->get_tran().find(caracter);
   unsigned estado_sig;
-  bool dont_write = true;
-
+  
 
   if(siguiente == estActual->get_tran().end()) {
     estado_sig  = estActual->get_default();
-    dont_write = false;
   }
   else {
     estado_sig = siguiente->second;
   }
   estado_t aux(estado_sig);
   estActual = &(*estados_.find(aux));//?
-  return dont_write;
 }
 
 

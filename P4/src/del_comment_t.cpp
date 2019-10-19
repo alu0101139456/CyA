@@ -11,7 +11,6 @@
 #include "../include/del_comment_t.hpp"
 
 del_comment_t::del_comment_t(std::ifstream& fileIN, std::ofstream& fileOUT) {
-  
   definir_automata();
   read_file(fileIN, fileOUT);
 }
@@ -29,7 +28,7 @@ void del_comment_t::definir_automata() {
   transiciones0.insert(trans_t('"',2));
   std::cout << "Tamaño mapa de transiciones: " << transiciones0.size() << '\n' ;
   //transiciones0.insert(trans_t('o',0));
-  automata_.insert_estado(estado_t(0, 0, transiciones0, 0));
+  automata_.insert_estado(estado_t(0, 0, transiciones0, 0, true));
 
 
   //ESTADO 1
@@ -37,37 +36,48 @@ void del_comment_t::definir_automata() {
   transiciones1.insert(trans_t('/',3));
   transiciones1.insert(trans_t('*',4));
   //transiciones1.insert(trans_t('o',0));
-  automata_.insert_estado(estado_t(1, 0, transiciones1, 0));
+  automata_.insert_estado(estado_t(1, 0, transiciones1, 0, true));
 
 
   //ESTADO 2
   std::map<char, unsigned> transiciones2;
   transiciones2.insert(trans_t('"',0));
-  transiciones2.insert(trans_t('o',2));
-  automata_.insert_estado(estado_t(2, 0, transiciones2,2));
+//  transiciones2.insert(trans_t('o',2));
+  automata_.insert_estado(estado_t(2, 0, transiciones2,2, true));
 
 
   //ESTADO 3
   std::map<char, unsigned> transiciones3;
-  transiciones3.insert(trans_t('/',0));
-  transiciones3.insert(trans_t('\n',0));
+  //transiciones3.insert(trans_t('/',0));
+  transiciones3.insert(trans_t('\n',6));
   //transiciones3.insert(trans_t('o',3));
-  automata_.insert_estado(estado_t(3, 0, transiciones3, 3));
+  automata_.insert_estado(estado_t(3, 0, transiciones3, 3, false));
 
 
   //ESTADO 4
   std::map<char, unsigned> transiciones4;
   transiciones4.insert(trans_t('*',5));
 //  transiciones4.insert(trans_t('o',4));
-  automata_.insert_estado(estado_t(4, 0, transiciones4, 4));
+  automata_.insert_estado(estado_t(4, 0, transiciones4, 4, false));
 
 
   //ESTADO 5
   std::map<char, unsigned> transiciones5;
   transiciones5.insert(trans_t('*',5));
-  transiciones5.insert(trans_t('/',0));
+  transiciones5.insert(trans_t('/',7));
 //  transiciones5.insert(trans_t('o',4));
-  automata_.insert_estado(estado_t(5, 0, transiciones5,4));
+  automata_.insert_estado(estado_t(5, 0, transiciones5,4, false));
+
+  //ESTADO 6
+  std::map<char, unsigned> transiciones6;
+  transiciones6.insert(trans_t('/',1));
+  automata_.insert_estado(estado_t(6, 0, transiciones6,0, false));
+
+  //ESTADO 7
+  std::map<char, unsigned> transiciones7;
+  transiciones7.insert(trans_t('/',1));
+  transiciones7.insert(trans_t('\n', 6));
+  automata_.insert_estado(estado_t(7, 0, transiciones7,0, false));
 
 
 
@@ -94,12 +104,14 @@ void del_comment_t::definir_automata() {
 void del_comment_t::read_file(std::ifstream& fileIN, std::ofstream& fileOUT) {
   char aux;
   if(fileIN.is_open()) {
+    std::cout << fileIN.peek() << '\n';
+    automata_.analiza((char)fileIN.peek());
     while (!fileIN.eof()) {
       aux = fileIN.get();
-      if ( !automata_.analiza(aux)) {
-        std::cout << aux << " ";
+      automata_.analiza(fileIN.peek());
+      if ( automata_.estado_escritura()) {
+        fileOUT << aux;
       }
-      else {          }
     }
   }
 }

@@ -33,7 +33,9 @@ class dfa_t {
     estArranque_ = estado;
     estActual = &(*estados_.find(estArranque_));
   }
-  bool analiza( char caracter);
+  void analiza( char caracter);
+
+  bool estado_escritura() const {return estActual->estado_escritura();}
 
 
 };

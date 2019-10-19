@@ -21,6 +21,7 @@ class estado_t {
   bool acept_;
   std::map<char, unsigned> transiciones_;
   unsigned default_;
+  bool estado_escritura_;
 
  public:
   estado_t( unsigned id): id_(id) {}
@@ -28,11 +29,12 @@ class estado_t {
   ~estado_t() {}
 
   estado_t(unsigned id, bool acept, std::map<char,unsigned> transiciones, 
-      unsigned default_id):
+      unsigned default_id, bool escritura):
       id_(id),
       acept_(acept),
       transiciones_(transiciones),
-      default_(default_id){}
+      default_(default_id),
+      estado_escritura_(escritura){}
 
   unsigned get_default() const {return default_; }
 
@@ -48,6 +50,7 @@ class estado_t {
 
   const trans_map& get_tran() const {return transiciones_;}
 
+  bool estado_escritura() const { return estado_escritura_;}
 };
 
 
