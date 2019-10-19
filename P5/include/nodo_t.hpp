@@ -25,6 +25,7 @@ class nodo_t {
   void set_valor( caracter_t val);
   void set_nodo_izq( nodo_t* n_izq);
   void set_nodo_der( nodo_t* n_der);
-
+  //delete 1º izq
+  //       2º derecha
 
 };
