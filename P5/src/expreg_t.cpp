@@ -26,13 +26,16 @@ expreg_t expreg_t::convert_to_posfija(unsigned formato) {
   std::stack<caracter_t> pila;
   for(size_t i=0; i < expre_.size() - 1; i++) {
     caracter_t aux = alfa_.find(expre_[i]);
-    if(aux.get_caracter() == '(' || aux.get_caracter() == ')') {
+    if(aux.is_ParAb() || !aux.is_ParAb() ) {
       pila.push(aux);
     }
-    else if(aux.get_tipo() == OPERANDO) {
-      pila.top().get_caracter() == '('
+    else if(aux.is_operando()) {
+      std::cout << aux.get_caracter();
     }
-      
+    else if ( pila.empty() || pila.top().is_ParAb() ) {
+       
+    }
   }
+}
 
 }

@@ -34,6 +34,8 @@ class caracter_t {
   unsigned get_prioridad();
   int get_tipo();
 
+  bool is_operando();
+  bool is_ParAb();
   bool operator==(const caracter_t& rhs) const;
   bool operator<(const caracter_t& rhs) const;
   caracter_t& operator=(const caracter_t& rhs);

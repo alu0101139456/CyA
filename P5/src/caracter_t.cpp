@@ -67,6 +67,16 @@ caracter_t& caracter_t::operator=(const caracter_t& rhs) {
   return  *this;
 }
 
+bool caracter_t::is_operando() {
+  return tipo_ == OPERANDO? 1:0;
+}
+
+bool caracter_t::is_ParAb() {
+  return caracter_ == '('? 1:0;
+}
+
+
+
 
 
 
