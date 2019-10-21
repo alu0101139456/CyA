@@ -15,6 +15,8 @@
 #include <fstream>
 #include <string>
 #include <set>
+#include <stack>
+
 
 enum tipo_exp { INFIJA, POSFIJA, PREFIJA};
 

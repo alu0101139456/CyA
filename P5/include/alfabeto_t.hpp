@@ -28,5 +28,6 @@ class alfabeto_t {
   std::set<caracter_t>::iterator end();
   bool pertenece( caracter_t caracter);
   bool is_in_alphabet(std::string expresion);
+  caracter_t find(char sym);
 
 };

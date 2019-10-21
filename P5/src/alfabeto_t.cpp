@@ -43,6 +43,13 @@ std::set<caracter_t>::iterator alfabeto_t::find_symbol(char sym) {
   return alfa_.find(aux);
 }
 
+caracter_t alfabeto_t::find(char sym) {
+  caracter_t aux(sym, 0, 0, 0);
+  std::set<caracter_t>::iterator it = alfa_.find(aux);
+  return *it;
+}
+
+
 std::set<caracter_t>::iterator alfabeto_t::end() {
   return alfa_.end();
 }

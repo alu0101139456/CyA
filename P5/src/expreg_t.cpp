@@ -6,7 +6,7 @@
  * Estilo Google C++ Style Guide                                              *¶
  * Práctica 5: Expresiones regulares                                          *
  * ****************************************************************************/
-//                                EXPREG_T.CPP
+//                              EXPREG_T.CPP
 #include "../include/expreg_t.hpp"
 
 
@@ -14,10 +14,25 @@ expreg_t::expreg_t(std::string expresion, alfabeto_t alfa, unsigned formato):
 expre_(expresion),
 alfa_(alfa),
 formato_(formato){
-  if (alfa_.is_in_alphabet(expre_)) {
-    std::cout << "UHH ESTA TODO EN EL ALFABETO ASI QUE CHACHI\n";
+  if (alfa_.is_in_alphabet(expre_)) {  //Se comprueba que todos los caracteres
+                                       //pertenecen al alfabeto
+    expreg_t posfija = convert_to_posfija(1);
   }
   else
-    std::cout << "Hay caracteres que no pertenecen al alfabeto establecido\n";
+    std::cerr << "Hay caracteres que no pertenecen al alfabeto establecido\n";
 }
 
+expreg_t expreg_t::convert_to_posfija(unsigned formato) {
+  std::stack<caracter_t> pila;
+  for(size_t i=0; i < expre_.size() - 1; i++) {
+    caracter_t aux = alfa_.find(expre_[i]);
+    if(aux.get_caracter() == '(' || aux.get_caracter() == ')') {
+      pila.push(aux);
+    }
+    else if(aux.get_tipo() == OPERANDO) {
+      pila.top().get_caracter() == '('
+    }
+      
+  }
+
+}
