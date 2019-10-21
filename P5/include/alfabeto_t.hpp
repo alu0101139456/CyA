@@ -1,14 +1,13 @@
-
+#pragma once
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶¶
  * Autor: Ángel Julián Bolaño Campos                                          *¶
  * Asignatura: Computabilidad y Algoritmia                                    *¶
  * Curso: 2º Ingeniería Informática                                           *¶
  * Editor: VIM                                                                *¶
  * Estilo Google C++ Style Guide                                              *¶
- * Práctica 4: Eliminador de comentarios                                      *
+ * Práctica 5: Expresiones regulares                                          *
  * **************************************************************************/
 //                          alfabeto_t.hpp
-#pragma once
 
 #include<iostream>
 #include<set>
@@ -28,6 +27,6 @@ class alfabeto_t {
   std::set<caracter_t>::iterator find_symbol(char sym);
   std::set<caracter_t>::iterator end();
   bool pertenece( caracter_t caracter);
-
+  bool is_in_alphabet(std::string expresion);
 
 };

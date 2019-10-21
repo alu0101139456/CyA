@@ -1,3 +1,11 @@
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶
+ * Autor: Ángel Julián Bolaño Campos                                           *
+ * Asignatura: Computabilidad y Algoritmia                                     *
+ * Curso: 2º Ingeniería Informática                                            *
+ * Editor: VIM                                                                 *
+ * Estilo Google C++ Style Guide                                               *
+ * Práctica 5: Expresiones regulares                                           *
+ * ****************************************************************************/
 #pragma once
 
 #include<iostream>
@@ -17,7 +25,7 @@ class caracter_t {
   caracter_t() {}
   ~caracter_t() {}
   caracter_t(char car, unsigned pri, int tip, int ari);
-  caracter_t( caracter_t& rhs);
+  caracter_t( const caracter_t& rhs);
   void set_caracter( char car);
   void set_prioridad(unsigned pri);
   void set_tipo(int tipo);

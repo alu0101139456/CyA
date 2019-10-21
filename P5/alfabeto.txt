@@ -1,4 +1,4 @@
-0123456789qwertyuiopasdfghjklzxcvbnm
+0123456789qwertyuiopasdfghjklzxcvbnm()
 *3
 &2|1
 

@@ -6,35 +6,18 @@
  * Estilo Google C++ Style Guide                                              *¶
  * Práctica 5: Expresiones regulares                                          *
  * ****************************************************************************/
-//                                EXPREG_T.HPP
-#pragma once
-
-#include<iostream>
-#include "caracter_t.hpp"
-#include "alfabeto_t.hpp"
-#include <fstream>
-#include <string>
-#include <set>
-
-enum tipo_exp { INFIJA, POSFIJA, PREFIJA};
-
-class expreg_t {
- private:
-  alfabeto_t alfa_;
-  unsigned formato_;
-  std::string expre_;
-
- public:
-  expreg_t() {}
-  ~expreg_t() {}
-  expreg_t( std::string expresion, alfabeto_t alfa, unsigned formato);
-  //sobrecargar operador de salida
-
-  expreg_t convert_to_posfija(unsigned formato);
-
- private:
-  bool is_in_alphabet();
+//                                EXPREG_T.CPP
+#include "../include/expreg_t.hpp"
 
 
+expreg_t::expreg_t(std::string expresion, alfabeto_t alfa, unsigned formato):
+expre_(expresion),
+alfa_(alfa),
+formato_(formato){
+  if (alfa_.is_in_alphabet(expre_)) {
+    std::cout << "UHH ESTA TODO EN EL ALFABETO ASI QUE CHACHI\n";
+  }
+  else
+    std::cout << "Hay caracteres que no pertenecen al alfabeto establecido\n";
+}
 
-};

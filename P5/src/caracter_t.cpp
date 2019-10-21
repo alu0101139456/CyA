@@ -1,10 +1,16 @@
-
-
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶
+ * Autor: Ángel Julián Bolaño Campos                                           *
+ * Asignatura: Computabilidad y Algoritmia                                     *
+ * Curso: 2º Ingeniería Informática                                            *
+ * Editor: VIM                                                                 *
+ * Estilo Google C++ Style Guide                                               *
+ * Práctica 5: Expresiones regulares                                           *
+ * ****************************************************************************/
 
 #include "../include/caracter_t.hpp"
 
 
-caracter_t::caracter_t( caracter_t& rhs) {
+caracter_t::caracter_t( const caracter_t& rhs) {
   this->caracter_ = rhs.caracter_;
   this->prioridad_= rhs.prioridad_;
   this->tipo_ = rhs.tipo_;
@@ -43,6 +49,7 @@ int caracter_t::get_tipo() {
  return tipo_;
 }
 
+
 bool caracter_t::operator==(const caracter_t& rhs) const  {
   return this->caracter_ == rhs.caracter_;
 }
@@ -50,6 +57,7 @@ bool caracter_t::operator==(const caracter_t& rhs) const  {
 bool caracter_t::operator<(const caracter_t& rhs) const  {
   return this->caracter_ < rhs.caracter_;
 }
+
 
 caracter_t& caracter_t::operator=(const caracter_t& rhs) {
   this->caracter_ = rhs.caracter_;
