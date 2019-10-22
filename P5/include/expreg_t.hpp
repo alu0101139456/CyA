@@ -36,7 +36,7 @@ class expreg_t {
 
  private:
   bool is_in_alphabet();
-
+  void convert();
 
 
 };

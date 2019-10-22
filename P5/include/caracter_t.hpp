@@ -35,7 +35,9 @@ class caracter_t {
   int get_tipo();
 
   bool is_operando();
+  bool is_operador();
   bool is_ParAb();
+  bool is_ParCe();
   bool operator==(const caracter_t& rhs) const;
   bool operator<(const caracter_t& rhs) const;
   caracter_t& operator=(const caracter_t& rhs);

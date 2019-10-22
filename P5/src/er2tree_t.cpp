@@ -21,9 +21,11 @@ er2tree_t::er2tree_t(std::string filein, std::string fileout) {
 
 void er2tree_t::read_from_file() {
   std::string ch;
+
   if(fileIn_.is_open()) {
     while (getline(fileIn_, ch)) {
       //std::cout << "caracter " << ch << "\n";
+
       expresion_ = expreg_t(ch, alfa_, INFIJA);
     }
     fileIn_.close();

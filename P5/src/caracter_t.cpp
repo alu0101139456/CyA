@@ -68,14 +68,23 @@ caracter_t& caracter_t::operator=(const caracter_t& rhs) {
 }
 
 bool caracter_t::is_operando() {
-  return tipo_ == OPERANDO? 1:0;
+  if (is_ParAb() || is_ParCe() || tipo_ == OPERADOR) {
+    return false;
+  }
+  else return true;
+}
+
+bool caracter_t::is_operador() {
+  return tipo_ == OPERADOR;//? 1:0;
 }
 
 bool caracter_t::is_ParAb() {
   return caracter_ == '('? 1:0;
 }
 
-
+bool caracter_t::is_ParCe() {
+  return caracter_ == ')'? 1:0;
+  }
 
 
 

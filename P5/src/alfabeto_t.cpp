@@ -40,7 +40,9 @@ bool alfabeto_t::pertenece(caracter_t caracter) {
 
 std::set<caracter_t>::iterator alfabeto_t::find_symbol(char sym) {
   caracter_t aux(sym, 0, 0, 0);
+  //if(alfa_.find(aux) != alfa_.end()) {
   return alfa_.find(aux);
+  //}
 }
 
 caracter_t alfabeto_t::find(char sym) {
