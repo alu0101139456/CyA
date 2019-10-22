@@ -74,6 +74,10 @@ bool caracter_t::is_operando() {
   else return true;
 }
 
+bool caracter_t::is_a_operando() {
+  return tipo_ == OPERANDO;
+}
+
 bool caracter_t::is_operador() {
   return tipo_ == OPERADOR;//? 1:0;
 }

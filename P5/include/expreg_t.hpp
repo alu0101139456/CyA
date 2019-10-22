@@ -25,6 +25,8 @@ class expreg_t {
   alfabeto_t alfa_;
   unsigned formato_;
   std::string expre_;
+  std::string ex_pf_;
+  std::stack<caracter_t> pila_;
 
  public:
   expreg_t() {}
