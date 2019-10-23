@@ -14,44 +14,111 @@ expreg_t::expreg_t(std::string expresion, alfabeto_t alfa, unsigned formato):
 expre_(expresion),
 alfa_(alfa),
 formato_(formato){
-  if (alfa_.is_in_alphabet(expre_)) {  //Se comprueba que todos los caracteres
+ if (alfa_.is_in_alphabet(expre_)) {  //Se comprueba que todos los caracteres
                                        //pertenecen al alfabeto
-    //expreg_t posfija = convert_to_posfija(1);
-    convert();
-    //std::cout << ex_pf_ << " salio....\n";
+    //ex_pf_ = convert_to_posfija(convert());
+    expre_ = convert();
+    ex_pf_ = convert_to_posfija();
+    std::cout << expre_ << '\n' << ex_pf_ << '\n';
   }
   else
     std::cerr << "Hay caracteres que no pertenecen al alfabeto establecido\n";
 }
 
+expreg_t::expreg_t(const expreg_t& rhs) {
+  this->alfa_ = rhs.alfa_;
+  this->formato_ = rhs.formato_;
+  this->expre_ = rhs.expre_;
+  this->ex_pf_ = rhs.ex_pf_;
+  this->pila_ = rhs.pila_;
+}
 
 
-
-expreg_t expreg_t::convert_to_posfija(unsigned formato) {
-  for(size_t i=0; i < expre_.size() - 1; i++) {
+std::string expreg_t::convert_to_posfija() {
+  std::string ex_pf;
+  for(size_t i=0; i < expre_.size(); i++) {
     caracter_t aux = alfa_.find(expre_[i]);
     if(aux.is_ParAb()) {
       pila_.push(aux);
     }
-    if(aux.is_operando()) {
-      ex_pf_.push_back(aux.get_caracter());
+    else if(aux.is_operando()) {
+      ex_pf.push_back(aux.get_caracter());
+      v_posfija_.push_back(aux);
     }
-    else if(pila_.empty() || pila_.top().is_ParAb()) {
+    else
+      check(ex_pf, aux);
+  }
+  while ( !pila_.empty()) {
+    ex_pf.push_back(pila_.top().get_caracter());
+    v_posfija_.push_back(pila_.top());
+    pila_.pop();
+  }
+  return ex_pf;
+}
+
+void expreg_t::check(std::string& ex_pf, caracter_t& aux) {
+  if(pila_.empty() || pila_.top().is_ParAb()) {
       pila_.push(aux);
     }
     else if(aux.is_ParCe()) {
       while (!pila_.top().is_ParAb()) {
-        
+        ex_pf.push_back(pila_.top().get_caracter());
+        v_posfija_.push_back(pila_.top());
+        pila_.pop();
       }
+      pila_.pop();
     }
-  }
+    else if( aux.get_prioridad() > pila_.top().get_prioridad()) {
+      pila_.push(aux);
+    }
+    else if(aux.get_prioridad() == pila_.top().get_prioridad()) {
+      ex_pf.push_back(pila_.top().get_caracter());
+      v_posfija_.push_back(pila_.top());
+      pila_.pop();
+      pila_.push(aux);
+    }
+    else {
+      ex_pf.push_back(pila_.top().get_caracter());
+      v_posfija_.push_back(pila_.top());
+      pila_.pop();
+      check(ex_pf, aux);
+    }
+
+}
+
+std::vector<caracter_t> expreg_t::get_posfija() {
+  return v_posfija_;
+}
+
+void expreg_t::set_vector_sufijo(std::vector<caracter_t> aux) {
+  v_sufija_ = aux;
+
+}
+
+void expreg_t::set_vector_posfijo(std::vector<caracter_t> aux) {
+  v_posfija_ = aux;
+
+}
+
+void expreg_t::set_vector_infijo(std::vector<caracter_t> aux) {
+  v_expresion_ = aux;
+
 }
 
 
 
+expreg_t& expreg_t::operator=(const expreg_t& rhs) {
+  this->alfa_ = rhs.alfa_;
+  this->formato_ = rhs.formato_;
+  this->expre_ = rhs.expre_;
+  this->ex_pf_ = rhs.ex_pf_;
+  this->pila_ = rhs.pila_;
+  return *this;
+}
+
 
 //Convierte el string leido y añade entre dos operandos el caracter &
-void expreg_t::convert() {
+std::string expreg_t::convert() {
   std::string string_final;
   caracter_t previo = alfa_.find(expre_[0]);
   string_final.push_back(expre_[0]);
@@ -91,6 +158,7 @@ void expreg_t::convert() {
   }
   //std::cout << "String de entrada: " << expre_ << "\nString de salida: " <<
   //  string_final << std::endl;
+  return string_final;
 }
 
 

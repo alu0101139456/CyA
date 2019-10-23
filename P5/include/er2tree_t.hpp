@@ -11,7 +11,9 @@
 
 #include "alfabeto_t.hpp"
 #include "expreg_t.hpp"
+#include "tree_t.hpp"
 
+#include <vector>
 #include <fstream>
 #include <iostream>
 
@@ -19,7 +21,7 @@ class er2tree_t {
  private:
   std::ifstream fileIn_;
   std::ofstream fileOut_;
-  expreg_t expresion_;
+  std::vector<tree_t> arboles_;
   alfabeto_t alfa_;
 
  public:
@@ -31,5 +33,7 @@ class er2tree_t {
 
  private:
   void read_from_file();
+
+
 
 };

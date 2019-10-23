@@ -23,11 +23,14 @@ class alfabeto_t {
 
   alfabeto_t();
   ~alfabeto_t() {}
+  alfabeto_t( const alfabeto_t& rhs);
 
   std::set<caracter_t>::iterator find_symbol(char sym);
   std::set<caracter_t>::iterator end();
   bool pertenece( caracter_t caracter);
   bool is_in_alphabet(std::string expresion);
   caracter_t find(char sym);
+
+  alfabeto_t& operator=(const alfabeto_t& rhs);
 
 };

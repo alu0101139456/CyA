@@ -29,6 +29,7 @@ alfabeto_t::alfabeto_t () {
        alfa_.insert(caracter_t(aux[j], aux[j+1], OPERADOR, i+1));
     }
   }
+  alfaFile.close();
 }
 
 bool alfabeto_t::pertenece(caracter_t caracter) {
@@ -66,5 +67,18 @@ bool alfabeto_t::is_in_alphabet(std::string expresion) {
   }
   return count == 0? 1: 0;
 }
+
+alfabeto_t::alfabeto_t( const alfabeto_t& rhs){
+  this->alfa_ = rhs.alfa_;
+}
+
+alfabeto_t& alfabeto_t::operator=(const alfabeto_t& rhs) {
+  this->alfa_ = rhs.alfa_;
+  return *this;
+}
+
+
+
+
 
 

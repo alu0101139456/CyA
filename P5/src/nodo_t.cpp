@@ -4,9 +4,17 @@
 
 
 nodo_t::nodo_t(caracter_t val):
-valor_(val)
+valor_(val),
+n_izq_(nullptr),
+n_der_(nullptr)
 {}
 
+nodo_t::~nodo_t(){
+  delete n_der_;
+  delete n_izq_;
+  n_der_ = nullptr;
+  n_izq_ = nullptr;
+}
 caracter_t nodo_t::get_val() {
  return valor_;
 }

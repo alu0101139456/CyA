@@ -8,13 +8,13 @@
 class nodo_t {
  private:
   caracter_t valor_;
-  nodo_t* n_izq_= NULL;
-  nodo_t* n_der_= NULL;
+  nodo_t* n_izq_= nullptr;
+  nodo_t* n_der_= nullptr;
   bool nodoHoja_ =false;
 
  public:
   nodo_t() {}
-  ~nodo_t() {}
+  ~nodo_t();
   nodo_t(caracter_t val);
 //getter
   caracter_t get_val();
@@ -29,3 +29,8 @@ class nodo_t {
   //       2º derecha
 
 };
+
+
+
+
+//Te quedaste sin bateria?

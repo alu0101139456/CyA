@@ -1,7 +1,4 @@
-(a|b)*xz*
-
 a|b
-
-(a|b)(c|d)
-
 a|bc
+(a|b)(c|d)
+(a|b)*xz*

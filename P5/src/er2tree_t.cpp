@@ -8,6 +8,7 @@
  * **************************************************************************/
 //                                er2tree.cpp
 
+
 #include "../include/er2tree_t.hpp"
 
 
@@ -23,13 +24,19 @@ void er2tree_t::read_from_file() {
   std::string ch;
 
   if(fileIn_.is_open()) {
+    int i = 0;
     while (getline(fileIn_, ch)) {
-      //std::cout << "caracter " << ch << "\n";
-
-      expresion_ = expreg_t(ch, alfa_, INFIJA);
+      //tree_t aux(expreg_t(ch, alfa_, INFIJA));
+      arboles_.push_back(tree_t(expreg_t(ch, alfa_, INFIJA)));
+      arboles_[i].recorrido_sufija();
+      arboles_[i].recorrido_posfija();
+      arboles_[i].recorrido_infija();
+      i++;
     }
     fileIn_.close();
   }
   else std::cerr << "Error al abrir el fichero" << std::endl;
 
 }
+
+
