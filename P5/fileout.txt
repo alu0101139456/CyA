@@ -1,0 +1,4 @@
+Infija: (a|b)          Posfija: ab|          Prefija: |ab          
+Infija: (a|(b&c))          Posfija: abc&|          Prefija: |a&bc          
+Infija: ((a|b)&(c|d))          Posfija: ab|cd|&          Prefija: &|ab|cd          
+Infija: ((((a|b)*)&x)&(z*))          Posfija: ab|*x&z*&          Prefija: &&*|abx*z          

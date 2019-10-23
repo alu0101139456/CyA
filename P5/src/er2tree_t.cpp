@@ -26,11 +26,8 @@ void er2tree_t::read_from_file() {
   if(fileIn_.is_open()) {
     int i = 0;
     while (getline(fileIn_, ch)) {
-      //tree_t aux(expreg_t(ch, alfa_, INFIJA));
       arboles_.push_back(tree_t(expreg_t(ch, alfa_, INFIJA)));
-      arboles_[i].recorrido_sufija();
-      arboles_[i].recorrido_posfija();
-      arboles_[i].recorrido_infija();
+      arboles_[i].print_in_file(fileOut_);
       i++;
     }
     fileIn_.close();

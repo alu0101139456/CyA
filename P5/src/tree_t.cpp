@@ -40,28 +40,27 @@ void tree_t::r_sufija(nodo_t* ini, std::vector<caracter_t>& vs) {
   }
 }
 
-void tree_t::recorrido_sufija() {
+void tree_t::recorrido_sufija(std::ofstream& os) {
   std::vector<caracter_t> vs;
   r_sufija(raiz_, vs);
   expresion_.set_vector_sufijo(vs);
 
   for(size_t i=0;i < vs.size(); i++) {
-    std::cout << vs[i].get_caracter();
+    os << vs[i].get_caracter();
   }
-  std::cout << '\n';
+  os << "          ";
 
 }
 
-void tree_t::recorrido_posfija(){
+void tree_t::recorrido_posfija(std::ofstream& os){
   std::vector<caracter_t> vs;
   r_posfija(raiz_, vs);
   expresion_.set_vector_posfijo(vs);
 
   for(size_t i=0;i < vs.size(); i++) {
-    std::cout << vs[i].get_caracter();
+    os << vs[i].get_caracter();
   }
-  std::cout << '\n';
-  
+  os << "          ";
 }
 
 void tree_t::r_posfija(nodo_t* ini, std::vector<caracter_t>& vs){
@@ -72,16 +71,15 @@ void tree_t::r_posfija(nodo_t* ini, std::vector<caracter_t>& vs){
   }
 }
 
-void tree_t::recorrido_infija(){
+ void tree_t::recorrido_infija(std::ofstream& os) {
   std::vector<caracter_t> vs;
   r_infija(raiz_, vs);
   expresion_.set_vector_infijo(vs);
 
   for(size_t i=0;i < vs.size(); i++) {
-    std::cout << vs[i].get_caracter();
+    os << vs[i].get_caracter();
   }
-  std::cout << '\n';
-  
+  os << "          ";
 }
 
 void tree_t::r_infija(nodo_t* ini, std::vector<caracter_t>& vs){
@@ -98,4 +96,13 @@ void tree_t::r_infija(nodo_t* ini, std::vector<caracter_t>& vs){
   }
 }
 
+void tree_t::print_in_file(std::ofstream& fileout) {
+  fileout << "Infija: ";
+  recorrido_infija(fileout);
+  fileout << "Posfija: ";
+  recorrido_posfija(fileout);
+  fileout << "Prefija: ";
+  recorrido_sufija(fileout);
+  fileout << '\n';
 
+}
