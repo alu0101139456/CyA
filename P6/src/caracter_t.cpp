@@ -6,6 +6,8 @@
  * Estilo Google C++ Style Guide                                              *
  * Práctica 6: Automatas Finitos Deterministas                                *
  ****************************************************************************/ 
+//                          caracter_t.cpp
+
 
 #include "../include/caracter_t.hpp"
 

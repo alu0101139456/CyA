@@ -55,9 +55,12 @@ void DFA2dot_t::read_file() {
         cor.clear();
         //////////Set Estado Arranque/////////
         getline(filein_, cor);
-        *dfa_.find_estado(cor)->set_arranque(2);
-        std::cout << "estado encontrado: " << dfa_.find_estado(cor).get_name()<<'\n';;
-        std::cout << "Estado arranque: " << dfa_.find_estado(cor).is_arranque()<< '\n';
+        dfa_.find_estado(cor)->set_arranque(1);
+
+
+
+        //std::cout << "estado encontrado: " << dfa_.find_estado(cor).get_name()<<'\n';;
+        //std::cout << "Estado arranque: " << dfa_.find_estado(cor).is_arranque()<< '\n';
         //////////Set Numero de estados Acept//////////
         cor.clear();
         getline(filein_,cor);
