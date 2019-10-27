@@ -19,7 +19,7 @@ class estado_t {
  private:
   unsigned id_;
   bool acept_;
-  std::map<char, unsigned> transiciones_;
+  trans_map transiciones_;
   unsigned default_;
   bool estado_escritura_;
 
