@@ -22,9 +22,9 @@ void dfa_t::analiza(char caracter) {
 
 
 //Busca entre los estados el que tiene mismo nombre y devuelve el id
-unsigned dfa_t::find_estado(std::string name) {
+estado_t dfa_t::find_estado(std::string name) {
   estado_t aux(0, name);
   std::set<estado_t>::iterator it = estados_.find(aux);
-  return it->get_id();
+  return *it;
 
 }

@@ -28,7 +28,7 @@ void DFA2dot_t::read_file() {
     while(!filein_.eof()) {
       getline(filein_,cor);
       if(cor[0] != '/' && cor[1] != '/') {
-        std::cout << "numero de simbolos" << cor << std::endl;
+        std::cout << "numero de simbolos: " << cor << std::endl;
         int n_alfa = stoi(cor);
         for(int i=0; i < n_alfa; i++){
           getline(filein_, cor);
@@ -36,13 +36,16 @@ void DFA2dot_t::read_file() {
           std::cout << cor << '\n';
         }
         getline(filein_, cor);
-        std::cout << "numero estados" << cor<< std::endl;
+        std::cout << "numero estados: " << cor<< std::endl;
         int n_estados = stoi(cor);
         for(int i=0; i < n_estados; i++) {
           getline(filein_,cor);
           dfa_.insert_estado(estado_t(i, cor));
           std::cout << "estados leidos: "  << cor << '\n';
         }
+        getline(filein_, cor);
+        dfa_.find_estado(cor).set_arranque(true);
+        std::cout << "va?" << dfa_.find_estado(cor).get_id() << "flipalo";
       }
     }
   }

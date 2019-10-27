@@ -46,6 +46,7 @@ class estado_t {
 
   void set_acept(bool aux) { acept_ = aux; }
   void set_trans(trans_map map) { transiciones_ = map; }
+  void set_arranque(bool aux) { arranque = aux; };
   
 };
 

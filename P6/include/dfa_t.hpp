@@ -21,9 +21,6 @@ class dfa_t {
  private:
   alfabeto_t Al_;
   std::set<estado_t> estados_;
-  unsigned estArranque_;
-  char buff;
-  estado_t const* estActual;
 
  public:
   dfa_t() {}
@@ -31,6 +28,6 @@ class dfa_t {
   void insert_estado( estado_t estado);
   void analiza( char caracter);
 
-  unsigned find_estado( std::string name );
+  estado_t find_estado(std::string name);
 
 };
