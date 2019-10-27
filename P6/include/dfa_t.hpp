@@ -27,7 +27,9 @@ class dfa_t {
   ~dfa_t() {}
   void insert_estado( estado_t estado);
   void analiza( char caracter);
-
-  estado_t find_estado(std::string name);
+  std::set<estado_t>::iterator begin();
+  std::set<estado_t>::iterator end();
+  std::set<estado_t> get_estados();
+  std::set<estado_t>::iterator find_estado(std::string name);
 
 };

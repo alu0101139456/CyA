@@ -26,28 +26,28 @@ class estado_t {
  public:
   estado_t() {}
   ~estado_t() {}
-
   estado_t(unsigned id, std::string name): id_(id), name_(name) {}
 
+
+  //GETTER
   unsigned int get_id() const { return id_; }
   std::string get_name() const {return name_;}
   bool get_acept() const { return acept_; }
-
-  bool operator<(const estado_t& rhs) const {
-    return (this->get_id() < rhs.get_id());}
-
-//  int operator==(const estado_t& rhs) const {
-//    return (this->get_id() == rhs.get_id()); }
-
-  int operator==( estado_t& rhs) {
-    return (this->get_name() == rhs.get_name()); }
-
+  int is_arranque() { return arranque; }
   const trans_map& get_tran() const {return transiciones_;}
 
+
+  //SETTER
   void set_acept(bool aux) { acept_ = aux; }
   void set_trans(trans_map map) { transiciones_ = map; }
-  void set_arranque(bool aux) { arranque = aux; };
-  
+  void set_arranque(int aux) { arranque = aux; };
+
+
+  //OPERATORS
+  bool operator<(const estado_t& rhs) const {
+    return (this->get_id() < rhs.get_id());}
+  int operator==(const estado_t& rhs) const {
+    return (this->get_name() == rhs.get_name()); }
 };
 
 
