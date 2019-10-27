@@ -12,6 +12,17 @@
 
 
 alfabeto_t::alfabeto_t () {
+  //insert_from_file();
+
+}
+
+void alfabeto_t::insert_symbol( char symbol) {
+  alfa_.insert(caracter_t(symbol, 0, OPERANDO, 0));
+}
+
+
+void alfabeto_t::insert_from_file() {
+
   std::string aux;
   std::ifstream alfaFile("alfabeto.txt");
   getline(alfaFile, aux);

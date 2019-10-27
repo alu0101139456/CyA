@@ -12,45 +12,41 @@
 
 #include <map>
 
-typedef std::map<char, unsigned> trans_map;
+typedef std::map<char, std::string> trans_map;
 
 
 class estado_t {
  private:
   unsigned id_;
+  std::string name_;
   bool acept_;
   trans_map transiciones_;
-  unsigned default_;
-  bool estado_escritura_;
+  bool arranque;
 
  public:
-  estado_t( unsigned id): id_(id) {}
-  estado_t() { id_ = 0;}
+  estado_t() {}
   ~estado_t() {}
 
-  estado_t(unsigned id, bool acept, std::map<char,unsigned> transiciones, 
-      unsigned default_id, bool escritura):
-      id_(id),
-      acept_(acept),
-      transiciones_(transiciones),
-      default_(default_id),
-      estado_escritura_(escritura){}
-
-  unsigned get_default() const {return default_; }
+  estado_t(unsigned id, std::string name): id_(id), name_(name) {}
 
   unsigned int get_id() const { return id_; }
-
+  std::string get_name() const {return name_;}
   bool get_acept() const { return acept_; }
 
   bool operator<(const estado_t& rhs) const {
     return (this->get_id() < rhs.get_id());}
 
-  int operator==(const estado_t& rhs) const {
-    return (this->get_id() == rhs.get_id()); }
+//  int operator==(const estado_t& rhs) const {
+//    return (this->get_id() == rhs.get_id()); }
+
+  int operator==( estado_t& rhs) {
+    return (this->get_name() == rhs.get_name()); }
 
   const trans_map& get_tran() const {return transiciones_;}
 
-  bool estado_escritura() const { return estado_escritura_;}
+  void set_acept(bool aux) { acept_ = aux; }
+  void set_trans(trans_map map) { transiciones_ = map; }
+  
 };
 
 

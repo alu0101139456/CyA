@@ -11,14 +11,26 @@
 
 #include "dfa_t.hpp"
 #include "estado_t.hpp"
+#include "alfabeto_t.hpp"
+
+#include <fstream>
+#include <iostream>
 
 
-
-class DFA2dot {
+class DFA2dot_t {
  private:
   dfa_t dfa_;
+  std::ifstream filein_;
+  std::ofstream fileout_;
 
 
+ public:
+  DFA2dot_t() {}
+  ~DFA2dot_t() {}
+  DFA2dot_t(std::string filein, std::string fileout);
 
+
+ private:
+  void read_file();
 
 };

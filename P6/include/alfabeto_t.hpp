@@ -25,6 +25,8 @@ class alfabeto_t {
   ~alfabeto_t() {}
   alfabeto_t( const alfabeto_t& rhs);
 
+  void insert_symbol( char symbol);
+  void insert_from_file();
   std::set<caracter_t>::iterator find_symbol(char sym);
   std::set<caracter_t>::iterator end();
   bool pertenece( caracter_t caracter);

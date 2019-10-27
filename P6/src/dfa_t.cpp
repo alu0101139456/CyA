@@ -18,19 +18,13 @@ void dfa_t::insert_estado( estado_t estado) {
 
 
 void dfa_t::analiza(char caracter) {
-
-  auto siguiente = estActual->get_tran().find(caracter);
-  unsigned estado_sig;
-  
-
-  if(siguiente == estActual->get_tran().end()) {
-    estado_sig  = estActual->get_default();
-  }
-  else {
-    estado_sig = siguiente->second;
-  }
-  estado_t aux(estado_sig);
-  estActual = &(*estados_.find(aux));//?
 }
 
 
+//Busca entre los estados el que tiene mismo nombre y devuelve el id
+unsigned dfa_t::find_estado(std::string name) {
+  estado_t aux(0, name);
+  std::set<estado_t>::iterator it = estados_.find(aux);
+  return it->get_id();
+
+}

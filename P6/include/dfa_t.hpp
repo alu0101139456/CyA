@@ -29,13 +29,8 @@ class dfa_t {
   dfa_t() {}
   ~dfa_t() {}
   void insert_estado( estado_t estado);
-  void set_arranque( unsigned estado) {
-    estArranque_ = estado;
-    estActual = &(*estados_.find(estArranque_));
-  }
   void analiza( char caracter);
 
-  bool estado_escritura() const {return estActual->estado_escritura();}
-
+  unsigned find_estado( std::string name );
 
 };
