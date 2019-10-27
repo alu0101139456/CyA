@@ -1,4 +1,3 @@
-#pragma once
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++¶¶
  * Autor: Ángel Julián Bolaño Campos                                          *¶
  * Asignatura: Computabilidad y Algoritmia                                    *¶
@@ -8,6 +7,7 @@
  * Práctica 6: Automatas Finitos Deterministas                                *
  * **************************************************************************/
 //                          alfabeto_t.hpp
+#pragma once
 
 #include<iostream>
 #include<set>

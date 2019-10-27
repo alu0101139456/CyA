@@ -4,7 +4,7 @@
  * Curso: 2º Ingeniería Informática                                           *
  * Editor: VIM                                                                *
  * Estilo Google C++ Style Guide                                              *
- * Práctica 4: Eliminador de comentarios                                      *
+ * Práctica 6: Automatas Finitos Deterministas                                *
  * ***************************************************************************/
 //                              dfa_t.cpp
 
