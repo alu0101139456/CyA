@@ -28,6 +28,12 @@ std::set<estado_t>::iterator dfa_t::find_estado(std::string name){
   return it;
 }
 
+void dfa_t::update_estado(std::string name, estado_t& nuevo) {
+  std::set<estado_t>::iterator it = find_estado(name);
+  if ( estados_.erase(it) != estados_.end()){
+    estados_.insert(nuevo);
+  }
+}
 
 std::set<estado_t> dfa_t::get_estados() {
  return estados_;

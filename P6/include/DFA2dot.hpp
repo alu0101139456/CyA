@@ -15,6 +15,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <set>
 
 
 class DFA2dot_t {
@@ -32,5 +33,5 @@ class DFA2dot_t {
 
  private:
   void read_file();
-
+  void print_dfa();
 };

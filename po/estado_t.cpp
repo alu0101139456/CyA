@@ -1,6 +1,6 @@
 
 
-#include "../include/estado_t.hpp"
+#include "estado_t.hpp"
 
 void estado_t::clean() {
   id_ = 0;

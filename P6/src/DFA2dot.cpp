@@ -46,33 +46,38 @@ void DFA2dot_t::read_file() {
           estado_t aux(i, cor);
           dfa_.insert_estado(aux);
         }
-        std::set<estado_t>::iterator it;
-        for(it=dfa_.begin(); it != dfa_.end(); it++) {
-          std::cout << "Estados en DFA: " << it->get_name() << std::endl;
-        }
-        
+        print_dfa();
         
         cor.clear();
         //////////Set Estado Arranque/////////
         getline(filein_, cor);
-        dfa_.find_estado(cor)->set_arranque(1);
-
-
-
-        //std::cout << "estado encontrado: " << dfa_.find_estado(cor).get_name()<<'\n';;
-        //std::cout << "Estado arranque: " << dfa_.find_estado(cor).is_arranque()<< '\n';
+        std::cout << "nombre leido" << cor << '\n';
+        estado_t nuevo(dfa_.get_size(), cor);  //creamos un estado temporal
+        std::cout << "nombre estado " << nuevo.get_name() << '\n';
+        nuevo.set_arranque(true); //Establecemos el estado de arranque
+        dfa_.update_estado(cor,nuevo); //elimina el estado con el mismo nombre
+                                       //que se encuentra en la lista y pone el
+                                       //nuevo
+        print_dfa();
         //////////Set Numero de estados Acept//////////
+        
         cor.clear();
         getline(filein_,cor);
         int est_acept = stoi(cor);
         std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
         for(int i=0; i < est_acept; i++) {
           getline(filein_, cor);
-          std::cout << "el getline me da esto: " << cor << std::endl;
-          dfa_.find_estado(cor).set_acept(true);
-          std::cout << "Estados de aceptacion: " << dfa_.find_estado(cor).get_name() << '\n';
+          estado_t temp(dfa_.get_size(), cor);
+          temp.set_acept(true);
+          std::cout << "Nombre de estado temp: " << temp.get_name();
+          std::cout << " nombre leido: " << cor;
+          dfa_.update_estado(cor,temp);
           cor.clear();
         }
+
+
+        print_dfa();
+        std::set<estado_t>::iterator it;
         getline(filein_, cor);
         int n_trans = stoi(cor);
         std::cout << "Nº de transiciones" << n_trans << std::endl;
@@ -80,4 +85,16 @@ void DFA2dot_t::read_file() {
     }
   }
 }
+
+void DFA2dot_t::print_dfa() {
+  std::set<estado_t>::iterator it;
+  for(it=dfa_.begin(); it != dfa_.end(); it++) {
+    std::cout << "Estado en DFA: " << it->get_name();
+    std::cout << " Arranque: " << it->is_arranque();
+    std::cout << " Aceptacion : "<< it->get_acept();
+    std::cout << " Id stado en DFA: " << it->get_id() << std::endl;
+  }
+}
+
+
 

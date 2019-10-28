@@ -21,12 +21,11 @@ class estado_t {
   std::string name_;
   bool acept_;
   trans_map transiciones_;
-  bool arranque=false;
+  bool arranque=false;;
 
  public:
   estado_t() {}
   ~estado_t() {}
-  estado_t(std::string name): name_(name) {}
   estado_t(unsigned id, std::string name):
     id_(id),
     name_(name)
