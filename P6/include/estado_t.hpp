@@ -57,11 +57,11 @@ class estado_t {
   void set_name(std::string aux) { name_ = aux; }
 
   //OPERATORS
-  bool operator<(const estado_t& rhs) const {
-    return (this->get_id() < rhs.get_id());}
+  //bool operator<(const estado_t& rhs) const {
+  //  return (this->id_ < rhs.id_);}
   
   bool operator==(const estado_t& rhs) const {
-    return (this->get_name() == rhs.get_name()); }
+    return (this->name_ == rhs.name_); }
 };
 
 
