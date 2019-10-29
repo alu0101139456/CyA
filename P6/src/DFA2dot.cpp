@@ -27,7 +27,11 @@ void DFA2dot_t::read_file() {
   if(filein_.is_open()) {
     while(!filein_.eof()) {
       getline(filein_,cor);
-      if(cor[0] != '/' && cor[1] != '/') {
+      if(cor[0] == '/' && cor[1] == '/') {
+        fileout_ << cor;
+      }
+      else  {
+        //if(cor[0] != '/' && cor[1] != '/') {
         //////////Set Alfabeto//////////
         std::cout << "//////////Set Alfabeto//////////\n";
         std::cout << "numero de simbolos: " << cor << std::endl;
@@ -65,10 +69,10 @@ void DFA2dot_t::read_file() {
         std::cout <<"//////////Set Numero de estados Acept//////////\n";
         cor.clear();
         getline(filein_,cor);
-        int est_acept = stoi(cor);
+        estados_acept_ = stoi(cor);
         std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
         nuevo.clean();
-        for(int i=0; i < est_acept; i++) {
+        for(int i=0; i < estados_acept_; i++) {
           getline(filein_, cor);
           auto iterador = dfa_.find_estado(cor);
           nuevo = *iterador;
@@ -84,27 +88,29 @@ void DFA2dot_t::read_file() {
         std::cout << "Nº de transiciones" << n_trans << std::endl;
         int pos = 0;
         getline(filein_, cor);
+        print_dfa();
         for(int i=0; i < n_trans; i++) {
-        //while((pos = cor.find(delimiter)) != std::string::npos) {
-          //std::pair<char, std::string> trs;
+          //Leo la linea con su formato
           pos = cor.find(delimiter);
           std::string desde = cor.substr(0,pos);
           cor.erase(0, pos + 1);
-          std::cout << "Desde " << desde;
           pos = cor.find(delimiter);
           std::string con = cor.substr(0,pos);
           pos = cor.find(delimiter);
           cor.erase(0, pos + 1);
-          std::cout << "con " << con;
           std::string a = cor.substr(0, cor.size());
           pos = cor.find(delimiter);
           cor.erase(0, cor.size() -1);
-          std::cout << " a " << a << '\n';
           getline(filein_, cor);
+          //creo estado
           auto it1 = dfa_.find_estado(desde);
           nuevo = *it1;
+          nuevo.insert_tr(std::pair<char,std::string>(con[0],a));
+          dfa_.update_estado(it1,nuevo);
+          it1 = dfa_.find_estado(desde);
+          it1->print_trans();
+          nuevo.clean();
         }
-
       }
     }
   }
@@ -125,56 +131,15 @@ void DFA2dot_t::print_dfa() {
 }
 
 
-/*void DFA2dot_t::analize( std::string cor) {
+void DFA2dot_t::write2dot() {
+  fileout_ << "disgraph DFA {\n";
+  fileout_ << "  rankdir=LR;\n";
+  fileout_ << "  size = \"10, 04\";";
+  fileout_ << "  d2tstyleonly = true;";
+  fileout_ << "  node [shape = none]; \" \";";
+  fileout_ << "  node [shape = circle];";
+  fileout_ << "  node [shape = double
 
-  //////////Set Alfabeto//////////
-  std::cout << "//////////Set Alfabeto//////////\n";
-  std::cout << "numero de simbolos: " << cor << std::endl;
-  int n_alfa = stoi(cor);
-  for(int i=0; i < n_alfa; i++){
-    getline(filein_, cor);
-    alfa.insert_symbol(cor[0]);
-    std::cout << cor << '\n';
-  }
-  cor.clear();
-  //////////Set Estados//////////
-  std::cout << "//////////Set Estados//////////\n";
-  getline(filein_, cor);
-  std::cout << "numero estados: " << cor<< std::endl;
-  int n_estados = stoi(cor);
-  for(int i=0; i < n_estados; i++) {
-    getline(filein_,cor);
-    estado_t aux(i, cor);
-    dfa_.insert_estado(aux);
-  }
-  cor.clear();
-  std::cout << "//////////Set Estado Arranque/////////\n";
-  //////////Set Estado Arranque/////////
-  getline(filein_, cor);
-  estado_t nuevo(dfa_.get_size(), cor);  //creamos un estado temporal
-  auto ite = dfa_.find_estado(cor);
-  nuevo = *ite;
-  nuevo.set_arranque(true);
+}
 
-  //Establecemos el estado de arranque
-  dfa_.update_estado(ite,nuevo); //elimina el estado con el mismo nombre
-                                 //que se encuentra en la lista y pone el
-                                 //nuevo
-  //////////Set Numero de estados Acept//////////
-  std::cout <<"//////////Set Numero de estados Acept//////////\n";
-  cor.clear();
-  getline(filein_,cor);
-  int est_acept = stoi(cor);
-  std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
-  nuevo.clean();
-  for(int i=0; i < est_acept; i++) {
-    getline(filein_, cor);
-    auto iterador = dfa_.find_estado(cor);
-    nuevo = *iterador;
-    nuevo.set_acept(true);
-    dfa_.update_estado(iterador,nuevo);
-    cor.clear();
-    nuevo.clean();
-  }
 
-*/

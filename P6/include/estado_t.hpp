@@ -9,7 +9,7 @@
 //                            estado_t.hpp
 
 #pragma once
-
+#include<iostream>
 #include <map>
 
 typedef std::map<char, std::string> trans_map;
@@ -31,8 +31,8 @@ class estado_t {
     id_(id),
     name_(name)
   {}
-
-    estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
+  estado_t(const estado_t&);
+  estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
     id_(id),
     name_(name),
     acept_(acpt),
@@ -41,7 +41,7 @@ class estado_t {
 
   void clean();
   void insert_tr (std::pair<char, std::string> aux);
-
+  void print_trans()const;
 
 
   //GETTER
@@ -63,8 +63,10 @@ class estado_t {
   bool operator<(const estado_t& rhs) const {
     return (this->get_id() < rhs.get_id());}
   
-  int operator==(const estado_t& rhs) const {
+  bool operator==(const estado_t& rhs) const {
     return (this->get_name() == rhs.get_name()); }
+  
+  estado_t& operator=(const estado_t& rhs);
 };
 
 

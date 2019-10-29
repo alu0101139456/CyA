@@ -25,7 +25,7 @@ q0 0 cero
 q0 1 1mod3
 1mod3 0 2mod3
 1mod3 1 0mod3
-2mod3 0 1mod3
-2mod3 1 2mod3
 0mod3 0 0mod3
 0mod3 1 1mod3
+2mod3 0 1mod3
+2mod3 1 2mod3

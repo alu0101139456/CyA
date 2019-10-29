@@ -23,7 +23,6 @@ void dfa_t::analiza(char caracter) {
 
 //Busca entre los estados el que tiene mismo nombre y devuelve el iterador
 std::set<estado_t>::iterator dfa_t::find_estado(std::string& name){
-  //estado_t aux(0, name);
   std::set<estado_t>::iterator it;
   for(it = estados_.begin(); it != estados_.end(); ++it)
   {
@@ -32,8 +31,10 @@ std::set<estado_t>::iterator dfa_t::find_estado(std::string& name){
   return it;
 }
 
-void dfa_t::update_estado( std::set<estado_t>::iterator it, estado_t& nuevo) {
-  if ( estados_.erase(it) != estados_.end()){
+void dfa_t::update_estado( std::set<estado_t>::iterator& it,const estado_t& nuevo) {
+  std::cout << it->get_name() << '\n';
+  if (it != estados_.end()){
+    estados_.erase(it);
     estados_.insert(nuevo);
   }
 }
@@ -50,3 +51,35 @@ std::set<estado_t>::iterator dfa_t::begin() {
 std::set<estado_t>::iterator dfa_t::end() {
   return estados_.end();
 }
+
+
+std::vector<std::string> dfa_t::get_est_acept() {
+  std::vector<std::string> aux;
+  for(auto it=estados_.begin() ; it != estados_.end(); ++it) {
+    if(it->get_acept())
+      aux.push_back(it->get_name());
+  }
+  return aux;
+}
+
+std::string dfa_t::get_est_arranque() {
+  for(auto it=estados_.begin() ; it != estados_.end(); ++it) {
+    if(it->is_arranque())
+      aux.push_back(it->get_name());
+  }
+  return aux;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

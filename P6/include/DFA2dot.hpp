@@ -23,6 +23,8 @@ class DFA2dot_t {
   dfa_t dfa_;
   std::ifstream filein_;
   std::ofstream fileout_;
+  int estados_acept_;
+  
 
 
  public:
@@ -34,4 +36,6 @@ class DFA2dot_t {
  private:
   void read_file();
   void print_dfa();
+  void write2dot();
+
 };
