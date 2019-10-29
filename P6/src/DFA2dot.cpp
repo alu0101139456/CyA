@@ -83,9 +83,28 @@ void DFA2dot_t::read_file() {
         int n_trans = stoi(cor);
         std::cout << "Nº de transiciones" << n_trans << std::endl;
         int pos = 0;
-        while((pos = cor.find(delimiter)) != std::string::npos) {
-          std::string temp = cor.substr(0,pos)
+        getline(filein_, cor);
+        for(int i=0; i < n_trans; i++) {
+        //while((pos = cor.find(delimiter)) != std::string::npos) {
+          //std::pair<char, std::string> trs;
+          pos = cor.find(delimiter);
+          std::string desde = cor.substr(0,pos);
+          cor.erase(0, pos + 1);
+          std::cout << "Desde " << desde;
+          pos = cor.find(delimiter);
+          std::string con = cor.substr(0,pos);
+          pos = cor.find(delimiter);
+          cor.erase(0, pos + 1);
+          std::cout << "con " << con;
+          std::string a = cor.substr(0, cor.size());
+          pos = cor.find(delimiter);
+          cor.erase(0, cor.size() -1);
+          std::cout << " a " << a << '\n';
+          getline(filein_, cor);
+          auto it1 = dfa_.find_estado(desde);
+          nuevo = *it1;
         }
+
       }
     }
   }

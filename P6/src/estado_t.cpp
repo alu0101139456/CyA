@@ -12,4 +12,7 @@ void estado_t::clean() {
 }
 
 
+void estado_t::insert_tr (std::pair<char, std::string> aux) {
 
+
+}

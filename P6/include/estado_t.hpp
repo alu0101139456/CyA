@@ -40,6 +40,9 @@ class estado_t {
     arranque(arr){}
 
   void clean();
+  void insert_tr (std::pair<char, std::string> aux);
+
+
 
   //GETTER
   unsigned int get_id() const { return id_; }
