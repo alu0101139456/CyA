@@ -65,12 +65,14 @@ void DFA2dot_t::read_file() {
         std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
         nuevo.clean();
         for(int i=0; i < est_acept; i++) {
+          estado_t aux;
           getline(filein_, cor);
-          nuevo.set_acept(true);
-          nuevo.set_name(cor);
-          dfa_.update_estado(cor,nuevo);
+          aux.set_acept(true);
+          //nuevo.set_id(dfa_.get_size()+1);
+          aux.set_name(cor);
+          dfa_.update_estado(cor,aux);
           cor.clear();
-          nuevo.clean();
+          //aux.clean();
         }
 
 

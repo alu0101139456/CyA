@@ -12,7 +12,7 @@
 #include<set>
 #include<iostream>
 #include<fstream>
-
+//#include<unordered_set>
 #include "alfabeto_t.hpp"
 
 #include "estado_t.hpp"
@@ -31,7 +31,7 @@ class dfa_t {
   std::set<estado_t>::iterator end();
   std::set<estado_t> get_estados();
   std::set<estado_t>::iterator find_estado(std::string& name);
-  void update_estado(std::string& name, estado_t& nuevo);
+  void update_estado(std::string& name, const estado_t& nuevo);
   
   unsigned get_size() { return estados_.size(); }
 

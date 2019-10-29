@@ -31,8 +31,8 @@ class estado_t {
     id_(id),
     name_(name)
   {}
-
-    estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
+  estado_t(const estado_t& rhs);
+  estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
     id_(id),
     name_(name),
     acept_(acpt),
@@ -60,7 +60,7 @@ class estado_t {
   bool operator<(const estado_t& rhs) const {
     return (this->get_id() < rhs.get_id());}
   
-  int operator==(const estado_t& rhs) const {
+  bool operator==(const estado_t& rhs) const {
     return (this->get_name() == rhs.get_name()); }
 };
 

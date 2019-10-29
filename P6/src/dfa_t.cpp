@@ -35,11 +35,11 @@ std::set<estado_t>::iterator dfa_t::find_estado(std::string& name){
        return it;
      }
   }
-  it = estados_.end();
+  //it = estados_.end();
   return it;
 }
 
-void dfa_t::update_estado(std::string& name, estado_t& nuevo) {
+void dfa_t::update_estado(std::string& name, const estado_t& nuevo) {
   std::set<estado_t>::iterator it = find_estado(name);
     std::cout << "Tamaño set: " << estados_.size() << '\n';
   if ( estados_.erase(it) != estados_.end()){
