@@ -54,7 +54,7 @@ class estado_t {
   void set_trans(trans_map map) { transiciones_ = map; }
   void set_arranque(bool aux) { arranque = aux; }
   void set_id(unsigned aux) { id_ = aux; }
-
+  void set_name(std::string aux) { name_ = aux; }
 
   //OPERATORS
   bool operator<(const estado_t& rhs) const {

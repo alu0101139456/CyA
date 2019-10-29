@@ -51,9 +51,7 @@ void DFA2dot_t::read_file() {
         cor.clear();
         //////////Set Estado Arranque/////////
         getline(filein_, cor);
-        std::cout << "nombre leido" << cor << '\n';
         estado_t nuevo(dfa_.get_size(), cor);  //creamos un estado temporal
-        std::cout << "nombre estado " << nuevo.get_name() << '\n';
         nuevo.set_arranque(true); //Establecemos el estado de arranque
         dfa_.update_estado(cor,nuevo); //elimina el estado con el mismo nombre
                                        //que se encuentra en la lista y pone el
@@ -65,14 +63,14 @@ void DFA2dot_t::read_file() {
         getline(filein_,cor);
         int est_acept = stoi(cor);
         std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
+        nuevo.clean();
         for(int i=0; i < est_acept; i++) {
           getline(filein_, cor);
-          estado_t temp(dfa_.get_size(), cor);
-          temp.set_acept(true);
-          std::cout << "Nombre de estado temp: " << temp.get_name();
-          std::cout << " nombre leido: " << cor;
-          dfa_.update_estado(cor,temp);
+          nuevo.set_acept(true);
+          nuevo.set_name(cor);
+          dfa_.update_estado(cor,nuevo);
           cor.clear();
+          nuevo.clean();
         }
 
 
