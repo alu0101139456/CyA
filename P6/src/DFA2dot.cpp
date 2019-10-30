@@ -16,6 +16,7 @@ DFA2dot_t::DFA2dot_t(std::string filein, std::string fileout) {
   filein_ = std::ifstream(filein);
   fileout_ = std::ofstream(fileout);
   read_file();
+  write2dot();
 }
 
 
@@ -27,11 +28,7 @@ void DFA2dot_t::read_file() {
   if(filein_.is_open()) {
     while(!filein_.eof()) {
       getline(filein_,cor);
-      if(cor[0] == '/' && cor[1] == '/') {
-        fileout_ << cor;
-      }
-      else  {
-        //if(cor[0] != '/' && cor[1] != '/') {
+        if(cor[0] != '/' && cor[1] != '/') {
         //////////Set Alfabeto//////////
         std::cout << "//////////Set Alfabeto//////////\n";
         std::cout << "numero de simbolos: " << cor << std::endl;
@@ -66,11 +63,9 @@ void DFA2dot_t::read_file() {
                                        //que se encuentra en la lista y pone el
                                        //nuevo
         //////////Set Numero de estados Acept//////////
-        std::cout <<"//////////Set Numero de estados Acept//////////\n";
         cor.clear();
         getline(filein_,cor);
         estados_acept_ = stoi(cor);
-        std::cout << "Nº estados Aceptacion: "<< est_acept << std::endl;
         nuevo.clean();
         for(int i=0; i < estados_acept_; i++) {
           getline(filein_, cor);
@@ -82,14 +77,13 @@ void DFA2dot_t::read_file() {
           nuevo.clean();
         }
         //////////Set Numero de transiciones//////////
-        std::cout <<"//////////Set Numero de estados Acept//////////\n";
         getline(filein_, cor);
-        int n_trans = stoi(cor);
-        std::cout << "Nº de transiciones" << n_trans << std::endl;
+        n_trans_ = stoi(cor);
+        std::cout << "Nº de transiciones" << n_trans_ << std::endl;
         int pos = 0;
         getline(filein_, cor);
         print_dfa();
-        for(int i=0; i < n_trans; i++) {
+        for(int i=0; i < n_trans_; i++) {
           //Leo la linea con su formato
           pos = cor.find(delimiter);
           std::string desde = cor.substr(0,pos);
@@ -132,13 +126,26 @@ void DFA2dot_t::print_dfa() {
 
 
 void DFA2dot_t::write2dot() {
-  fileout_ << "disgraph DFA {\n";
+  fileout_ << "digraph DFA {\n";
   fileout_ << "  rankdir=LR;\n";
-  fileout_ << "  size = \"10, 04\";";
-  fileout_ << "  d2tstyleonly = true;";
-  fileout_ << "  node [shape = none]; \" \";";
-  fileout_ << "  node [shape = circle];";
-  fileout_ << "  node [shape = double
+  fileout_ << "  size = \"10, 04\";\n";
+  fileout_ << "  d2tstyleonly = true;\n";
+  fileout_ << "  node [shape = none]; \" \";\n";
+  fileout_ << "  node [shape = circle];\n";
+  fileout_ << "  node [shape = doublecircle];";
+  for(int i=0; i < estados_acept_; i++){
+    fileout_ << dfa_.get_est_acept()[i] << " ";
+  }
+  fileout_ << ";\n";
+  fileout_ << "  \" \"" << "->" << dfa_.get_est_arranque() << "\n";
+  
+  for(auto it = dfa_.begin(); it != dfa_.end(); it++) {
+    for(auto jt = it->get_tran().begin(); jt != it->get_tran().end(); ++jt) {
+      fileout_ << "  \""+it->get_name()+"\"" << " -> ";
+      fileout_ << "  \""+jt->second+"\""<<" [ label=\"" << jt->first << "\" ];\n";
+    }
+  }
+  fileout_ << "}";
 
 }
 

@@ -24,7 +24,7 @@ class DFA2dot_t {
   std::ifstream filein_;
   std::ofstream fileout_;
   int estados_acept_;
-  
+  int n_trans_;
 
 
  public:

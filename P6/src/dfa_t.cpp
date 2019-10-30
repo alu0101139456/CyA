@@ -57,7 +57,7 @@ std::vector<std::string> dfa_t::get_est_acept() {
   std::vector<std::string> aux;
   for(auto it=estados_.begin() ; it != estados_.end(); ++it) {
     if(it->get_acept())
-      aux.push_back(it->get_name());
+      aux.push_back("\""+it->get_name()+"\"");
   }
   return aux;
 }
@@ -65,9 +65,9 @@ std::vector<std::string> dfa_t::get_est_acept() {
 std::string dfa_t::get_est_arranque() {
   for(auto it=estados_.begin() ; it != estados_.end(); ++it) {
     if(it->is_arranque())
-      aux.push_back(it->get_name());
+      return ("\""+it->get_name()+"\"");
   }
-  return aux;
+  return "calla";
 }
 
 
