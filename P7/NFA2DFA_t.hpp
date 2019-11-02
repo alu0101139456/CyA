@@ -15,19 +15,39 @@
 #include "dfa_t.hpp"
 #include "nfa_t.hpp"
 #include "estado_t.hpp"
-:x
+
+struct checker {
+  bool alpha=false;
+  bool states=false;
+  bool start=false;
+  bool a_state=false;
+  bool transitions=false;
+};
+
 
 class nfa2dfa_t {
  private:
-
-
+   std::ifstream FileIn_;
+   std::ofstream FileOut_;
+   dfa_t Dfa_;
+   nfa_t Nfa_;
+   checker reader;
+   
 
  public:
+  nfa2dfa_t(std::string filein, std::string fileout);
+
   void read_file();
 
  private:
-  void read_alpha_from_file();
-  void read_states_from_file();
-  void read_acept_states_from_file();
-  void read_transitions_from_file();
+  
+  void read_alpha_from_file(std::string& word);
+  void read_states_from_file(std::string& word);
+  void read_start_state_from_file(std::string& word);
+  void read_acept_states_from_file(std::string& word);
+  void read_transitions_from_file(std::string& word);
 };
+
+
+
+
