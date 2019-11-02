@@ -4,7 +4,7 @@
  * Curso: 2º Ingeniería Informática                                           *
  * Editor: VIM                                                                *
  * Estilo Google C++ Style Guide                                              *
- * Práctica 6: Automatas Finitos Deterministas                                  *
+ * Práctica 7: Construcción de Subconjuntos                                   *
  * ****************************************************************************/
 //                            estado_t.hpp
 

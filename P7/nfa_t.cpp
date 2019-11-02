@@ -6,4 +6,5 @@
  * Estilo Google C++ Style Guide                                              *
  * Práctica 7: Construcción de Subconjuntos                                   *
  ****************************************************************************/ 
-//                                NFA2DFA_T.cpp
+//                                nfa_t.hpp
+#include "nfa_t.hpp"
