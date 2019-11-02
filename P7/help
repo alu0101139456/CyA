@@ -1,0 +1,13 @@
+NFA2DFA(1)                                            User Commands                                                               NFA2DFA
+
+NAME
+      NFA2DFA
+
+SYNOPSIS
+      nfa2dfa [FILEIN] [FILEOUT]
+
+DESCRIPTION
+      NFA2DFA convert NFA to DFA and generate an output file in .gv (DOT) format
+
+OPTIONS
+      BETA
