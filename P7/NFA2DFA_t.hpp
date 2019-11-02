@@ -15,6 +15,7 @@
 #include "dfa_t.hpp"
 #include "nfa_t.hpp"
 #include "estado_t.hpp"
+#include "alfabeto_t.hpp"
 
 struct checker {
   bool alpha=false;
