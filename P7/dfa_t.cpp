@@ -32,7 +32,6 @@ std::set<estado_t>::iterator dfa_t::find_estado(std::string& name){
 }
 
 void dfa_t::update_estado( std::set<estado_t>::iterator& it,const estado_t& nuevo) {
-  std::cout << it->get_name() << '\n';
   if (it != estados_.end()){
     estados_.erase(it);
     estados_.insert(nuevo);
