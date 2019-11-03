@@ -10,6 +10,7 @@
 
 #include<iostream>
 #include<fstream>
+#include "NFA2DFA_t.hpp"
 
 void help();
 
@@ -21,7 +22,7 @@ int main (int argc, char* argv[]) {
       help();
     }
     else if(argc == 3) {
-      std::cout << "Numero valido de argumentos\n" << std::endl;
+      nfa2dfa_t(argv[1], argv[2]);
     }
     else std::cout << "Numero de argumentos invalido";
   }
