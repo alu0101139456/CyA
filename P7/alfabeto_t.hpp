@@ -28,11 +28,13 @@ class alfabeto_t {
   void insert_symbol( char symbol);
   void insert_from_file();
   std::set<caracter_t>::iterator find_symbol(char sym);
-  std::set<caracter_t>::iterator end();
   bool pertenece( caracter_t caracter);
   bool is_in_alphabet(std::string expresion);
   caracter_t find(char sym);
 
   alfabeto_t& operator=(const alfabeto_t& rhs);
+  std::set<caracter_t>::iterator begin() { return alfa_.begin(); }
+  std::set<caracter_t>::iterator end() { return alfa_.end(); }
+
 
 };
