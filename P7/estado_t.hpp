@@ -21,6 +21,7 @@ class estado_t {
   std::string name_;
   bool acept_;
   trans_map transiciones_;
+  trans_map e_transiciones_;
   bool arranque=false;
 
  public:
@@ -39,6 +40,7 @@ class estado_t {
     transiciones_(tr),
     arranque(arr){}
 
+  void insert_e_tr(std::pair<char, std::string> aux);
   void clean();
   void insert_tr (std::pair<char, std::string> aux);
   void print_trans()const;
