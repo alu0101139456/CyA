@@ -10,6 +10,7 @@
 #include<iostream>
 #include<set>
 #include<vector>
+#include<stack>
 #include "estado_t.hpp"
 
 class nfa_t {
@@ -23,9 +24,9 @@ class nfa_t {
 
 
 
-  //FUNTINOS
+  //FUNCTIONS
   void insert_estado(estado_t estado);
-   
+  void e_clausura();
   //SETTERS
   std::set<estado_t>::iterator begin();
   std::set<estado_t>::iterator end();

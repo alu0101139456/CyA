@@ -14,24 +14,30 @@ void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
 }
 
+void nfa_t::e_clausura() {
+  std::stack<estado_t> pila_estados;
+  for(auto it=begin(); it != end(); ++it) {
+    pila_estados.push(*it);
+  }
+  while (!pila_estados.empty()) {
+    estado_t temp = pila_estados.top();
+  }
+}
 
 std::set<estado_t>::iterator nfa_t::find_estado(std::string& name){
   std::set<estado_t>::iterator it;
-  for(it = estados_.begin(); it != estados_.end(); ++it)
-  {
+  for(it = estados_.begin(); it != estados_.end(); ++it) {
      if(it->get_name() == name ) return it;
   }
   return it;
 }
 
-
 void nfa_t::update_estado(std::set<estado_t>::iterator& it,const estado_t& nuevo) {
-  if (it != estados_.end()){
+  if (it != estados_.end()) {
     estados_.erase(it);
     estados_.insert(nuevo);
   }
 }
-
 
 std::set<estado_t>::iterator nfa_t::begin() {
   return estados_.begin();
