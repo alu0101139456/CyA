@@ -10,6 +10,15 @@
 
 #include "estado_t.hpp"
 
+//El constructor genera un id unico por cada valor de string para poder utilizar
+//las funciones find() e insert() de la std::set
+estado_t::estado_t(unsigned id, std::string name) {
+  for(size_t i = 0; i < name.length(); i++)  {
+    id_+= 131 * id_+ name[i];
+  }
+  name_ = name;
+}
+
 void estado_t::clean() {
   id_ = 0;
   name_.clear();

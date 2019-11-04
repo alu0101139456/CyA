@@ -17,7 +17,7 @@ typedef std::map<char, std::string> trans_map;
 
 class estado_t {
  private:
-  unsigned id_;
+  long long int id_;
   std::string name_;
   bool acept_;
   trans_map transiciones_;
@@ -28,10 +28,10 @@ class estado_t {
   estado_t() {}
   ~estado_t() {}
   estado_t(std::string name): name_(name) {}
-  estado_t(unsigned id, std::string name):
-    id_(id),
-    name_(name)
-  {}
+  estado_t(unsigned id, std::string name); //:
+    //id_(id),
+    //name_(name)
+ // {}
   estado_t(const estado_t&);
   estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
     id_(id),
