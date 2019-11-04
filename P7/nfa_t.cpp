@@ -14,7 +14,7 @@ void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
 }
 
-void nfa_t::e_clausura(std::set<estado_t> T) {
+std::set<estado_t> nfa_t::e_clausura(std::set<estado_t> T) {
   std::stack<estado_t> pila_estados;
   for(auto it=T.begin(); it != T.end(); ++it) {
     pila_estados.push(*it);
@@ -24,11 +24,12 @@ void nfa_t::e_clausura(std::set<estado_t> T) {
     estado_t temp = pila_estados.top();
     pila_estados.pop();
     for( auto it=temp.get_eps_begin(); it != temp.get_eps_end(); ++it) {
-      if(e_clausura.insert(*it)->second) //Insert devuelve true o false si el 
+      if(e_clausura.insert(*it).second) //Insert devuelve true o false si el
                                         //elemento ya estaba en el set
         pila_estados.push(*it);
     }
   }
+  return e_clausura;
 }
 
 std::set<estado_t>::iterator nfa_t::find_estado(std::string& name){
@@ -63,7 +64,7 @@ std::vector<std::string> nfa_t::get_est_acept() {
   return aux;
 }
 
-std::string nfa_t::get_est_arranque() {
+std::string nfa_t::get_est_arranque_p() {
   auto it = estados_.end();
   for(it=estados_.begin() ; it != estados_.end(); ++it) {
     if(it->is_arranque())
@@ -72,6 +73,14 @@ std::string nfa_t::get_est_arranque() {
   return it->get_name();
 }
 
+long long int nfa_t::get_est_arranque() {
+auto it = estados_.end();
+  for(it=estados_.begin() ; it != estados_.end(); ++it) {
+    if(it->is_arranque())
+      return (it->get_id());
+  }
+  return it->get_id();
+}
 
 
 
