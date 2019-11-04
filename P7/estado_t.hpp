@@ -46,7 +46,7 @@ class estado_t {
   void print_trans()const;
 
   //GETTER
-  unsigned int get_id() const { return id_; }
+  long long int get_id() const { return id_; }
   std::string get_name() const {return name_;}
   bool get_acept() const { return acept_; }
   int is_arranque() const { return arranque; }

@@ -14,7 +14,7 @@
 //las funciones find() e insert() de la std::set
 estado_t::estado_t(unsigned id, std::string name) {
   for(size_t i = 0; i < name.length(); i++)  {
-    id_+= 131 * id_+ name[i];
+    id_+= 131 * id_ + name[i];
   }
   name_ = name;
 }
