@@ -45,14 +45,15 @@ class estado_t {
   void insert_tr (std::pair<char, std::string> aux);
   void print_trans()const;
 
-
   //GETTER
   unsigned int get_id() const { return id_; }
   std::string get_name() const {return name_;}
   bool get_acept() const { return acept_; }
   int is_arranque() const { return arranque; }
   const trans_map& get_tran() const {return transiciones_;}
-
+  int get_n_trans() { return transiciones_.size(); }
+  std::set<estado_t>::iterator get_eps_begin() {return e_transiciones_.begin();}
+  std::set<estado_t>::iterator get_eps_end() { return e_transiciones_.end(); }
 
   //SETTER
   void set_acept(bool aux) { acept_ = aux; }
