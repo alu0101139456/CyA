@@ -29,6 +29,7 @@ class nfa_t {
   //FUNCTIONS
   void insert_estado(estado_t estado);
   std::set<estado_t> e_clausura(std::set<estado_t> T);
+  std::set<estado_t> e_clausura(estado_t T);
   
   //SETTERS
   std::set<estado_t>::iterator begin();
@@ -39,7 +40,7 @@ class nfa_t {
   //GETTERS
   unsigned get_n_estados() { return estados_.size(); }
   std::vector<std::string> get_est_acept();
-  long long int get_est_arranque();
+  estado_t get_est_arranque();
   std::string get_est_arranque_p();
 
 };

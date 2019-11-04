@@ -32,6 +32,23 @@ std::set<estado_t> nfa_t::e_clausura(std::set<estado_t> T) {
   return e_clausura;
 }
 
+std::set<estado_t> nfa_t::e_clausura(estado_t T) {
+  std::stack<estado_t> pila_estados;
+  pila_estados.push(T);
+  std::set<estado_t> e_clausura;
+  e_clausura.insert(T);
+  while (!pila_estados.empty()) {
+    estado_t temp = pila_estados.top();
+    pila_estados.pop();
+    for( auto it=temp.get_eps_begin(); it != temp.get_eps_end(); ++it) {
+      if(e_clausura.insert(*it).second) //Insert devuelve true o false si el
+                                        //elemento ya estaba en el set
+        pila_estados.push(*it);
+    }
+  }
+  return e_clausura;
+}
+
 std::set<estado_t>::iterator nfa_t::find_estado(std::string& name){
   std::set<estado_t>::iterator it;
   for(it = estados_.begin(); it != estados_.end(); ++it) {
@@ -73,13 +90,13 @@ std::string nfa_t::get_est_arranque_p() {
   return it->get_name();
 }
 
-long long int nfa_t::get_est_arranque() {
+estado_t nfa_t::get_est_arranque() {
 auto it = estados_.end();
   for(it=estados_.begin() ; it != estados_.end(); ++it) {
     if(it->is_arranque())
-      return (it->get_id());
+      return (*it);
   }
-  return it->get_id();
+  return *it;
 }
 
 
