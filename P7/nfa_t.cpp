@@ -19,8 +19,15 @@ void nfa_t::e_clausura(std::set<estado_t> T) {
   for(auto it=T.begin(); it != T.end(); ++it) {
     pila_estados.push(*it);
   }
+  std::set<estado_t> e_clausura = T;
   while (!pila_estados.empty()) {
     estado_t temp = pila_estados.top();
+    pila_estados.pop();
+    for( auto it=temp.get_eps_begin(); it != temp.get_eps_end(); ++it) {
+      if(e_clausura.insert(*it)->second) //Insert devuelve true o false si el 
+                                        //elemento ya estaba en el set
+        pila_estados.push(*it);
+    }
   }
 }
 

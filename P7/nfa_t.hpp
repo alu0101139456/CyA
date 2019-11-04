@@ -13,6 +13,8 @@
 #include<stack>
 #include "estado_t.hpp"
 
+const char EPS = '~';
+
 class nfa_t {
  private:
   std::set<estado_t> estados_;
