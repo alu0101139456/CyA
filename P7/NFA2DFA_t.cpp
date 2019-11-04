@@ -20,7 +20,30 @@ nfa2dfa_t::nfa2dfa_t(std::string filein, std::string fileout) {
 
 void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
   conjunto marcados;
-
+  conjunto estadosDFA;
+  estadosDFA.insert(Nfa_.get_est_arranque());
+  for(auto it = Nfa_.begin(); it != Nfa_.end(); ++it ) {
+    if((estadosDFA.find(*it) != estadosDFA.end() &&
+          marcados.find(*it) != marcados.end()) ) {
+      marcados.insert(*it);
+      for(auto it2 = alpha.begin(); it2 != alpha.end(); ++it2) {
+        conjunto dest;
+        //dest.insert(trans_[*it])
+        if(dest.size() > 0) {
+          for(auto it3 = dest.begin(); it3 != dest.end(); ++it3) {
+            conjunto H = Nfa_.e_clausura(*it3);
+            for(auto it4 = H.begin(); it4 != H.end(); ++it4) {
+              if(estadosDFA.find(*it4) == estadosDFA.end()) {
+                marcados.erase(*it4);
+                estadosDFA.insert(*it4);
+              }
+              //transicionDFA.insert(*it3, *it2, *it4);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -45,7 +68,6 @@ void nfa2dfa_t::read_file() {
 
 void nfa2dfa_t::read_alpha_from_file(std::string& word) {
   if(reader.alpha == false) {
-    alfabeto_t alpha;
     int n_alpha = stoi(word);
     for(int i = 0; i < n_alpha; i++) {
       getline(FileIn_, word);

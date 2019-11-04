@@ -35,6 +35,7 @@ class nfa2dfa_t {
    dfa_t Dfa_;
    nfa_t Nfa_;
    checker reader;
+   alfabeto_t alpha;
    
 
  public:
