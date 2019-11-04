@@ -18,6 +18,13 @@ nfa2dfa_t::nfa2dfa_t(std::string filein, std::string fileout) {
 
 }
 
+void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
+  conjunto marcados;
+
+}
+
+
+
 void nfa2dfa_t::read_file() {
   std::string aux;
   if(FileIn_.is_open()) {

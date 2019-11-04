@@ -17,6 +17,8 @@
 #include "estado_t.hpp"
 #include "alfabeto_t.hpp"
 
+typedef std::set<estado_t> conjunto;
+
 struct checker {
   bool alpha=false;
   bool states=false;
@@ -37,7 +39,7 @@ class nfa2dfa_t {
 
  public:
   nfa2dfa_t(std::string filein, std::string fileout);
-
+  void convert_to_dfa(nfa_t temp);
   void read_file();
 
  private:
