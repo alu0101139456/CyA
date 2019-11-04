@@ -69,7 +69,7 @@ void nfa2dfa_t::read_states_from_file(std::string& word) {
 
 void nfa2dfa_t::read_start_state_from_file(std::string& word) {
   if(reader.start == false) {
-    estado_t start_state(Nfa_.get_size(), word);
+    estado_t start_state(Nfa_.get_n_estados(), word);
     auto it = Nfa_.find_estado(word);
     start_state = *it;
     start_state.set_arranque(true);
@@ -120,6 +120,8 @@ void nfa2dfa_t::read_transitions_from_file(std::string& word) {
       //creo estado
       auto it = Nfa_.find_estado(desde);
       e_trans = *it;
+      if( con == "~") e_trans.insert_e_tr(estado_t(0,a));
+
       e_trans.insert_tr(std::pair<char,std::string>(con[0],a));
       Nfa_.update_estado(it,e_trans);
       getline(FileIn_, word);
