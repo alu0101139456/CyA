@@ -11,7 +11,7 @@
 #pragma once
 #include<iostream>
 #include <map>
-
+#include<set>
 typedef std::map<char, std::string> trans_map;
 
 
@@ -21,7 +21,7 @@ class estado_t {
   std::string name_;
   bool acept_;
   trans_map transiciones_;
-  trans_map e_transiciones_;
+  std::set<estado_t> e_transiciones_;
   bool arranque=false;
 
  public:
@@ -40,7 +40,7 @@ class estado_t {
     transiciones_(tr),
     arranque(arr){}
 
-  void insert_e_tr(std::pair<char, std::string> aux);
+  void insert_e_tr(estado_t aux);
   void clean();
   void insert_tr (std::pair<char, std::string> aux);
   void print_trans()const;

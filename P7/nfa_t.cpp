@@ -14,9 +14,9 @@ void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
 }
 
-void nfa_t::e_clausura() {
+void nfa_t::e_clausura(std::set<estado_t> T) {
   std::stack<estado_t> pila_estados;
-  for(auto it=begin(); it != end(); ++it) {
+  for(auto it=T.begin(); it != T.end(); ++it) {
     pila_estados.push(*it);
   }
   while (!pila_estados.empty()) {

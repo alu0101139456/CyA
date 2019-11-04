@@ -24,9 +24,8 @@ void estado_t::insert_tr(std::pair<char,std::string> aux) {
   transiciones_.insert(aux);
 }
 
-void estado_t::insert_e_tr(std::pair<char, std::string> aux) {
+void estado_t::insert_e_tr(estado_t aux) {
   e_transiciones_.insert(aux);
-
 }
 
 void estado_t::print_trans()const {

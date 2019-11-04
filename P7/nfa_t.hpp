@@ -26,7 +26,7 @@ class nfa_t {
 
   //FUNCTIONS
   void insert_estado(estado_t estado);
-  void e_clausura();
+  void e_clausura(std::set<estado_t> T);
   //SETTERS
   std::set<estado_t>::iterator begin();
   std::set<estado_t>::iterator end();
