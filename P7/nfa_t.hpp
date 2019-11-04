@@ -16,21 +16,25 @@ class nfa_t {
  private:
   std::set<estado_t> estados_;
 
-
  public:
+  //BUILDERS
   nfa_t() {}
   ~nfa_t() {}
 
+
+
+  //FUNTINOS
   void insert_estado(estado_t estado);
-  void analiza( char caracter);
+   
+  //SETTERS
   std::set<estado_t>::iterator begin();
   std::set<estado_t>::iterator end();
   std::set<estado_t>::iterator find_estado(std::string& name);
   void update_estado(std::set<estado_t>::iterator& it,const estado_t& nuevo);
-  unsigned get_size() { return estados_.size(); }
   
+  //GETTERS
+  unsigned get_n_estados() { return estados_.size(); }
   std::vector<std::string> get_est_acept();
   std::string get_est_arranque();
- 
 
 };

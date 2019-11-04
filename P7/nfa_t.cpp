@@ -51,11 +51,12 @@ std::vector<std::string> nfa_t::get_est_acept() {
 }
 
 std::string nfa_t::get_est_arranque() {
-  for(auto it=estados_.begin() ; it != estados_.end(); ++it) {
+  auto it = estados_.end();
+  for(it=estados_.begin() ; it != estados_.end(); ++it) {
     if(it->is_arranque())
       return ("\""+it->get_name()+"\"");
   }
-  return "calla";
+  return it->get_name();
 }
 
 
