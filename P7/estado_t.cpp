@@ -28,6 +28,15 @@ void estado_t::clean() {
   transiciones_ = aux;
 }
 
+std::set<estado_t> estado_t::get_trans_with(char symbol) const {
+  std::set<estado_t> temp;
+  for(auto it = transiciones_.begin(); it != transiciones_.end(); ++it) {
+    if( it->first == symbol) {
+       temp.insert(estado_t(0, it->second));
+    }
+  }
+  return temp;
+}
 
 void estado_t::insert_tr(std::pair<char,std::string> aux) {
   transiciones_.insert(aux);

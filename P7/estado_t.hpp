@@ -29,9 +29,6 @@ class estado_t {
   ~estado_t() {}
   estado_t(std::string name): name_(name) {}
   estado_t(unsigned id, std::string name); //:
-    //id_(id),
-    //name_(name)
- // {}
   estado_t(const estado_t&);
   estado_t(unsigned id, std::string name, bool acpt, trans_map tr, bool arr):
     id_(id),
@@ -54,6 +51,7 @@ class estado_t {
   int get_n_trans() { return transiciones_.size(); }
   std::set<estado_t>::iterator get_eps_begin() {return e_transiciones_.begin();}
   std::set<estado_t>::iterator get_eps_end() { return e_transiciones_.end(); }
+  std::set<estado_t> get_trans_with( char symbol) const;
 
   //SETTER
   void set_acept(bool aux) { acept_ = aux; }
