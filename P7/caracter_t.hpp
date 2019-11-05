@@ -34,7 +34,7 @@ class caracter_t {
   void set_tipo(int tipo);
 
   int get_ari() { return aridad_; }
-  char get_caracter();
+  char get_caracter() const;
   unsigned get_prioridad();
   int get_tipo();
 
