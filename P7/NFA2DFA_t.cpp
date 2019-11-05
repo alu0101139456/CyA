@@ -20,11 +20,11 @@ nfa2dfa_t::nfa2dfa_t(std::string filein, std::string fileout) {
 
 void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
   conjunto marcados;
-  conjunto estadosDFA;
-  estadosDFA.insert(Nfa_.get_est_arranque());
+  conjunto estadosDFA = Nfa_.e_clausura(Nfa_.get_est_arranque());
+  //estadosDFA.insert(Nfa_.get_est_arranque());
   for(auto it = Nfa_.begin(); it != Nfa_.end(); ++it ) {
     if((estadosDFA.find(*it) != estadosDFA.end() &&
-          marcados.find(*it) != marcados.end()) ) {
+          marcados.find(*it) == marcados.end()) ) {
       marcados.insert(*it);
       for(auto it2 = alpha.begin(); it2 != alpha.end(); ++it2) {
         conjunto dest = it->get_trans_with( it2->get_caracter());
@@ -37,6 +37,7 @@ void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
                 estadosDFA.insert(*it4);
               }
               //transicionDFA.insert(*it3, *it2, *it4);
+
             }
           }
         }

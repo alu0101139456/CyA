@@ -13,6 +13,7 @@
 #include <map>
 #include<set>
 typedef std::map<char, std::string> trans_map;
+//typedef std::map<char, std::string> trans_map;
 
 
 class estado_t {
