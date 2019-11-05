@@ -27,9 +27,7 @@ void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
           marcados.find(*it) != marcados.end()) ) {
       marcados.insert(*it);
       for(auto it2 = alpha.begin(); it2 != alpha.end(); ++it2) {
-        conjunto dest;
-        //todos los estados con un caracter determinado
-        //dest.insert(trans_[*it])
+        conjunto dest = it->get_trans_with( it2->get_caracter());
         if(dest.size() > 0) {
           for(auto it3 = dest.begin(); it3 != dest.end(); ++it3) {
             conjunto H = Nfa_.e_clausura(*it3);
@@ -45,6 +43,7 @@ void nfa2dfa_t::convert_to_dfa(nfa_t temp) {
       }
     }
   }
+  
 }
 
 
