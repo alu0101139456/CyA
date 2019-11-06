@@ -7,6 +7,7 @@
  * Práctica 7: Construcción de Subconjuntos                                   *
  ****************************************************************************/ 
 //                                nfa_t.hpp
+#pragma once
 #include<iostream>
 #include<set>
 #include<vector>
@@ -28,9 +29,9 @@ class nfa_t {
 
   //FUNCTIONS
   void insert_estado(estado_t estado);
-  std::set<estado_t> e_clausura(std::set<estado_t> T);
-  std::set<estado_t> e_clausura(estado_t T);
-  
+  std::set<estado_t> e_clausura(const std::set<estado_t>& T);
+  void print();
+
   //SETTERS
   std::set<estado_t>::iterator begin();
   std::set<estado_t>::iterator end();

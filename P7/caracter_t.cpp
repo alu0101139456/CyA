@@ -39,7 +39,7 @@ void caracter_t::set_tipo(int tipo) {
   tipo_=tipo;
 }
 
-char caracter_t::get_caracter() {
+char caracter_t::get_caracter()const {
  return caracter_;
 }
 

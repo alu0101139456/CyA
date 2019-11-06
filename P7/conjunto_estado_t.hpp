@@ -17,7 +17,16 @@ class con_est_t {
   ~con_est_t() {}
   con_est_t( const con_est_t& rhs);
 
-  std::set<estado_t> move( const char aux);
+  std::set<estado_t> move( const char aux) const;
 
+  std::string get_name() const{return name_;}
+
+  int operator<(const con_est_t& rhs) const {
+    return( this->id_ < rhs.id_);}
+  
+  con_est_t& operator=( const con_est_t& rhs);
+
+  bool operator==(const con_est_t& rhs) const {
+    return (this->conjuntos_ == rhs.conjuntos_);}
 
 };

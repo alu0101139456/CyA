@@ -18,11 +18,21 @@ con_est_t::con_est_t( const con_est_t& rhs) {
   this->id_ = rhs.id_;
 }
 
-std::set<estado_t> con_est_t::move(const char aux) {
+std::set<estado_t> con_est_t::move(const char aux) const{
   std::set<estado_t> temp;
   for(auto it = conjuntos_.begin(); it != conjuntos_.end(); ++it) {
-  
+    std::set<estado_t> destinos = it->get_trans_with(aux);
+    temp.insert(destinos.begin(), destinos.end());
   }
-
+  return temp;
 }
 
+
+
+con_est_t& con_est_t::operator=(const con_est_t& rhs) {
+  this->conjuntos_ = rhs.conjuntos_;
+  this->name_ = rhs.name_;
+  this->id_ = rhs.id_;
+  return *this;
+
+}

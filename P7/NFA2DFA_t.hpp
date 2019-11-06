@@ -16,8 +16,9 @@
 #include "nfa_t.hpp"
 #include "estado_t.hpp"
 #include "alfabeto_t.hpp"
+#include "conjunto_estado_t.hpp"
 
-typedef std::set<estado_t> conjunto;
+typedef std::set<con_est_t> conjunto;
 
 struct checker {
   bool alpha=false;
@@ -40,8 +41,10 @@ class nfa2dfa_t {
 
  public:
   nfa2dfa_t(std::string filein, std::string fileout);
-  void convert_to_dfa(nfa_t temp);
+  dfa_t convert_to_dfa();
   void read_file();
+  std::set<con_est_t>::iterator pertenece(const con_est_t& a,
+                                          const std::set<con_est_t>& b);
 
  private:
   

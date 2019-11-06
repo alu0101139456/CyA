@@ -64,9 +64,6 @@ caracter_t alfabeto_t::find(char sym) {
 }
 
 
-std::set<caracter_t>::iterator alfabeto_t::end() {
-  return alfa_.end();
-}
 
 bool alfabeto_t::is_in_alphabet(std::string expresion) {
   int count=0;

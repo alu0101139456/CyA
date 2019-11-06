@@ -7,7 +7,7 @@
  * Práctica 7: Construcción de Subconjuntos                                   *
  * ***************************************************************************/
 //                              dfa_t.hpp
-
+#pragma once
 
 #include<set>
 #include<iostream>
@@ -23,6 +23,8 @@ class dfa_t {
  public:
   dfa_t() {}
   ~dfa_t() {}
+  dfa_t( const dfa_t& rhs) { this-> estados_ = rhs.estados_; }
+
   void insert_estado( estado_t estado);
   void analiza( char caracter);
   std::set<estado_t>::iterator begin();
@@ -32,7 +34,13 @@ class dfa_t {
   void update_estado(std::set<estado_t>::iterator& it,const estado_t& nuevo);
   
   unsigned get_size() { return estados_.size(); }
-
+  void print();
   std::vector<std::string> get_est_acept();
   std::string get_est_arranque();
+
+  dfa_t& operator=(const dfa_t& rhs) {
+    this->estados_ = rhs.estados_;
+    return *this;
+  }
+
 };

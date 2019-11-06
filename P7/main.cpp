@@ -11,6 +11,7 @@
 #include<iostream>
 #include<fstream>
 #include "NFA2DFA_t.hpp"
+#include "DFA2dot.hpp"
 
 void help();
 
@@ -22,7 +23,11 @@ int main (int argc, char* argv[]) {
       help();
     }
     else if(argc == 3) {
-      nfa2dfa_t(argv[1], argv[2]);
+      std::cout << "entrando en nda2dfa_t\n";
+      nfa2dfa_t A(argv[1], argv[2]);
+      std::cout << "entrando en dfa2dot2dot_t\n";
+      DFA2dot_t B(A.convert_to_dfa());
+
     }
     else std::cout << "Numero de argumentos invalido";
   }

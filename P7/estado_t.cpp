@@ -13,8 +13,10 @@
 //El constructor genera un id unico por cada valor de string para poder utilizar
 //las funciones find() e insert() de la std::set
 estado_t::estado_t(unsigned id, std::string name) {
+  id_ = 0;
+  acept_ = false;
   for(size_t i = 0; i < name.length(); i++)  {
-    id_+= 131 * id_ + name[i];
+    id_+= 31 * id_ + name[i];
   }
   name_ = name;
 }
@@ -28,30 +30,32 @@ void estado_t::clean() {
   transiciones_ = aux;
 }
 
-std::set<estado_t> estado_t::get_trans_with(char symbol) const {
-  std::set<estado_t> temp;
-  for(auto it = transiciones_.begin(); it != transiciones_.end(); ++it) {
-    if( it->first == symbol) {
-       temp.insert(estado_t(0, it->second));
-    }
-  }
-  return temp;
+std::set<estado_t> estado_t::get_trans_with(char symbol)const {
+  return transiciones_.at(symbol);
 }
 
-void estado_t::insert_tr(std::pair<char,std::string> aux) {
-  transiciones_.insert(aux);
+void estado_t::insert_tr(char caracter, estado_t& aux) {
+  if (transiciones_.find(caracter) == transiciones_.end()){
+    std::set<estado_t> new_est;
+    new_est.insert(aux);
+    transiciones_.insert(std::make_pair(caracter, new_est));
+  }
+  else {
+    std::set<estado_t>& tmp = transiciones_[caracter];
+    tmp.insert(aux);
+  }
 }
 
 void estado_t::insert_e_tr(estado_t aux) {
   e_transiciones_.insert(aux);
 }
 
-void estado_t::print_trans()const {
- for(auto it = transiciones_.begin(); it != transiciones_.end(); ++it)
- {
-   std::cout << name_ << '\n';
-   std::cout << "Con: " << it->first << " a " << it->second << '\n' << std::endl;
- }
+void estado_t::print_trans() const {
+ //for(auto it = transiciones_.begin(); it != transiciones_.end(); ++it)
+ //{
+ //  std::cout << name_ << '\n';
+ //  std::cout << "Con: " << it->first << " a " << it->second << '\n' << std::endl;
+ //}
 
 }
 
@@ -60,7 +64,7 @@ estado_t::estado_t(const estado_t& rhs) {
   this->id_= rhs.id_;
   this->name_ = rhs.name_;
   this->acept_ = rhs.acept_;
-  this->transiciones_ =rhs.transiciones_;
+  this->transiciones_ = rhs.transiciones_;
   this->arranque = rhs.arranque;
 }
 
@@ -69,7 +73,7 @@ estado_t& estado_t::operator=(const estado_t& rhs) {
   this->id_ = rhs.id_;
   this->name_ = rhs.name_;
   this->acept_ = rhs.acept_;
-  this->transiciones_ =rhs.transiciones_;
+  this->transiciones_ = rhs.transiciones_;
   this->arranque = rhs.arranque;
   return *this;
 }

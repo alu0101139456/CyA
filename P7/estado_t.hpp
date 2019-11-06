@@ -12,8 +12,8 @@
 #include<iostream>
 #include <map>
 #include<set>
-typedef std::map<char, std::string> trans_map;
-//typedef std::map<char, std::string> trans_map;
+class estado_t;
+typedef std::map<char, std::set<estado_t>> trans_map;
 
 
 class estado_t {
@@ -40,7 +40,7 @@ class estado_t {
 
   void insert_e_tr(estado_t aux);
   void clean();
-  void insert_tr (std::pair<char, std::string> aux);
+  void insert_tr (char caracter, estado_t& aux);
   void print_trans()const;
 
   //GETTER

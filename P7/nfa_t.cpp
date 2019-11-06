@@ -14,7 +14,7 @@ void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
 }
 
-std::set<estado_t> nfa_t::e_clausura(std::set<estado_t> T) {
+std::set<estado_t> nfa_t::e_clausura(const std::set<estado_t>& T) {
   std::stack<estado_t> pila_estados;
   for(auto it=T.begin(); it != T.end(); ++it) {
     pila_estados.push(*it);
@@ -29,25 +29,14 @@ std::set<estado_t> nfa_t::e_clausura(std::set<estado_t> T) {
         pila_estados.push(*it);
     }
   }
+  std::cout << '{';
+  for(auto it = e_clausura.begin(); it != e_clausura.end(); ++it ){
+    std::cout << it->get_name() << ',';
+  }
+  std::cout << "}\n ";
   return e_clausura;
 }
 
-std::set<estado_t> nfa_t::e_clausura(estado_t T) {
-  std::stack<estado_t> pila_estados;
-  pila_estados.push(T);
-  std::set<estado_t> e_clausura;
-  e_clausura.insert(T);
-  while (!pila_estados.empty()) {
-    estado_t temp = pila_estados.top();
-    pila_estados.pop();
-    for( auto it=temp.get_eps_begin(); it != temp.get_eps_end(); ++it) {
-      if(e_clausura.insert(*it).second) //Insert devuelve true o false si el
-                                        //elemento ya estaba en el set
-        pila_estados.push(*it);
-    }
-  }
-  return e_clausura;
-}
 
 std::set<estado_t>::iterator nfa_t::find_estado(std::string& name){
   std::set<estado_t>::iterator it;
@@ -87,7 +76,7 @@ std::string nfa_t::get_est_arranque_p() {
     if(it->is_arranque())
       return ("\""+it->get_name()+"\"");
   }
-  return it->get_name();
+  return "none";
 }
 
 estado_t nfa_t::get_est_arranque() {
@@ -99,6 +88,16 @@ auto it = estados_.end();
   return *it;
 }
 
-
+void nfa_t::print() {
+  auto v = get_est_acept();
+  for(size_t i=0; i < v.size(); i++)
+  {
+    std::cout << "estados aceptacion: " << v[i] << '\n';
+  }
+  for(auto it = estados_.begin(); it != estados_.end(); ++it)
+  {
+    std::cout << "Estados: " << it->get_name() << '\n';
+  } 
+}
 
 
