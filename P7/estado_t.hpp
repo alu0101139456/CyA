@@ -25,6 +25,8 @@ class estado_t {
   std::set<estado_t> e_transiciones_;
   bool arranque=false;
 
+
+
  public:
   estado_t() {}
   ~estado_t() {}
@@ -38,6 +40,7 @@ class estado_t {
     transiciones_(tr),
     arranque(arr){}
 
+  void print(std::set<estado_t>& aux)const;
   void insert_e_tr(estado_t aux);
   void clean();
   void insert_tr (char caracter, estado_t& aux);

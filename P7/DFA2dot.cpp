@@ -23,7 +23,7 @@ DFA2dot_t::DFA2dot_t(dfa_t temp) {
   std::cout << "llego a dfa2dot y voy a igualar dfa\n";
   dfa_ = temp;
   std::cout << "dfa igualado, voy a imprimir\n";
-  print_dfa();
+  //rint_dfa();
   //write2dot();i
 }
 
@@ -153,7 +153,7 @@ void DFA2dot_t::write2dot() {
   }
   fileout_ << ";\n";
   fileout_ << "  \" \"" << "->" << dfa_.get_est_arranque() << "\n";
-  
+
   for(auto it = dfa_.begin(); it != dfa_.end(); it++) {
     for(auto jt = it->get_tran().begin(); jt != it->get_tran().end(); ++jt) {
       fileout_ << "  \""+it->get_name()+"\"" << " -> ";

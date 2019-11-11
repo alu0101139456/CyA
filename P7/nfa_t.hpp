@@ -31,6 +31,7 @@ class nfa_t {
   void insert_estado(estado_t estado);
   std::set<estado_t> e_clausura(const std::set<estado_t>& T);
   void print();
+  void print_ini();
 
   //SETTERS
   std::set<estado_t>::iterator begin();

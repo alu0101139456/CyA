@@ -20,6 +20,7 @@ nfa2dfa_t::nfa2dfa_t(std::string filein, std::string fileout) {
   if(FileIn_.is_open()) FileIn_.close();
   if(FileOut_.is_open())FileOut_.close();
   //convert_to_dfa();
+  Nfa_.print_ini();
   //Dfa_.print();
 }
 

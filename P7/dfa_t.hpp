@@ -34,7 +34,6 @@ class dfa_t {
   void update_estado(std::set<estado_t>::iterator& it,const estado_t& nuevo);
   
   unsigned get_size() { return estados_.size(); }
-  void print();
   std::vector<std::string> get_est_acept();
   std::string get_est_arranque();
 

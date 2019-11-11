@@ -100,4 +100,8 @@ void nfa_t::print() {
   } 
 }
 
-
+void nfa_t::print_ini() {
+  std::cout << "Entro en print_ini\n";
+  std::set<estado_t> aux;
+  get_est_arranque().print(aux);
+}
