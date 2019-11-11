@@ -18,12 +18,12 @@ class symbol_t {
  public:
    symbol_t(){};
    ~symbol_t() {};
-   symbol_t(symbol_t& rhs);
+   symbol_t(const symbol_t& rhs);
    symbol_t(char name, bool terminal): name_(name), is_terminal_(terminal){}
 
    bool is_terminal() { return is_terminal_; }
    char get_name() const { return name_; }
-   bool operator<(symbol_t& rhs) const;
-   symbol_t& operator=( symbol_t& rhs);
+   bool operator<(const symbol_t& rhs) const;
+   symbol_t& operator=(const symbol_t& rhs);
 
 };
