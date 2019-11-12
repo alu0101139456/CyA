@@ -12,6 +12,8 @@
 
 void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
+  if(estado.is_arranque())
+    arranque_ = estado;
 }
 
 std::set<estado_t> nfa_t::e_clausura(const std::set<estado_t>& T) {
@@ -124,4 +126,51 @@ void nfa_t::print_ini() {
   std::cout << "Entro en print_ini\n";
   std::set<estado_t> aux;
   get_est_arranque().print(aux);
+}
+
+dfa_t& nfa_t::convert_to_dfa(){
+  dfa_t dfa;
+  std::string st_name = "A"
+  std::map<con_est_t, std::map<char, con_est_t>> trans_dfa;
+  std::set<con_est_t> marcados;
+  std::set<estado_t> setInicial;
+  setInicial.insert(get_est_arranque());
+  con_est_t S("S", e_clausura(setInicial));
+  std::set<con_est_t> DFA_st;
+  DFA_st.insert(S);
+  auto itT = DFA_st.begin();
+
+  while(itT != DFA_st.end() && marcados.find(*itT) == marcados.end()){
+    marcados.insert(*it);
+    std::map<char, con_est_t> mapa_aux;
+    for(auto itAlf = alpha.begin(); itAlf != alpha.end(); ++itAlph){
+      if(itAf->get_caracter() != '~'){
+        con_est_t R(st_name, e_clausura(itT->move(itAlf->get_caracter())));
+        auto itR = pertenece(R, DFA_st);
+        if(itR == DFA_st.end()){
+          DFA_st.insert(R);
+        }
+        mapa_aux[itAlf->get_caracter()] = R;
+        st_name[0]++;
+      }
+    }
+    trans_dfa[*itT] = mapa_aux;
+    ++itT;
+  }
+
+  // Build dfa with data sets information
+  for(auto itSt = DFA_st.begin(); itSt != DFA_st.nd(); ++itSt){
+    estado_t est(itSt->get_name());
+    for (auto itAlph = alpha.begin(); itAlph != alpha.end(); ++itAlph){
+      if (itAlph != '~'){
+        if(trans_dfa.find(*itSt) != trans_dfa.end()){
+        }
+        estado_t destino(trans_dfa.at(*itSt).at(itAlph->get_caracter()).get_name());
+        est.insert_tr(itAlph->get_caracter(), destino);
+      }
+      dfa.insert_estado(est);
+    }
+  }
+  return dfa;
+
 }

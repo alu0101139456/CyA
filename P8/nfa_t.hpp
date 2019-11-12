@@ -19,6 +19,8 @@ const char EPS = '~';
 class nfa_t {
  private:
   std::set<estado_t> estados_;
+  estado_t arranque_;
+  //TODO: Falta alfabeto
   // std::map<estado_t, std::map<char, std::set<estado_t>>> trans_;
   // std::map<estado_t, std::set<estado_t>> e_trans_;
 
