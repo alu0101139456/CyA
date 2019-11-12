@@ -31,7 +31,10 @@ void estado_t::clean() {
 }
 
 std::set<estado_t> estado_t::get_trans_with(char symbol)const {
-  return transiciones_.at(symbol);
+  std::set<estado_t> tmp;
+  if(transiciones_.find(symbol) != transiciones_.end())
+    tmp = transiciones_.at(symbol);
+  return tmp;
 }
 
 void estado_t::insert_tr(char caracter, estado_t& aux) {

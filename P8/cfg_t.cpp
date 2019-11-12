@@ -86,6 +86,7 @@ cfg_t::cfg_t(std::string file_name){
         }
       }
     }
+    std::cout << "File read\n";
     file_in.close();
   }
 }
@@ -106,19 +107,25 @@ symbol_t& cfg_t::get_arranque(){
   return arranque_;
 }
 
-void cfg_t::convert_to_nfa(){
+nfa_t cfg_t::convert_to_nfa(){
   nfa_t nfa;
   estado_t aceptacion("Vf");
   aceptacion.set_acept(true);
   nfa.insert_estado(aceptacion);
+  alfabeto_t alf;
+  for(auto it = alfabeto_.begin(); it != alfabeto_.end(); ++it){
+    std::cout << "Iterating\n";
+    alf.insert_symbol(it->get_name());
+  }
   for(auto it = no_terminal_.begin(); it != no_terminal_.end(); ++it){
 
-    // std::cout << "estado: " << it->get_name() << '\n'; //DEBUG
+    // std::cout << "estado: " << it->get_name() << std::endl; //DEBUG
     estado_t new_st(std::string(1,it->get_name()));
     if(*it == arranque_)
       new_st.set_arranque(true);
     nfa.insert_estado(new_st);
   }
+
   /* DEBUG
   for(auto it = nfa.begin(); it != nfa.end(); ++it){
     std::cout << it->get_name() << ',';
@@ -157,7 +164,7 @@ void cfg_t::convert_to_nfa(){
 
       // std::cout << "Chain is smaller than 2\n"; //DEBUG
       if(it2->is_terminal()){
-        // std::cout << "Adding e_trans\n"; //DEBUG
+        std::cout << "Adding e_trans\n"; //DEBUG
         origenAux.insert_e_tr(aceptacion);
         nfa.update_estado(itOrigen, origenAux);
       }
@@ -170,6 +177,9 @@ void cfg_t::convert_to_nfa(){
     }
   }
   nfa.print();
+  nfa.set_alpha(alf);
+  nfa.convert_to_dfa();
+  return nfa;
 }
 
 void cfg_t::print_nfa(){

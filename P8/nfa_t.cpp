@@ -9,6 +9,9 @@
 //                                nfa_t.hpp
 #include "nfa_t.hpp"
 
+nfa_t::nfa_t(const nfa_t& rhs){
+  *this = rhs;
+}
 
 void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
@@ -19,19 +22,24 @@ void nfa_t::insert_estado(estado_t estado) {
 std::set<estado_t> nfa_t::e_clausura(const std::set<estado_t>& T) {
   std::stack<estado_t> pila_estados;
   for(auto it=T.begin(); it != T.end(); ++it) {
-    pila_estados.push(*it);
+    std::cout << "iter\n";
+    if(it->get_name() != "Muerte"){
+      pila_estados.push(*estados_.find(*it));
+    }
   }
+
+  std::cout << "Estados insertados\n";
   std::set<estado_t> e_clausura = T;
   while (!pila_estados.empty()) {
     estado_t temp = pila_estados.top();
     pila_estados.pop();
     for( auto it=temp.get_eps_begin(); it != temp.get_eps_end(); ++it) {
-      if(e_clausura.insert(*it).second) //Insert devuelve true o false si el
+      if(e_clausura.insert(*estados_.find(*it)).second) //Insert devuelve true o false si el
                                         //elemento ya estaba en el set
-        pila_estados.push(*it);
+        pila_estados.push(*estados_.find(*it));
     }
   }
-  std::cout << '{';
+  std::cout << "Eclausura {";
   for(auto it = e_clausura.begin(); it != e_clausura.end(); ++it ){
     std::cout << it->get_name() << ',';
   }
@@ -90,18 +98,6 @@ auto it = estados_.end();
   return *it;
 }
 
-/*void nfa_t::print() {
-  auto v = get_est_acept();
-  for(size_t i=0; i < v.size(); i++)
-  {
-    std::cout << "estados aceptacion: " << v[i] << '\n';
-  }
-  for(auto it = estados_.begin(); it != estados_.end(); ++it)
-  {
-    std::cout << "Estados: " << it->get_name() << '\n';
-  }
-}*/
-
 void nfa_t::print() {
   std::cout << "\n\nPrinting NFA\n";
   std::cout << "States:\n{";
@@ -128,49 +124,113 @@ void nfa_t::print_ini() {
   get_est_arranque().print(aux);
 }
 
-dfa_t& nfa_t::convert_to_dfa(){
+void nfa_t::convert_to_dfa(){
   dfa_t dfa;
-  std::string st_name = "A"
+  std::string st_name = "A";
+  st_name[0]--;
+
+  std::cout << "Estado de muerte\n";
+  std::set<estado_t> death;
+  estado_t d_st("Muerte");
+  for(auto itA = alpha.begin(); itA != alpha.end(); ++itA){
+    if(itA->get_caracter() != '~')
+      d_st.insert_tr(itA->get_caracter(), d_st);
+  }
+  death.insert(d_st);
+
   std::map<con_est_t, std::map<char, con_est_t>> trans_dfa;
   std::set<con_est_t> marcados;
   std::set<estado_t> setInicial;
   setInicial.insert(get_est_arranque());
   con_est_t S("S", e_clausura(setInicial));
   std::set<con_est_t> DFA_st;
+  std::vector<con_est_t> checklist;
+  checklist.push_back(S);
   DFA_st.insert(S);
-  auto itT = DFA_st.begin();
 
-  while(itT != DFA_st.end() && marcados.find(*itT) == marcados.end()){
-    marcados.insert(*it);
+  int i = 0;
+  while(i < checklist.size() && marcados.find(checklist[i]) == marcados.end()){
+    std::cout << "Iterating " << checklist[i].get_name() << '\n';
+    marcados.insert(checklist[i]);
     std::map<char, con_est_t> mapa_aux;
-    for(auto itAlf = alpha.begin(); itAlf != alpha.end(); ++itAlph){
-      if(itAf->get_caracter() != '~'){
-        con_est_t R(st_name, e_clausura(itT->move(itAlf->get_caracter())));
-        auto itR = pertenece(R, DFA_st);
-        if(itR == DFA_st.end()){
-          DFA_st.insert(R);
+    for(auto itAlf = alpha.begin(); itAlf != alpha.end(); ++itAlf){
+      if(itAlf->get_caracter() != '~'){
+        std::cout << "Checking transition\n";
+        std::set<estado_t> new_st = checklist[i].move(itAlf->get_caracter());
+        std::set<estado_t> new_set;
+        std::cout << "New set created with transition\n";
+        con_est_t conj_estado;
+        if(new_st.empty()){
+          conj_estado = con_est_t("Death", death);
         }
-        mapa_aux[itAlf->get_caracter()] = R;
-        st_name[0]++;
+        else {
+          std::cout << "llamando a eclausura\n";
+          for(auto it = new_st.begin(); it != new_st.end(); ++it){
+            if(it->get_name() == "Muerte")
+              new_set.insert(*it);
+            else
+              new_set.insert(*estados_.find(*it));
+              st_name[0]++;
+          }
+          std::set <estado_t> clausura = e_clausura(new_set);
+          if(clausura != death)
+            conj_estado = con_est_t(st_name, clausura);
+          else
+            conj_estado = con_est_t("Death", death);
+        }
+        auto itR = pertenece(conj_estado, DFA_st);
+        if(itR == DFA_st.end()){
+          std::cout << "Insertando en el DFA\n";
+          DFA_st.insert(conj_estado);
+          checklist.push_back(conj_estado);
+          mapa_aux[itAlf->get_caracter()] = conj_estado;
+        }
+        else{
+          mapa_aux[itAlf->get_caracter()] = *itR;
+        }
+
+
+        std::cout << "\n\n";
       }
     }
-    trans_dfa[*itT] = mapa_aux;
-    ++itT;
+    trans_dfa[checklist[i]] = mapa_aux;
+    ++i;
   }
-
+  std::cout << "Contrucción de subconjuntos\n";
   // Build dfa with data sets information
-  for(auto itSt = DFA_st.begin(); itSt != DFA_st.nd(); ++itSt){
+  for(auto itSt = DFA_st.begin(); itSt != DFA_st.end(); ++itSt){
     estado_t est(itSt->get_name());
     for (auto itAlph = alpha.begin(); itAlph != alpha.end(); ++itAlph){
-      if (itAlph != '~'){
-        if(trans_dfa.find(*itSt) != trans_dfa.end()){
-        }
+      if (itAlph->get_caracter() != '~'){
+        std::cout << itAlph->get_caracter() << '\n';
+        // if(trans_dfa.find(*itSt) != trans_dfa.end()){
         estado_t destino(trans_dfa.at(*itSt).at(itAlph->get_caracter()).get_name());
+        std::cout << destino.get_name() << '\n';
         est.insert_tr(itAlph->get_caracter(), destino);
+        // }
       }
-      dfa.insert_estado(est);
-    }
-  }
-  return dfa;
 
+    }
+    dfa.insert_estado(est);
+  }
+  // return dfa;
+  dfa.print();
+
+}
+
+std::set<con_est_t>::iterator nfa_t::pertenece(const con_est_t& a,
+                                               const std::set<con_est_t>&b){
+
+  for(auto it = b.begin(); it != b.end(); ++it){
+    if(a == *it)
+      return it;
+  }
+  return b.end();
+}
+
+nfa_t& nfa_t::operator=(const nfa_t& rhs){
+  this->estados_  = rhs.estados_;
+  this->alpha     = rhs.alpha;
+  this->arranque_ = rhs.arranque_;
+  return *this;
 }

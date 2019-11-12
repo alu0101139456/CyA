@@ -32,8 +32,10 @@ class estado_t {
   ~estado_t() {}
   estado_t(std::string name): name_(name) {
     id_ = 0;
+    acept_ = false;
     for (int i = 0; i < name.size(); ++i)
       id_ += 131*id_ + name[i];
+
   }
   estado_t(unsigned id, std::string name); //:
   estado_t(const estado_t&);

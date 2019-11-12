@@ -51,6 +51,6 @@ class cfg_t {
   void print();
 
 
-  void convert_to_nfa();
+  nfa_t convert_to_nfa();
   void print_nfa();
 };
