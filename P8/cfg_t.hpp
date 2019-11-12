@@ -1,11 +1,10 @@
-
-
-
-
-
-
-
-
+/**
+    *@file cfg_t.hpp
+    *@version 1.0
+    *@date 10/11/2019
+    *@author Angel Julián Bolaño Campos
+    *@title Gramáticas Regulares y Autómatas Finitos
+*/
 
 #pragma once
 #include <set>
@@ -53,4 +52,15 @@ class cfg_t {
 
   nfa_t convert_to_nfa();
   void print_nfa();
+
+
+ private:
+   void create_chain(nfa_t& nfa,
+                     int nSteps,
+                     std::string st_name,
+                     std::string cadena,
+                     int& count,
+                     estado_t& origenAux,
+                     std::set<estado_t>::iterator itOrigen
+                   );
 };

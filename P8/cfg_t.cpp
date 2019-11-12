@@ -109,6 +109,7 @@ symbol_t& cfg_t::get_arranque(){
 
 nfa_t cfg_t::convert_to_nfa(){
   nfa_t nfa;
+  int count = 0;
   estado_t aceptacion("Vf");
   aceptacion.set_acept(true);
   nfa.insert_estado(aceptacion);
@@ -144,7 +145,7 @@ nfa_t cfg_t::convert_to_nfa(){
         // std::cout << "Chain is bigger than 2\n"; //DEBUG
         for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
           // std::cout << "Building intermediate state\n"; //DEBUG
-          std::string aux_name = std::string(1,it->first.get_name()) + std::to_string(i);
+          std::string aux_name = std::string(1,it->first.get_name()) + std::to_string(count);
           estado_t new_st(aux_name);
           nfa.insert_estado(new_st);
         }
@@ -152,7 +153,8 @@ nfa_t cfg_t::convert_to_nfa(){
 
         for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
           char caracter = it2->get_cadena()[i].get_name();
-          std::string destino = std::string(1,it->first.get_name()) + std::to_string(i);
+          std::string destino = std::string(1,it->first.get_name()) +\
+                                std::to_string(count - (it2->get_cadena().size() - 2) + i);
           estado_t dest(destino);
           origenAux.insert_tr(caracter, dest);
           nfa.update_estado(itOrigen, origenAux);
@@ -235,3 +237,29 @@ void cfg_t::print(){
 }
 
 // nfa_t cfg_t::convert_to_nfa();
+
+void cfg_t::create_chain(nfa_t& nfa,
+                         int nSteps,
+                         std::string st_name,
+                         std::string cadena,
+                         int& count,
+                         estado_t& origenAux,
+                         std::set<estado_t>::iterator itOrigen
+                        ){
+
+  for(int i = 0; i < nSteps; i++){
+    std::string aux_name = st_name + std::to_string(count);
+    estado_t new_st(aux_name);
+    nfa.insert_estado(new_st);
+  }
+
+  for(int i = 0; i < nSteps; i++){
+    char caracter = cadena[i];
+    std::string destino = st_name + std::to_string(count - nSteps + i);
+    estado_t dest(destino);
+    origenAux.insert_tr(caracter, dest);
+    nfa.update_estado(itOrigen, origenAux);
+    itOrigen = nfa.find_estado(destino);
+    origenAux = *itOrigen;
+  }
+}

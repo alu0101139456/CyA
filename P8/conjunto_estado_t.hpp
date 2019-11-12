@@ -1,3 +1,10 @@
+/**
+    *@file conjunto_estado_t.hpp
+    *@version 1.0
+    *@date 10/11/2019
+    *@author Angel Julián Bolaño Campos
+    *@title Gramáticas Regulares y Autómatas Finitos
+*/
 
 #pragma once
 
@@ -23,7 +30,7 @@ class con_est_t {
 
   int operator<(const con_est_t& rhs) const {
     return( this->id_ < rhs.id_);}
-  
+
   con_est_t& operator=( const con_est_t& rhs);
 
   bool operator==(const con_est_t& rhs) const {

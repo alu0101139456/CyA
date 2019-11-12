@@ -1,12 +1,10 @@
-/* ****************************************************************************
- * Autor: Ángel Julián Bolaño Campos                                          *
- * Asignatura: Computabilidad y Algoritmia                                    *
- * Curso: 2º Ingeniería Informática                                           *
- * Editor: VIM                                                                *
- * Estilo Google C++ Style Guide                                              *
- * Práctica 7: Construcción de Subconjuntos                                   *
- * ****************************************************************************/
-//                            estado_t.hpp
+/**
+    *@file estado_t.hpp
+    *@version 1.0
+    *@date 10/11/2019
+    *@author Angel Julián Bolaño Campos
+    *@title Gramáticas Regulares y Autómatas Finitos
+*/
 
 #pragma once
 #include<iostream>

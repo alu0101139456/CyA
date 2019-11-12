@@ -1,10 +1,10 @@
-
-
-
-
-
-
-
+/**
+    *@file symbol_t.hpp
+    *@version 1.0
+    *@date 10/11/2019
+    *@author Angel Julián Bolaño Campos
+    *@title Gramáticas Regulares y Autómatas Finitos
+*/
 
 
 #pragma once
