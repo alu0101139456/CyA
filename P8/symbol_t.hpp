@@ -27,4 +27,6 @@ class symbol_t {
    bool operator<(const symbol_t& rhs) const;
    symbol_t& operator=(const symbol_t& rhs);
 
+   bool operator==(const symbol_t& rhs) const;
+
 };

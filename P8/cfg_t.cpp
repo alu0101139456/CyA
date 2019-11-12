@@ -106,8 +106,73 @@ symbol_t& cfg_t::get_arranque(){
   return arranque_;
 }
 
-// nfa_t& convert_to_nfa(){
 void cfg_t::convert_to_nfa(){
+  nfa_t nfa;
+  estado_t aceptacion("Vf");
+  aceptacion.set_acept(true);
+  nfa.insert_estado(aceptacion);
+  for(auto it = no_terminal_.begin(); it != no_terminal_.end(); ++it){
+
+    // std::cout << "estado: " << it->get_name() << '\n'; //DEBUG
+    estado_t new_st(std::string(1,it->get_name()));
+    if(*it == arranque_)
+      new_st.set_arranque(true);
+    nfa.insert_estado(new_st);
+  }
+  /* DEBUG
+  for(auto it = nfa.begin(); it != nfa.end(); ++it){
+    std::cout << it->get_name() << ',';
+  }
+  std::cout << "\nInserted states\n";
+  */
+  for(auto it = producciones_.begin(); it != producciones_.end(); ++it){
+    // std::cout << "Outermost loop\n"; //DEBUG
+    for(auto it2 = it->second.begin(); it2 != it->second.end(); ++it2){
+      // std::cout << "Innermost loop\n"; //DEBUG
+      std::string origen = std::string(1, it->first.get_name());
+      // std::cout << "Origen: " << origen << '\n'; //DEBUG
+      auto itOrigen = nfa.find_estado(origen);
+      estado_t origenAux = *itOrigen;
+      if(it2->get_cadena().size() >= 2){
+        // std::cout << "Chain is bigger than 2\n"; //DEBUG
+        for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
+          // std::cout << "Building intermediate state\n"; //DEBUG
+          std::string aux_name = std::string(1,it->first.get_name()) + std::to_string(i);
+          estado_t new_st(aux_name);
+          nfa.insert_estado(new_st);
+        }
+        // std::cout << "Inserted extra states\n"; //DEBUG
+
+        for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
+          char caracter = it2->get_cadena()[i].get_name();
+          std::string destino = std::string(1,it->first.get_name()) + std::to_string(i);
+          estado_t dest(destino);
+          origenAux.insert_tr(caracter, dest);
+          nfa.update_estado(itOrigen, origenAux);
+          itOrigen = nfa.find_estado(destino);
+          origenAux = *itOrigen;
+        }
+        // std::cout << "Updated nfa"; //DEBUG
+      }
+
+      // std::cout << "Chain is smaller than 2\n"; //DEBUG
+      if(it2->is_terminal()){
+        // std::cout << "Adding e_trans\n"; //DEBUG
+        origenAux.insert_e_tr(aceptacion);
+        nfa.update_estado(itOrigen, origenAux);
+      }
+      else{
+        std::string destino = std::string(1,no_terminal_.find(symbol_t(it2->get_cadena()[it2->get_cadena().size() - 1].get_name(), false))->get_name());
+        estado_t dest(destino);
+        origenAux.insert_tr(it2->get_cadena()[it2->get_cadena().size() - 2].get_name(), dest);
+        nfa.update_estado(itOrigen, origenAux);
+      }
+    }
+  }
+  nfa.print();
+}
+
+void cfg_t::print_nfa(){
   // nfa_t nfa;
   /*for(auto it = no_terminal.begin(); it != no_terminal_.end(); ++it){
     nfa.insert_estado(estado_t(it->get_name()));

@@ -16,6 +16,8 @@
 
 #include "cadena_t.hpp"
 #include "symbol_t.hpp"
+#include "nfa_t.hpp"
+#include "estado_t.hpp"
 //#include "nfa_t.hpp" falta incluirla en el directorio
 struct checker {
   std::pair<bool, int> alpha = std::make_pair(false, 0);
@@ -49,6 +51,6 @@ class cfg_t {
   void print();
 
 
-  //nfa_t convert_to_nfa();
   void convert_to_nfa();
+  void print_nfa();
 };
