@@ -7,6 +7,7 @@
 
 
 
+#pragma once
 #include<iostream>
 #include "symbol_t.hpp"
 #include<vector>
@@ -14,6 +15,7 @@
 
 class cadena_t{
  private:
+  std::string name_;
   std::vector<symbol_t> cadena_;
   long int id_;
   bool is_terminal_;
@@ -29,11 +31,8 @@ class cadena_t{
   const std::vector<symbol_t>& get_cadena() const;
   long int get_id() const;
   bool is_terminal() const;
+  std::string get_name() const;
 
-  cadena_t operator=(const cadena_t& rhs);
+  cadena_t& operator=(const cadena_t& rhs);
   bool operator<(const cadena_t& rhs) const;
 };
-
-
-
-
