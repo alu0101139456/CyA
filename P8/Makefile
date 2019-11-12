@@ -1,7 +1,7 @@
 CC=g++
 CXXFLAGS=-std=c++17 -ggdb
 
-OBJS = main.o symbol_t.o cadena_t.o cfg_t.o 
+OBJS = main.o symbol_t.o cadena_t.o cfg_t.o CFG2NFA_t.o 
 
 all: ${OBJS}
 					$(CC) $(CXXFLAGS) -o main ${OBJS}

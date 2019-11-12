@@ -1,11 +1,12 @@
 #include <iostream>
-#include "cfg_t.hpp"
+// #include "cfg_t.hpp"
+#include "CFG2NFA_t.hpp"
 
 int main(int argc, char * argv[]){
 
-  if( argc == 2){
-    cfg_t cfg(argv[1]);
-    cfg.print();
+  if( argc == 3){
+    CFG2NFA_t cfg_to_nfa(argv[1], argv[2]);
+    cfg_to_nfa.print_grammar();
 
   }
 

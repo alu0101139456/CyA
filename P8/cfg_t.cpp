@@ -90,6 +90,56 @@ cfg_t::cfg_t(std::string file_name){
   }
 }
 
+std::set<symbol_t>& cfg_t::get_alfabeto(){
+  return alfabeto_;
+}
+
+std::set<symbol_t>& cfg_t::get_no_terminal(){
+  return no_terminal_;
+}
+
+produccion_t& cfg_t::get_producciones(){
+  return producciones_;
+}
+
+symbol_t& cfg_t::get_arranque(){
+  return arranque_;
+}
+
+// nfa_t& convert_to_nfa(){
+void cfg_t::convert_to_nfa(){
+  // nfa_t nfa;
+  /*for(auto it = no_terminal.begin(); it != no_terminal_.end(); ++it){
+    nfa.insert_estado(estado_t(it->get_name()));
+  }*/
+  for(auto it = producciones_.begin(); it != producciones_.end(); ++it){
+    // transicion_t trans;
+    for(auto it2 = it->second.begin(); it2 != it->second.end(); ++it2){
+      /*for(int i = 0; i < (it2->get_cadena().size() - 1); i++){
+        std::string aux_name = it->first.get_name() + i;
+        nfa_.insert_estado(estado_t(it->get_name()));
+      }*/
+
+      std::string origen = std::string(1, it->first.get_name());
+      if(it2->get_cadena().size() >= 2){
+        for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
+          char caracter = it2->get_cadena()[i].get_name();
+          std::string destino = std::string(1,it->first.get_name()) + std::to_string(i);
+          std::cout << origen << " " << caracter << " " << destino << '\n';
+          origen = destino;
+        }
+        std::cout << origen << " " << it2->get_cadena()[it2->get_cadena().size() - 2].get_name();
+      }
+
+      if(it2->is_terminal())
+        std::cout << origen << " Vf\n";
+      else
+        std::cout << " " <<no_terminal_.find(symbol_t(it2->get_cadena()[it2->get_cadena().size() - 1].get_name(), false))->get_name() << '\n';
+
+    }
+  }
+}
+
 void cfg_t::print(){
   std::cout << "V = {";
   for(auto it = no_terminal_.begin(); it != no_terminal_.end(); ++it){

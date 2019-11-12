@@ -41,8 +41,14 @@ class cfg_t {
 
   cfg_t(std::string FileIn);
 
+  std::set<symbol_t>& get_alfabeto();
+  std::set<symbol_t>& get_no_terminal();
+  produccion_t& get_producciones();
+  symbol_t& get_arranque();
+
   void print();
 
 
   //nfa_t convert_to_nfa();
+  void convert_to_nfa();
 };
