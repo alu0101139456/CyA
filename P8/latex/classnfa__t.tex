@@ -1,0 +1,286 @@
+\hypertarget{classnfa__t}{}\section{nfa\+\_\+t Class Reference}
+\label{classnfa__t}\index{nfa\+\_\+t@{nfa\+\_\+t}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnfa__t_a77e5ba78c8b651118d3e87b0ded68268}\label{classnfa__t_a77e5ba78c8b651118d3e87b0ded68268}} 
+\hyperlink{classnfa__t_a77e5ba78c8b651118d3e87b0ded68268}{nfa\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto del nfa. \end{DoxyCompactList}\item 
+\hyperlink{classnfa__t_a1932cce0cf1d97f208a28970853b5c5d}{nfa\+\_\+t} (const \hyperlink{classnfa__t}{nfa\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Contructor de copia del nfa. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classnfa__t_a4eb866b2b9bc71141d1b085a3ab52cd9}\label{classnfa__t_a4eb866b2b9bc71141d1b085a3ab52cd9}} 
+\hyperlink{classnfa__t_a4eb866b2b9bc71141d1b085a3ab52cd9}{$\sim$nfa\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Destructor de la clase nfa. \end{DoxyCompactList}\item 
+void \hyperlink{classnfa__t_aef9354648195e1b8673e4cf74a8d8f24}{insert\+\_\+estado} (\hyperlink{classestado__t}{estado\+\_\+t} estado)
+\begin{DoxyCompactList}\small\item\em Inserta un estado en el nfa. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ \hyperlink{classnfa__t_a8d823ef60bb25868b5c768ff54285cce}{e\+\_\+clausura} (const std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ \&T)
+\begin{DoxyCompactList}\small\item\em Realiza la e\+\_\+clausura sobre un conjunto de estados. \end{DoxyCompactList}\item 
+\hyperlink{classdfa__t}{dfa\+\_\+t} \hyperlink{classnfa__t_a299fb32d9a64a117fd770b7b80ccf1cb}{convert\+\_\+to\+\_\+dfa} ()
+\begin{DoxyCompactList}\small\item\em Convierte el nfa en un D\+FA. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classnfa__t_af877ed128f31ebaea63054e5a54f7a61}\label{classnfa__t_af877ed128f31ebaea63054e5a54f7a61}} 
+void \hyperlink{classnfa__t_af877ed128f31ebaea63054e5a54f7a61}{print} ()
+\begin{DoxyCompactList}\small\item\em Imprime el Nfa. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} $>$\+::iterator \hyperlink{classnfa__t_a5095044b6e4ad903c079254cb6db86ee}{pertenece} (const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&a, const std\+::set$<$ \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Comprueba la pertenencia de un conjunto de estados a un conjunto de conjuntos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classnfa__t_aab67377ddcae9ef01f5a520567bd2829}\label{classnfa__t_aab67377ddcae9ef01f5a520567bd2829}} 
+void \hyperlink{classnfa__t_aab67377ddcae9ef01f5a520567bd2829}{print\+\_\+file\+\_\+out} (std\+::string namefile)
+\begin{DoxyCompactList}\small\item\em Vuelca el nfa en un fichro. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \hyperlink{classnfa__t_a60b8e4a7aab7e52c68dae1c4373f6b13}{begin} ()
+\begin{DoxyCompactList}\small\item\em Obtención del principio del set de estados. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \hyperlink{classnfa__t_abaa08ab9e3a46ee1eea80e108cd5a01c}{end} ()
+\begin{DoxyCompactList}\small\item\em Obtención del final del set de estados. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \hyperlink{classnfa__t_a3aec6eceda15056b3099396e9807a515}{find\+\_\+estado} (std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Busca un estado en el set a través de su nombre. \end{DoxyCompactList}\item 
+void \hyperlink{classnfa__t_acc1c6598fd71f807abeaddcfbe2cd06b}{update\+\_\+estado} (std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \&it, const \hyperlink{classestado__t}{estado\+\_\+t} \&nuevo)
+\begin{DoxyCompactList}\small\item\em Actualiza el estado en el nfa. \end{DoxyCompactList}\item 
+void \hyperlink{classnfa__t_aaaab7f2809d9630a00059b36f7e505cc}{set\+\_\+alpha} (const \hyperlink{classalfabeto__t}{alfabeto\+\_\+t} \&alfabeto)
+\begin{DoxyCompactList}\small\item\em Configuración del alfabeto del nfa. \end{DoxyCompactList}\item 
+unsigned \hyperlink{classnfa__t_a625c266cc754a846089b604a611ed31e}{get\+\_\+n\+\_\+estados} ()
+\begin{DoxyCompactList}\small\item\em Obtención del numero total de estados del nfa. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classnfa__t_af79e10ba315f1a07af4193e242d3eac1}{get\+\_\+est\+\_\+acept} ()
+\begin{DoxyCompactList}\small\item\em Obtención de los estados de aceptación. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t}{estado\+\_\+t} \hyperlink{classnfa__t_a37c1254862fdce74c2a1ff879f9d78a6}{get\+\_\+est\+\_\+arranque} ()
+\begin{DoxyCompactList}\small\item\em Obtención del estado de arranque del nfa. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classnfa__t_a2a51944fd1b071bc432753d1cbc68fad}{get\+\_\+est\+\_\+arranque\+\_\+p} ()
+\begin{DoxyCompactList}\small\item\em Obtención del nombre del estado de arranque. \end{DoxyCompactList}\item 
+\hyperlink{classnfa__t}{nfa\+\_\+t} \& \hyperlink{classnfa__t_af599a01efe013fcfd1dea6af1c6f974a}{operator=} (const \hyperlink{classnfa__t}{nfa\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de asignación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnfa__t_a1932cce0cf1d97f208a28970853b5c5d}\label{classnfa__t_a1932cce0cf1d97f208a28970853b5c5d}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!nfa\+\_\+t@{nfa\+\_\+t}}
+\index{nfa\+\_\+t@{nfa\+\_\+t}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{nfa\+\_\+t()}{nfa\_t()}}
+{\footnotesize\ttfamily nfa\+\_\+t\+::nfa\+\_\+t (\begin{DoxyParamCaption}\item[{const \hyperlink{classnfa__t}{nfa\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Contructor de copia del nfa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side nfa que copiar \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnfa__t_a60b8e4a7aab7e52c68dae1c4373f6b13}\label{classnfa__t_a60b8e4a7aab7e52c68dae1c4373f6b13}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!begin@{begin}}
+\index{begin@{begin}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator nfa\+\_\+t\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del principio del set de estados. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador apuntando al inicio del set de estados 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a299fb32d9a64a117fd770b7b80ccf1cb}\label{classnfa__t_a299fb32d9a64a117fd770b7b80ccf1cb}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!convert\+\_\+to\+\_\+dfa@{convert\+\_\+to\+\_\+dfa}}
+\index{convert\+\_\+to\+\_\+dfa@{convert\+\_\+to\+\_\+dfa}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{convert\+\_\+to\+\_\+dfa()}{convert\_to\_dfa()}}
+{\footnotesize\ttfamily \hyperlink{classdfa__t}{dfa\+\_\+t} nfa\+\_\+t\+::convert\+\_\+to\+\_\+dfa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Convierte el nfa en un D\+FA. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve una copia del D\+FA resultante 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a8d823ef60bb25868b5c768ff54285cce}\label{classnfa__t_a8d823ef60bb25868b5c768ff54285cce}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!e\+\_\+clausura@{e\+\_\+clausura}}
+\index{e\+\_\+clausura@{e\+\_\+clausura}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{e\+\_\+clausura()}{e\_clausura()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ nfa\+\_\+t\+::e\+\_\+clausura (\begin{DoxyParamCaption}\item[{const std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ \&}]{T }\end{DoxyParamCaption})}
+
+
+
+Realiza la e\+\_\+clausura sobre un conjunto de estados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & Conjunto de estados sobre el que se realiza la e\+\_\+clausura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve el conjunto de estados que se alcanza usando e\+\_\+transiciones 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_abaa08ab9e3a46ee1eea80e108cd5a01c}\label{classnfa__t_abaa08ab9e3a46ee1eea80e108cd5a01c}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!end@{end}}
+\index{end@{end}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator nfa\+\_\+t\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del final del set de estados. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador apuntando al final del set de estados 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a3aec6eceda15056b3099396e9807a515}\label{classnfa__t_a3aec6eceda15056b3099396e9807a515}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!find\+\_\+estado@{find\+\_\+estado}}
+\index{find\+\_\+estado@{find\+\_\+estado}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{find\+\_\+estado()}{find\_estado()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator nfa\+\_\+t\+::find\+\_\+estado (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Busca un estado en el set a través de su nombre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nombre a buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador apuntando al elemento buscado. Si no se encontró apunta a end 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_af79e10ba315f1a07af4193e242d3eac1}\label{classnfa__t_af79e10ba315f1a07af4193e242d3eac1}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!get\+\_\+est\+\_\+acept@{get\+\_\+est\+\_\+acept}}
+\index{get\+\_\+est\+\_\+acept@{get\+\_\+est\+\_\+acept}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+est\+\_\+acept()}{get\_est\_acept()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ nfa\+\_\+t\+::get\+\_\+est\+\_\+acept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención de los estados de aceptación. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un vector con los diferentes estados de aceptación 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a37c1254862fdce74c2a1ff879f9d78a6}\label{classnfa__t_a37c1254862fdce74c2a1ff879f9d78a6}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!get\+\_\+est\+\_\+arranque@{get\+\_\+est\+\_\+arranque}}
+\index{get\+\_\+est\+\_\+arranque@{get\+\_\+est\+\_\+arranque}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+est\+\_\+arranque()}{get\_est\_arranque()}}
+{\footnotesize\ttfamily \hyperlink{classestado__t}{estado\+\_\+t} nfa\+\_\+t\+::get\+\_\+est\+\_\+arranque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del estado de arranque del nfa. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve una copia del estado de arranque del nfa 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a2a51944fd1b071bc432753d1cbc68fad}\label{classnfa__t_a2a51944fd1b071bc432753d1cbc68fad}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!get\+\_\+est\+\_\+arranque\+\_\+p@{get\+\_\+est\+\_\+arranque\+\_\+p}}
+\index{get\+\_\+est\+\_\+arranque\+\_\+p@{get\+\_\+est\+\_\+arranque\+\_\+p}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+est\+\_\+arranque\+\_\+p()}{get\_est\_arranque\_p()}}
+{\footnotesize\ttfamily std\+::string nfa\+\_\+t\+::get\+\_\+est\+\_\+arranque\+\_\+p (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del nombre del estado de arranque. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un string con el nombre del estado de arranque 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a625c266cc754a846089b604a611ed31e}\label{classnfa__t_a625c266cc754a846089b604a611ed31e}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!get\+\_\+n\+\_\+estados@{get\+\_\+n\+\_\+estados}}
+\index{get\+\_\+n\+\_\+estados@{get\+\_\+n\+\_\+estados}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+n\+\_\+estados()}{get\_n\_estados()}}
+{\footnotesize\ttfamily unsigned nfa\+\_\+t\+::get\+\_\+n\+\_\+estados (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del numero total de estados del nfa. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve el tamaño del set de estados del nfa 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_aef9354648195e1b8673e4cf74a8d8f24}\label{classnfa__t_aef9354648195e1b8673e4cf74a8d8f24}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!insert\+\_\+estado@{insert\+\_\+estado}}
+\index{insert\+\_\+estado@{insert\+\_\+estado}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{insert\+\_\+estado()}{insert\_estado()}}
+{\footnotesize\ttfamily void nfa\+\_\+t\+::insert\+\_\+estado (\begin{DoxyParamCaption}\item[{\hyperlink{classestado__t}{estado\+\_\+t}}]{estado }\end{DoxyParamCaption})}
+
+
+
+Inserta un estado en el nfa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em estado} & Estado a insertar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classnfa__t_af599a01efe013fcfd1dea6af1c6f974a}\label{classnfa__t_af599a01efe013fcfd1dea6af1c6f974a}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!operator=@{operator=}}
+\index{operator=@{operator=}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classnfa__t}{nfa\+\_\+t} \& nfa\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classnfa__t}{nfa\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de asignación. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side nfa que copiar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve el nfa copiado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_a5095044b6e4ad903c079254cb6db86ee}\label{classnfa__t_a5095044b6e4ad903c079254cb6db86ee}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!pertenece@{pertenece}}
+\index{pertenece@{pertenece}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{pertenece()}{pertenece()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} $>$\+::iterator nfa\+\_\+t\+::pertenece (\begin{DoxyParamCaption}\item[{const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&}]{a,  }\item[{const std\+::set$<$ \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} $>$ \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Comprueba la pertenencia de un conjunto de estados a un conjunto de conjuntos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Conjunto a comprobar \\
+\hline
+{\em b} & Conjunto en el que buscaremos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador a la posición donde se encontró el conjunto o a end 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classnfa__t_aaaab7f2809d9630a00059b36f7e505cc}\label{classnfa__t_aaaab7f2809d9630a00059b36f7e505cc}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!set\+\_\+alpha@{set\+\_\+alpha}}
+\index{set\+\_\+alpha@{set\+\_\+alpha}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{set\+\_\+alpha()}{set\_alpha()}}
+{\footnotesize\ttfamily void nfa\+\_\+t\+::set\+\_\+alpha (\begin{DoxyParamCaption}\item[{const \hyperlink{classalfabeto__t}{alfabeto\+\_\+t} \&}]{alfabeto }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Configuración del alfabeto del nfa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alfabeto} & Alfabeto que vamos a utilizar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classnfa__t_acc1c6598fd71f807abeaddcfbe2cd06b}\label{classnfa__t_acc1c6598fd71f807abeaddcfbe2cd06b}} 
+\index{nfa\+\_\+t@{nfa\+\_\+t}!update\+\_\+estado@{update\+\_\+estado}}
+\index{update\+\_\+estado@{update\+\_\+estado}!nfa\+\_\+t@{nfa\+\_\+t}}
+\subsubsection{\texorpdfstring{update\+\_\+estado()}{update\_estado()}}
+{\footnotesize\ttfamily void nfa\+\_\+t\+::update\+\_\+estado (\begin{DoxyParamCaption}\item[{std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \&}]{it,  }\item[{const \hyperlink{classestado__t}{estado\+\_\+t} \&}]{nuevo }\end{DoxyParamCaption})}
+
+
+
+Actualiza el estado en el nfa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & Iterador apuntando a la posición actual del elemento \\
+\hline
+{\em nuevo} & Estado a modificar en el nfa \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{nfa__t_8hpp}{nfa\+\_\+t.\+hpp}\item 
+nfa\+\_\+t.\+cpp\end{DoxyCompactItemize}
