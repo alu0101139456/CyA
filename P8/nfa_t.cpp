@@ -176,12 +176,6 @@ void nfa_t::print() {
   std::cout << "\n\n";
 }
 
-void nfa_t::print_ini() {
-  std::cout << "Entro en print_ini\n";
-  std::set<estado_t> aux;
-  get_est_arranque().print(aux);
-}
-
 dfa_t nfa_t::convert_to_dfa(){
   dfa_t dfa;
   std::string st_name = "A";

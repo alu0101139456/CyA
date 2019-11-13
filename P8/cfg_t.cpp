@@ -200,39 +200,6 @@ nfa_t cfg_t::convert_to_nfa(){
   return nfa;
 }
 
-void cfg_t::print_nfa(){
-  // nfa_t nfa;
-  /*for(auto it = no_terminal.begin(); it != no_terminal_.end(); ++it){
-    nfa.insert_estado(estado_t(it->get_name()));
-  }*/
-  for(auto it = producciones_.begin(); it != producciones_.end(); ++it){
-    // transicion_t trans;
-    for(auto it2 = it->second.begin(); it2 != it->second.end(); ++it2){
-      /*for(int i = 0; i < (it2->get_cadena().size() - 1); i++){
-        std::string aux_name = it->first.get_name() + i;
-        nfa_.insert_estado(estado_t(it->get_name()));
-      }*/
-
-      std::string origen = std::string(1, it->first.get_name());
-      if(it2->get_cadena().size() >= 2){
-        for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
-          char caracter = it2->get_cadena()[i].get_name();
-          std::string destino = std::string(1,it->first.get_name()) + std::to_string(i);
-          // std::cout << origen << " " << caracter << " " << destino << '\n';// DEBUG
-          origen = destino;
-        }
-        // std::cout << origen << " " << it2->get_cadena()[it2->get_cadena().size() - 2].get_name();// DEBUG
-      }
-
-      // if(it2->is_terminal())
-        // std::cout << origen << " Vf\n";// DEBUG
-      // else
-        // std::cout << " " <<no_terminal_.find(symbol_t(it2->get_cadena()[it2->get_cadena().size() - 1].get_name(), false))->get_name() << '\n';//DEBUG
-
-    }
-  }
-}
-
 void cfg_t::print(){
   std::cout << "V = {";
   for(auto it = no_terminal_.begin(); it != no_terminal_.end(); ++it){
@@ -249,33 +216,5 @@ void cfg_t::print(){
     for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++) {
       std::cout << it->first.get_name() << " -> " << it2->get_name() << '\n';
     }
-  }
-}
-
-// nfa_t cfg_t::convert_to_nfa();
-
-void cfg_t::create_chain(nfa_t& nfa,
-                         int nSteps,
-                         std::string st_name,
-                         std::string cadena,
-                         int& count,
-                         estado_t& origenAux,
-                         std::set<estado_t>::iterator itOrigen
-                        ){
-
-  for(int i = 0; i < nSteps; i++){
-    std::string aux_name = st_name + std::to_string(count);
-    estado_t new_st(aux_name);
-    nfa.insert_estado(new_st);
-  }
-
-  for(int i = 0; i < nSteps; i++){
-    char caracter = cadena[i];
-    std::string destino = st_name + std::to_string(count - nSteps + i);
-    estado_t dest(destino);
-    origenAux.insert_tr(caracter, dest);
-    nfa.update_estado(itOrigen, origenAux);
-    itOrigen = nfa.find_estado(destino);
-    origenAux = *itOrigen;
   }
 }
