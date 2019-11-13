@@ -9,6 +9,7 @@
 
 #pragma once
 #include<iostream>
+#include<fstream>
 #include<set>
 #include<vector>
 #include<stack>
@@ -44,7 +45,7 @@ class nfa_t {
   void print_ini();
   std::set<con_est_t>::iterator pertenece(const con_est_t& a,\
                                           const std::set<con_est_t>&b);
-
+  std::fstream print_file_out();
 
   //SETTERS
   std::set<estado_t>::iterator begin();

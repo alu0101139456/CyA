@@ -13,6 +13,14 @@ nfa_t::nfa_t(const nfa_t& rhs){
   *this = rhs;
 }
 
+
+void nfa_t::print_file_out() {
+  
+
+}
+
+
+
 void nfa_t::insert_estado(estado_t estado) {
   estados_.insert(estado);
   if(estado.is_arranque())
