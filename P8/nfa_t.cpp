@@ -14,8 +14,24 @@ nfa_t::nfa_t(const nfa_t& rhs){
 }
 
 
-void nfa_t::print_file_out() {
-  
+std::ofstream nfa_t::print_file_out(std::string namefile) {
+  std::ofstream fo(namefile);
+  fo <<  alpha.size() << '\n';
+  fo << "~\n";
+  for(auto it= alpha.begin(); it != alpha.end(); ++it){
+    fo << it->get_caracter() << '\n';
+  }
+  for(auto it = estados_.begin(); it != estados_.end(); ++it) {
+    fo << it->get_name() << '\n';
+  }
+  fo << arranque_.get_name() << '\n';
+  //numero de estados de aceptacion.?
+  for(auto it = estados_.begin(); it != estados_.end(); ++it) {
+    if( it->get_acept() )
+      fo << it->get_name() << '\n';
+  }
+
+
 
 }
 

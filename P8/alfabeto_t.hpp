@@ -94,4 +94,9 @@ class alfabeto_t {
   std::set<caracter_t>::iterator end() { return alfa_.end(); }
 
 
+  /**
+      *@brief Pide el tamaño del alfabeto
+      *@return Devuelve el tamaño del alfabeto
+  */
+  size_t size() { return alfa_.size(); }
 };
