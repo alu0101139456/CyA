@@ -14,25 +14,59 @@ nfa_t::nfa_t(const nfa_t& rhs){
 }
 
 
-std::ofstream nfa_t::print_file_out(std::string namefile) {
+void nfa_t::print_file_out(std::string namefile) {
+  std::cout << "\n\nOpening file: " << namefile << '\n';
   std::ofstream fo(namefile);
-  fo <<  alpha.size() << '\n';
-  fo << "~\n";
-  for(auto it= alpha.begin(); it != alpha.end(); ++it){
-    fo << it->get_caracter() << '\n';
-  }
-  for(auto it = estados_.begin(); it != estados_.end(); ++it) {
-    fo << it->get_name() << '\n';
-  }
-  fo << arranque_.get_name() << '\n';
-  //numero de estados de aceptacion.?
-  for(auto it = estados_.begin(); it != estados_.end(); ++it) {
-    if( it->get_acept() )
+  if(fo.is_open()){
+    std::cout << "alfabeto: " << alpha.size() << '\n';
+    fo <<  alpha.size() << '\n';
+    for(auto it= alpha.begin(); it != alpha.end(); ++it){
+      fo << it->get_caracter() << '\n';
+    }
+    fo << estados_.size() << '\n';
+    int nAcept = 0;
+    int nTrans = 0;
+    std::queue<std::string> acept_states;
+    std::queue<std::string> transitions;
+    for(auto it = estados_.begin(); it != estados_.end(); ++it) {
       fo << it->get_name() << '\n';
+      if( it->get_acept() ){
+        acept_states.push(it->get_name());
+        nAcept++;
+      }
+      nTrans += it->get_n_trans() + it->get_n_e_trans();
+      for(auto itTrans = it->get_tran().begin(); itTrans != it->get_tran().end(); ++itTrans){
+        for(auto itSt = itTrans->second.begin(); itSt != itTrans->second.end(); ++itSt){
+          std::string trans = it->get_name() +
+                              " " +
+                              std::string(1,itTrans->first) +
+                              " " +
+                              itSt->get_name();
+          transitions.push(trans);
+        }
+      }
+      for(auto itEt = it->get_eps_begin(); itEt != it->get_eps_end(); ++itEt){
+        std::string trans = it->get_name() +
+                            " ~ " +
+                            itEt->get_name();
+        transitions.push(trans);
+      }
+    }
+    fo << arranque_.get_name() << '\n';
+    fo << nAcept << '\n';
+    while(!acept_states.empty()){
+      fo << acept_states.front() << '\n';
+      acept_states.pop();
+    }
+    fo << nTrans << '\n';
+    while(!transitions.empty()){
+      fo << transitions.front() << '\n';
+      transitions.pop();
+    }
+    fo.close();
   }
-
-
-
+  else
+    std::cout << "No se pudo abrir e fichero\n";
 }
 
 
@@ -148,12 +182,12 @@ void nfa_t::print_ini() {
   get_est_arranque().print(aux);
 }
 
-void nfa_t::convert_to_dfa(){
+dfa_t nfa_t::convert_to_dfa(){
   dfa_t dfa;
   std::string st_name = "A";
   st_name[0]--;
 
-  std::cout << "Estado de muerte\n";
+  // std::cout << "Estado de muerte\n"; //DEBUG
   std::set<estado_t> death;
   estado_t d_st("Muerte");
   for(auto itA = alpha.begin(); itA != alpha.end(); ++itA){
@@ -174,21 +208,21 @@ void nfa_t::convert_to_dfa(){
 
   int i = 0;
   while(i < checklist.size() && marcados.find(checklist[i]) == marcados.end()){
-    std::cout << "Iterating " << checklist[i].get_name() << '\n';
+    // std::cout << "Iterating " << checklist[i].get_name() << '\n'; //DEBUG
     marcados.insert(checklist[i]);
     std::map<char, con_est_t> mapa_aux;
     for(auto itAlf = alpha.begin(); itAlf != alpha.end(); ++itAlf){
       if(itAlf->get_caracter() != '~'){
-        std::cout << "Checking transition\n";
+        // std::cout << "Checking transition\n"; //DEBUG
         std::set<estado_t> new_st = checklist[i].move(itAlf->get_caracter());
         std::set<estado_t> new_set;
-        std::cout << "New set created with transition\n";
+        // std::cout << "New set created with transition\n"; //DEBUG
         con_est_t conj_estado;
         if(new_st.empty()){
           conj_estado = con_est_t("Death", death);
         }
         else {
-          std::cout << "llamando a eclausura\n";
+          // std::cout << "llamando a eclausura\n"; //DEBUG
           for(auto it = new_st.begin(); it != new_st.end(); ++it){
             if(it->get_name() == "Muerte")
               new_set.insert(*it);
@@ -204,7 +238,7 @@ void nfa_t::convert_to_dfa(){
         }
         auto itR = pertenece(conj_estado, DFA_st);
         if(itR == DFA_st.end()){
-          std::cout << "Insertando en el DFA\n";
+          // std::cout << "Insertando en el DFA\n"; //DEBUG
           DFA_st.insert(conj_estado);
           checklist.push_back(conj_estado);
           mapa_aux[itAlf->get_caracter()] = conj_estado;
@@ -214,22 +248,22 @@ void nfa_t::convert_to_dfa(){
         }
 
 
-        std::cout << "\n\n";
+        // std::cout << "\n\n"; //DEBUG
       }
     }
     trans_dfa[checklist[i]] = mapa_aux;
     ++i;
   }
-  std::cout << "Contrucción de subconjuntos\n";
+  // std::cout << "Contrucción de subconjuntos\n"; //DEBUG
   // Build dfa with data sets information
   for(auto itSt = DFA_st.begin(); itSt != DFA_st.end(); ++itSt){
     estado_t est(itSt->get_name());
     for (auto itAlph = alpha.begin(); itAlph != alpha.end(); ++itAlph){
       if (itAlph->get_caracter() != '~'){
-        std::cout << itAlph->get_caracter() << '\n';
+        // std::cout << itAlph->get_caracter() << '\n'; //DEBUG
         // if(trans_dfa.find(*itSt) != trans_dfa.end()){
         estado_t destino(trans_dfa.at(*itSt).at(itAlph->get_caracter()).get_name());
-        std::cout << destino.get_name() << '\n';
+        // std::cout << destino.get_name() << '\n'; //DEBUG
         est.insert_tr(itAlph->get_caracter(), destino);
         // }
       }
@@ -237,8 +271,8 @@ void nfa_t::convert_to_dfa(){
     }
     dfa.insert_estado(est);
   }
-  // return dfa;
-  dfa.print();
+  return dfa;
+  // dfa.print();
 
 }
 

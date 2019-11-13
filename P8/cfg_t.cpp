@@ -115,12 +115,13 @@ nfa_t cfg_t::convert_to_nfa(){
   nfa.insert_estado(aceptacion);
   alfabeto_t alf;
   for(auto it = alfabeto_.begin(); it != alfabeto_.end(); ++it){
-    std::cout << "Iterating\n";
+    // std::cout << "Iterating\n";
     alf.insert_symbol(it->get_name());
   }
+  nfa.set_alpha(alf);
   for(auto it = no_terminal_.begin(); it != no_terminal_.end(); ++it){
 
-    std::cout << "estado: " << it->get_name() << std::endl; //DEBUG
+    // std::cout << "estado: " << it->get_name() << std::endl; //DEBUG
     estado_t new_st(std::string(1,it->get_name()));
     if(*it == arranque_)
       new_st.set_arranque(true);
@@ -142,7 +143,7 @@ nfa_t cfg_t::convert_to_nfa(){
       auto itOrigen = nfa.find_estado(origen);
       estado_t origenAux = *itOrigen;
       if(it2->get_cadena().size() >= 2){
-        std::cout << "Chain is bigger than 2\n"; //DEBUG
+        // std::cout << "Chain is bigger than 2\n"; //DEBUG
         /*create_chain(nfa,
                      it2->get_cadena().size() - 1,
                      std::string(1, it->first.get_name()),
@@ -152,16 +153,16 @@ nfa_t cfg_t::convert_to_nfa(){
                      itOrigen
                    );*/
 
-        std::cout << "Siize: " << (it2->get_cadena().size() - 2 + it2->is_terminal()) << '\n';
+        // std::cout << "Siize: " << (it2->get_cadena().size() - 2 + it2->is_terminal()) << '\n';
         for(int i = 0; i < (it2->get_cadena().size() - 2 + it2->is_terminal()); i++){
-          std::cout << "Building intermediate state\n"; //DEBUG
+          // std::cout << "Building intermediate state\n"; //DEBUG
           std::string aux_name = std::string(1,it->first.get_name()) + std::to_string(count);
           estado_t new_st(aux_name);
           nfa.insert_estado(new_st);
           count++;
         }
-        
-        std::cout << "Inserted extra states\n"; //DEBUG
+
+        // std::cout << "Inserted extra states\n"; //DEBUG
         for(int i = 0; i < (it2->get_cadena().size() - 2 + it2->is_terminal()); i++){
           char caracter = it2->get_cadena()[i].get_name();
           std::string destino = std::string(1,it->first.get_name()) +\
@@ -169,17 +170,16 @@ nfa_t cfg_t::convert_to_nfa(){
           estado_t dest(destino);
           origenAux.insert_tr(caracter, dest);
           nfa.update_estado(itOrigen, origenAux);
-          std::cout << "Nfa updated\n";
           itOrigen = nfa.find_estado(destino);
           origenAux = *itOrigen;
 
         }
-        std::cout << "Updated nfa"; //DEBUG
+        // std::cout << "Updated nfa"; //DEBUG
       }
 
       // std::cout << "Chain is smaller than 2\n"; //DEBUG
       if(it2->is_terminal()){
-        std::cout << "Adding e_trans\n"; //DEBUG
+        // std::cout << "Adding e_trans\n"; //DEBUG
         if(it2->get_cadena()[it2->get_cadena().size()-1].get_name() == '~')
           origenAux.insert_e_tr(aceptacion);
         else
@@ -194,9 +194,9 @@ nfa_t cfg_t::convert_to_nfa(){
       }
     }
   }
-  nfa.print();
-  nfa.set_alpha(alf);
-  nfa.convert_to_dfa();
+  // nfa.print();
+  // nfa.set_alpha(alf);
+  // nfa.convert_to_dfa();
   return nfa;
 }
 
@@ -218,16 +218,16 @@ void cfg_t::print_nfa(){
         for(int i = 0; i < (it2->get_cadena().size() - 2); i++){
           char caracter = it2->get_cadena()[i].get_name();
           std::string destino = std::string(1,it->first.get_name()) + std::to_string(i);
-          std::cout << origen << " " << caracter << " " << destino << '\n';
+          // std::cout << origen << " " << caracter << " " << destino << '\n';// DEBUG
           origen = destino;
         }
-        std::cout << origen << " " << it2->get_cadena()[it2->get_cadena().size() - 2].get_name();
+        // std::cout << origen << " " << it2->get_cadena()[it2->get_cadena().size() - 2].get_name();// DEBUG
       }
 
-      if(it2->is_terminal())
-        std::cout << origen << " Vf\n";
-      else
-        std::cout << " " <<no_terminal_.find(symbol_t(it2->get_cadena()[it2->get_cadena().size() - 1].get_name(), false))->get_name() << '\n';
+      // if(it2->is_terminal())
+        // std::cout << origen << " Vf\n";// DEBUG
+      // else
+        // std::cout << " " <<no_terminal_.find(symbol_t(it2->get_cadena()[it2->get_cadena().size() - 1].get_name(), false))->get_name() << '\n';//DEBUG
 
     }
   }

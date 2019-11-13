@@ -13,6 +13,8 @@
 #include<set>
 #include<vector>
 #include<stack>
+#include<queue>
+
 #include "estado_t.hpp"
 #include "conjunto_estado_t.hpp"
 #include "dfa_t.hpp"
@@ -40,12 +42,12 @@ class nfa_t {
   //FUNCTIONS
   void insert_estado(estado_t estado);
   std::set<estado_t> e_clausura(const std::set<estado_t>& T);
-  void convert_to_dfa();
+  dfa_t convert_to_dfa();
   void print();
   void print_ini();
   std::set<con_est_t>::iterator pertenece(const con_est_t& a,\
                                           const std::set<con_est_t>&b);
-  std::ofstream print_file_out(std::string namefile);
+  void print_file_out(std::string namefile);
 
 
   //SETTERS

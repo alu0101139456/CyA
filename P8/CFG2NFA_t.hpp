@@ -13,11 +13,12 @@
 #include <string>
 
 #include "cfg_t.hpp"
+#include "nfa_t.hpp"
 
 class CFG2NFA_t {
  private:
   cfg_t cfg_;
-  // nfa_t nfa_;
+  nfa_t nfa_;
   std::string out_file_;
 
  public:
@@ -29,4 +30,6 @@ class CFG2NFA_t {
 
   void print_grammar();
   void print_autommata();
+  void convert_to_nfa();
+  void print_nfa_to_file();
 };

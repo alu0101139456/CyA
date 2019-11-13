@@ -56,7 +56,8 @@ class estado_t {
   bool get_acept() const { return acept_; }
   int is_arranque() const { return arranque; }
   const trans_map& get_tran() const {return transiciones_;}
-  int get_n_trans() { return transiciones_.size(); }
+  int get_n_trans()const { return transiciones_.size(); }
+  int get_n_e_trans() const {return e_transiciones_.size();}
   std::set<estado_t>::iterator get_eps_begin() const {return e_transiciones_.begin();}
   std::set<estado_t>::iterator get_eps_end() const { return e_transiciones_.end(); }
   std::set<estado_t> get_trans_with( char symbol) const;
