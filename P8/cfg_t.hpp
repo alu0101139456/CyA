@@ -37,30 +37,55 @@ class cfg_t {
 
 
  public:
+
+  /**
+      *@brief Constructor por defecto de la clase cfg
+  */
   cfg_t(){}
+
+  /**
+      *@brief Destructor de la clase cfg
+  */
   ~cfg_t(){}
 
+  /**
+      *@brief Constructor de la clase cfg
+      *@param FileIn Nombre del fichero de entrada con el que construimos el cfg
+  */
   cfg_t(std::string FileIn);
 
+  /**
+      *@brief Obtención del conjunto de símbolos del alfabeto
+      *@return Conjunto de símbolos que pertenecen al alfabeto
+  */
   std::set<symbol_t>& get_alfabeto();
+
+  /**
+      *@brief Obtención del conjunto de símbolos no terminales
+      *@return Conjunto de símbolos que pertenecen a los no terminales
+  */
   std::set<symbol_t>& get_no_terminal();
+
+  /**
+      *@brief Obtención de las producciones de la gramática
+      *@return Mapa de producciones de la gramática
+  */
   produccion_t& get_producciones();
+
+  /**
+      *@brief Obtención símbolo de arranque de la gramática
+      *@return Símbolo de arranque
+  */
   symbol_t& get_arranque();
 
+  /**
+      *@brief Impresión de la gramática
+  */
   void print();
 
-
+  /**
+      *@brief Conversión de la gramática en NFA
+      *@return Copia del NFA Resultante
+  */
   nfa_t convert_to_nfa();
-  void print_nfa();
-
-
- private:
-   void create_chain(nfa_t& nfa,
-                     int nSteps,
-                     std::string st_name,
-                     std::string cadena,
-                     int& count,
-                     estado_t& origenAux,
-                     std::set<estado_t>::iterator itOrigen
-                   );
 };

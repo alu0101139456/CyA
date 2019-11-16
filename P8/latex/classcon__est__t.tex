@@ -1,0 +1,151 @@
+\hypertarget{classcon__est__t}{}\section{con\+\_\+est\+\_\+t Class Reference}
+\label{classcon__est__t}\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcon__est__t_a9244ad9d8511ad6725f8a1d4a1afef04}\label{classcon__est__t_a9244ad9d8511ad6725f8a1d4a1afef04}} 
+\hyperlink{classcon__est__t_a9244ad9d8511ad6725f8a1d4a1afef04}{con\+\_\+est\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de conjuntos. \end{DoxyCompactList}\item 
+\hyperlink{classcon__est__t_ac3ae8315196a410571f03bc1f7ec54e3}{con\+\_\+est\+\_\+t} (std\+::string name, std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ aux)
+\begin{DoxyCompactList}\small\item\em Constructor de Conjuntos de estados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcon__est__t_a116245486faa814015c578a6f4f7e316}\label{classcon__est__t_a116245486faa814015c578a6f4f7e316}} 
+\hyperlink{classcon__est__t_a116245486faa814015c578a6f4f7e316}{$\sim$con\+\_\+est\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Destructor de conjunto\+\_\+estados. \end{DoxyCompactList}\item 
+\hyperlink{classcon__est__t_a55a90d1c37eae69895ee0ff02d15eec7}{con\+\_\+est\+\_\+t} (const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Constructor de copia de conjuntos. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ \hyperlink{classcon__est__t_a1da98e6185b4e249552c3611891aaefd}{move} (const char aux) const
+\begin{DoxyCompactList}\small\item\em Realiza la transición de un conjunto a otro. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classcon__est__t_a3529d902b7b1fed03bd7d6dc58adfa21}{get\+\_\+name} () const
+\begin{DoxyCompactList}\small\item\em Obtención del nombre que identifica al conjunto. \end{DoxyCompactList}\item 
+int \hyperlink{classcon__est__t_a4c7c0ded0fd4ff7c1a1ab4ec34a48bc8}{operator$<$} (const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de comparación $<$. \end{DoxyCompactList}\item 
+\hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \& \hyperlink{classcon__est__t_a0cafe8405d65c85598d36a5ca8785a30}{operator=} (const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de asignación. \end{DoxyCompactList}\item 
+bool \hyperlink{classcon__est__t_a1ff2060fab48cff33abe98f57b6bfd58}{operator==} (const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de comparación ==. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcon__est__t_ac3ae8315196a410571f03bc1f7ec54e3}\label{classcon__est__t_ac3ae8315196a410571f03bc1f7ec54e3}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{con\+\_\+est\+\_\+t()}{con\_est\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily con\+\_\+est\+\_\+t\+::con\+\_\+est\+\_\+t (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$}]{aux }\end{DoxyParamCaption})}
+
+
+
+Constructor de Conjuntos de estados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nombre del conjunto \\
+\hline
+{\em aux} & Conjunto de estados agrupados \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcon__est__t_a55a90d1c37eae69895ee0ff02d15eec7}\label{classcon__est__t_a55a90d1c37eae69895ee0ff02d15eec7}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{con\+\_\+est\+\_\+t()}{con\_est\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily con\+\_\+est\+\_\+t\+::con\+\_\+est\+\_\+t (\begin{DoxyParamCaption}\item[{const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Constructor de copia de conjuntos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side conjunto a copiar \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcon__est__t_a3529d902b7b1fed03bd7d6dc58adfa21}\label{classcon__est__t_a3529d902b7b1fed03bd7d6dc58adfa21}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string con\+\_\+est\+\_\+t\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del nombre que identifica al conjunto. 
+
+\begin{DoxyReturn}{Returns}
+String con el nombre del conjunto 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcon__est__t_a1da98e6185b4e249552c3611891aaefd}\label{classcon__est__t_a1da98e6185b4e249552c3611891aaefd}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!move@{move}}
+\index{move@{move}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ con\+\_\+est\+\_\+t\+::move (\begin{DoxyParamCaption}\item[{const char}]{aux }\end{DoxyParamCaption}) const}
+
+
+
+Realiza la transición de un conjunto a otro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & caracter con el que se realiza a transición \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcon__est__t_a4c7c0ded0fd4ff7c1a1ab4ec34a48bc8}\label{classcon__est__t_a4c7c0ded0fd4ff7c1a1ab4ec34a48bc8}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily int con\+\_\+est\+\_\+t\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sobrecarga del operador de comparación $<$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side conjunto con el que comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si $\ast$this $<$ rhs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcon__est__t_a0cafe8405d65c85598d36a5ca8785a30}\label{classcon__est__t_a0cafe8405d65c85598d36a5ca8785a30}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!operator=@{operator=}}
+\index{operator=@{operator=}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \& con\+\_\+est\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de asignación. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side conjunto que vamos a asignar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve el conjunto copiado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcon__est__t_a1ff2060fab48cff33abe98f57b6bfd58}\label{classcon__est__t_a1ff2060fab48cff33abe98f57b6bfd58}} 
+\index{con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}!operator==@{operator==}}
+\index{operator==@{operator==}!con\+\_\+est\+\_\+t@{con\+\_\+est\+\_\+t}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool con\+\_\+est\+\_\+t\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classcon__est__t}{con\+\_\+est\+\_\+t} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sobrecarga del operador de comparación ==. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side conjunto con el que comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si $\ast$this == rhs 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{conjunto__estado__t_8hpp}{conjunto\+\_\+estado\+\_\+t.\+hpp}\item 
+conjunto\+\_\+estado\+\_\+t.\+cpp\end{DoxyCompactItemize}

@@ -53,41 +53,6 @@ void estado_t::insert_e_tr(estado_t aux) {
   e_transiciones_.insert(aux);
 }
 
-void estado_t::print_trans() const {
- //for(auto it = transiciones_.begin(); it != transiciones_.end(); ++it)
- //{
- //  std::cout << name_ << '\n';
- //  std::cout << "Con: " << it->first << " a " << it->second << '\n' << std::endl;
- //}
-
-}
-
-void estado_t::print(std::set<estado_t>& aux)const {
-  if(aux.find(*this) == aux.end() ) {
-    aux.insert(*this);
-    std::cout << "Estado: "<< get_name() << '\n';
-    for(auto it = transiciones_.begin(); it != transiciones_.end(); it++ ){
-      std::cout << "con: " << it->first << " a: ";
-      for(auto it2 = it->second.begin(); it2 != it->second.end(); it2++){
-        std::cout << it2->get_name() << ',';
-      }
-      std::cout << '\n';
-    }
-    for(auto it = e_transiciones_.begin(); it != e_transiciones_.end(); ++it){
-      std::cout << "con: ~" << " a: " << it->get_name();
-    }
-    std::cout << '\n';
-    for(auto it = transiciones_.begin(); it != transiciones_.end(); it++ ){
-      for(auto it2 = it->second.begin(); it2 != it->second.end(); it2++){
-        it2->print(aux);
-      }
-    }
-    for(auto it = e_transiciones_.begin(); it != e_transiciones_.end(); ++it){
-      it->print(aux);
-    }
-  }
-}
-
 
 
 estado_t::estado_t(const estado_t& rhs) {

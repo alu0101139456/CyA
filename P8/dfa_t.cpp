@@ -16,12 +16,6 @@ void dfa_t::insert_estado( estado_t estado) {
 }
 
 
-
-void dfa_t::analiza(char caracter) {
-
-}
-
-
 //Busca entre los estados el que tiene mismo nombre y devuelve el iterador
 std::set<estado_t>::iterator dfa_t::find_estado(std::string& name)  {
   std::set<estado_t>::iterator it;
