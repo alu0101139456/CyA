@@ -1,0 +1,406 @@
+\hypertarget{classestado__t}{}\section{estado\+\_\+t Class Reference}
+\label{classestado__t}\index{estado\+\_\+t@{estado\+\_\+t}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classestado__t_a8e45cb6ecaf97bb8e9a33f82151f9323}\label{classestado__t_a8e45cb6ecaf97bb8e9a33f82151f9323}} 
+\hyperlink{classestado__t_a8e45cb6ecaf97bb8e9a33f82151f9323}{estado\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classestado__t_a6d790690691a79a2d56c327e31961046}\label{classestado__t_a6d790690691a79a2d56c327e31961046}} 
+\hyperlink{classestado__t_a6d790690691a79a2d56c327e31961046}{$\sim$estado\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Destructor de estado. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t_a3f5cdd06d18afb8c21c18134a2ef7d84}{estado\+\_\+t} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Constructor de estado. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t_aafc259bc6968f50e891da9ce4e3cf41d}{estado\+\_\+t} (unsigned id, std\+::string name)
+\begin{DoxyCompactList}\small\item\em Constructor de estado. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t_aae570f94727aefd44cc17b4f06575ed7}{estado\+\_\+t} (const \hyperlink{classestado__t}{estado\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Constructor de opia de estado. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t_a8376c7515ca760a9a654cd226af3e625}{estado\+\_\+t} (unsigned id, std\+::string name, bool acpt, trans\+\_\+map tr, bool arr)
+\begin{DoxyCompactList}\small\item\em Constructor de estado. \end{DoxyCompactList}\item 
+void \hyperlink{classestado__t_a96d95f170a07bf03280f4884329ab91c}{insert\+\_\+e\+\_\+tr} (\hyperlink{classestado__t}{estado\+\_\+t} aux)
+\begin{DoxyCompactList}\small\item\em Añade una e\+\_\+transición al estado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classestado__t_a1d19472d62f11cf49d60f7d4fa45ec69}\label{classestado__t_a1d19472d62f11cf49d60f7d4fa45ec69}} 
+void \hyperlink{classestado__t_a1d19472d62f11cf49d60f7d4fa45ec69}{clean} ()
+\begin{DoxyCompactList}\small\item\em Limpia la información de estado. \end{DoxyCompactList}\item 
+void \hyperlink{classestado__t_a42ac67d9addaed274e82253476d90e52}{insert\+\_\+tr} (char caracter, \hyperlink{classestado__t}{estado\+\_\+t} \&aux)
+\begin{DoxyCompactList}\small\item\em Añade una transición al estado. \end{DoxyCompactList}\item 
+long long int \hyperlink{classestado__t_a399434150ccd2b0f6b3515a39e8f66bc}{get\+\_\+id} () const
+\begin{DoxyCompactList}\small\item\em Obtención del identificador del estado. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classestado__t_ac64d1589868898d6c0d8429796ad6e43}{get\+\_\+name} () const
+\begin{DoxyCompactList}\small\item\em Obtención del nombre del estado. \end{DoxyCompactList}\item 
+bool \hyperlink{classestado__t_aa142e9b906009925b9aeeeb8712f59b8}{get\+\_\+acept} () const
+\begin{DoxyCompactList}\small\item\em Comprueba si es un estado de aceptación. \end{DoxyCompactList}\item 
+int \hyperlink{classestado__t_ac4d9e27de9fa01d3df4e4890f93d2d44}{is\+\_\+arranque} () const
+\begin{DoxyCompactList}\small\item\em Comprueba si es un estado de arranque. \end{DoxyCompactList}\item 
+const trans\+\_\+map \& \hyperlink{classestado__t_a95f73fed90d04dd47ba1243aa6f63cd3}{get\+\_\+tran} () const
+\begin{DoxyCompactList}\small\item\em Obtención de las transiciones del estado. \end{DoxyCompactList}\item 
+int \hyperlink{classestado__t_ac24561d5a9d347562fbb54c92dae297c}{get\+\_\+n\+\_\+trans} () const
+\begin{DoxyCompactList}\small\item\em Obtención del numero de transiciones del estado. \end{DoxyCompactList}\item 
+int \hyperlink{classestado__t_a9dd2c448db4e82bf749261309a84ae92}{get\+\_\+n\+\_\+e\+\_\+trans} () const
+\begin{DoxyCompactList}\small\item\em Obtención del numero de e\+\_\+transiciones del estado. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \hyperlink{classestado__t_a47b0d982bf6731d05537da75b001a35b}{get\+\_\+eps\+\_\+begin} () const
+\begin{DoxyCompactList}\small\item\em Obtención del principio del conjunto dee\+\_\+transiciones. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$\+::iterator \hyperlink{classestado__t_a0c091366f5d27d58036d5b0b901570ae}{get\+\_\+eps\+\_\+end} () const
+\begin{DoxyCompactList}\small\item\em Obtención del final del conjunto dee\+\_\+transiciones. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ \hyperlink{classestado__t_af72252b5733a1b673b44f699a46f7491}{get\+\_\+trans\+\_\+with} (char symbol) const
+\begin{DoxyCompactList}\small\item\em Obtención del estado al los que se llega con un símbolo. \end{DoxyCompactList}\item 
+void \hyperlink{classestado__t_afc99cf41f63ca6c25bf38ef96e330ec5}{set\+\_\+acept} (bool aux)
+\begin{DoxyCompactList}\small\item\em Modifica el tipo de estado de aceptación o no. \end{DoxyCompactList}\item 
+void \hyperlink{classestado__t_a387cecb303d45faa2c7b3a4a5806bc5b}{set\+\_\+trans} (trans\+\_\+map map)
+\begin{DoxyCompactList}\small\item\em Modifica el mapa de transiciones. \end{DoxyCompactList}\item 
+void \hyperlink{classestado__t_a2121978a91821e553cedd8f7f0c1c71c}{set\+\_\+arranque} (bool aux)
+\begin{DoxyCompactList}\small\item\em Modifica si el estado es de arranque. \end{DoxyCompactList}\item 
+bool \hyperlink{classestado__t_a2af7f5f4c4c72009924f4f29aadb533b}{operator$<$} (const \hyperlink{classestado__t}{estado\+\_\+t} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de comparación $<$. \end{DoxyCompactList}\item 
+bool \hyperlink{classestado__t_aa79cde64582824c8e4b313dae522b4d3}{operator==} (const \hyperlink{classestado__t}{estado\+\_\+t} \&rhs) const
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de comparación ==. \end{DoxyCompactList}\item 
+\hyperlink{classestado__t}{estado\+\_\+t} \& \hyperlink{classestado__t_ad7a36a03430853701e4591e05187a14e}{operator=} (const \hyperlink{classestado__t}{estado\+\_\+t} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga del operador de asignación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classestado__t_a3f5cdd06d18afb8c21c18134a2ef7d84}\label{classestado__t_a3f5cdd06d18afb8c21c18134a2ef7d84}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{estado\+\_\+t()}{estado\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily estado\+\_\+t\+::estado\+\_\+t (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String que contiene el nombre del estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_aafc259bc6968f50e891da9ce4e3cf41d}\label{classestado__t_aafc259bc6968f50e891da9ce4e3cf41d}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{estado\+\_\+t()}{estado\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily estado\+\_\+t\+::estado\+\_\+t (\begin{DoxyParamCaption}\item[{unsigned}]{id,  }\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor de estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del estado \\
+\hline
+{\em name} & String que contiene el nombre del estado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_aae570f94727aefd44cc17b4f06575ed7}\label{classestado__t_aae570f94727aefd44cc17b4f06575ed7}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{estado\+\_\+t()}{estado\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily estado\+\_\+t\+::estado\+\_\+t (\begin{DoxyParamCaption}\item[{const \hyperlink{classestado__t}{estado\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Constructor de opia de estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side Estado que copiar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_a8376c7515ca760a9a654cd226af3e625}\label{classestado__t_a8376c7515ca760a9a654cd226af3e625}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\index{estado\+\_\+t@{estado\+\_\+t}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{estado\+\_\+t()}{estado\_t()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily estado\+\_\+t\+::estado\+\_\+t (\begin{DoxyParamCaption}\item[{unsigned}]{id,  }\item[{std\+::string}]{name,  }\item[{bool}]{acpt,  }\item[{trans\+\_\+map}]{tr,  }\item[{bool}]{arr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor de estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del estado \\
+\hline
+{\em name} & String que contiene el nombre del estado \\
+\hline
+{\em acpt} & Booleano que indica si el estado es de aceptación \\
+\hline
+{\em tr} & Mapa de transiciones del estado \\
+\hline
+{\em arr} & Booleano que indica si el estado es de arranque \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classestado__t_aa142e9b906009925b9aeeeb8712f59b8}\label{classestado__t_aa142e9b906009925b9aeeeb8712f59b8}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+acept@{get\+\_\+acept}}
+\index{get\+\_\+acept@{get\+\_\+acept}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+acept()}{get\_acept()}}
+{\footnotesize\ttfamily bool estado\+\_\+t\+::get\+\_\+acept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Comprueba si es un estado de aceptación. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve true si es un estado de aceptación y false en otro caso 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a47b0d982bf6731d05537da75b001a35b}\label{classestado__t_a47b0d982bf6731d05537da75b001a35b}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+eps\+\_\+begin@{get\+\_\+eps\+\_\+begin}}
+\index{get\+\_\+eps\+\_\+begin@{get\+\_\+eps\+\_\+begin}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+eps\+\_\+begin()}{get\_eps\_begin()}}
+{\footnotesize\ttfamily std\+::set$<$\hyperlink{classestado__t}{estado\+\_\+t}$>$\+::iterator estado\+\_\+t\+::get\+\_\+eps\+\_\+begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del principio del conjunto dee\+\_\+transiciones. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador al inicio del set de e\+\_\+transiciones 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a0c091366f5d27d58036d5b0b901570ae}\label{classestado__t_a0c091366f5d27d58036d5b0b901570ae}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+eps\+\_\+end@{get\+\_\+eps\+\_\+end}}
+\index{get\+\_\+eps\+\_\+end@{get\+\_\+eps\+\_\+end}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+eps\+\_\+end()}{get\_eps\_end()}}
+{\footnotesize\ttfamily std\+::set$<$\hyperlink{classestado__t}{estado\+\_\+t}$>$\+::iterator estado\+\_\+t\+::get\+\_\+eps\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del final del conjunto dee\+\_\+transiciones. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un iterador al final del set de e\+\_\+transiciones 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a399434150ccd2b0f6b3515a39e8f66bc}\label{classestado__t_a399434150ccd2b0f6b3515a39e8f66bc}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+id@{get\+\_\+id}}
+\index{get\+\_\+id@{get\+\_\+id}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+id()}{get\_id()}}
+{\footnotesize\ttfamily long long int estado\+\_\+t\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del identificador del estado. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve el identificador del estado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a9dd2c448db4e82bf749261309a84ae92}\label{classestado__t_a9dd2c448db4e82bf749261309a84ae92}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+n\+\_\+e\+\_\+trans@{get\+\_\+n\+\_\+e\+\_\+trans}}
+\index{get\+\_\+n\+\_\+e\+\_\+trans@{get\+\_\+n\+\_\+e\+\_\+trans}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+n\+\_\+e\+\_\+trans()}{get\_n\_e\_trans()}}
+{\footnotesize\ttfamily int estado\+\_\+t\+::get\+\_\+n\+\_\+e\+\_\+trans (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del numero de e\+\_\+transiciones del estado. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve el número de e\+\_\+transiciones del estado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_ac24561d5a9d347562fbb54c92dae297c}\label{classestado__t_ac24561d5a9d347562fbb54c92dae297c}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+n\+\_\+trans@{get\+\_\+n\+\_\+trans}}
+\index{get\+\_\+n\+\_\+trans@{get\+\_\+n\+\_\+trans}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+n\+\_\+trans()}{get\_n\_trans()}}
+{\footnotesize\ttfamily int estado\+\_\+t\+::get\+\_\+n\+\_\+trans (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del numero de transiciones del estado. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve el número de transiciones del estado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_ac64d1589868898d6c0d8429796ad6e43}\label{classestado__t_ac64d1589868898d6c0d8429796ad6e43}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string estado\+\_\+t\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención del nombre del estado. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve un strig con el nombre del estado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a95f73fed90d04dd47ba1243aa6f63cd3}\label{classestado__t_a95f73fed90d04dd47ba1243aa6f63cd3}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+tran@{get\+\_\+tran}}
+\index{get\+\_\+tran@{get\+\_\+tran}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+tran()}{get\_tran()}}
+{\footnotesize\ttfamily const trans\+\_\+map\& estado\+\_\+t\+::get\+\_\+tran (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtención de las transiciones del estado. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve las transiciones del estado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_af72252b5733a1b673b44f699a46f7491}\label{classestado__t_af72252b5733a1b673b44f699a46f7491}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!get\+\_\+trans\+\_\+with@{get\+\_\+trans\+\_\+with}}
+\index{get\+\_\+trans\+\_\+with@{get\+\_\+trans\+\_\+with}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+trans\+\_\+with()}{get\_trans\_with()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classestado__t}{estado\+\_\+t} $>$ estado\+\_\+t\+::get\+\_\+trans\+\_\+with (\begin{DoxyParamCaption}\item[{char}]{symbol }\end{DoxyParamCaption}) const}
+
+
+
+Obtención del estado al los que se llega con un símbolo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & Símbolo utilizado en la transición \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve el set de estados al que llega con el símbolo indcado 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a96d95f170a07bf03280f4884329ab91c}\label{classestado__t_a96d95f170a07bf03280f4884329ab91c}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!insert\+\_\+e\+\_\+tr@{insert\+\_\+e\+\_\+tr}}
+\index{insert\+\_\+e\+\_\+tr@{insert\+\_\+e\+\_\+tr}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{insert\+\_\+e\+\_\+tr()}{insert\_e\_tr()}}
+{\footnotesize\ttfamily void estado\+\_\+t\+::insert\+\_\+e\+\_\+tr (\begin{DoxyParamCaption}\item[{\hyperlink{classestado__t}{estado\+\_\+t}}]{aux }\end{DoxyParamCaption})}
+
+
+
+Añade una e\+\_\+transición al estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & Estado al que llega con la e\+\_\+transición \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_a42ac67d9addaed274e82253476d90e52}\label{classestado__t_a42ac67d9addaed274e82253476d90e52}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!insert\+\_\+tr@{insert\+\_\+tr}}
+\index{insert\+\_\+tr@{insert\+\_\+tr}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{insert\+\_\+tr()}{insert\_tr()}}
+{\footnotesize\ttfamily void estado\+\_\+t\+::insert\+\_\+tr (\begin{DoxyParamCaption}\item[{char}]{caracter,  }\item[{\hyperlink{classestado__t}{estado\+\_\+t} \&}]{aux }\end{DoxyParamCaption})}
+
+
+
+Añade una transición al estado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caracter} & Caracter con el que se realiza la transición \\
+\hline
+{\em aux} & Estado al que llega con la transición \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_ac4d9e27de9fa01d3df4e4890f93d2d44}\label{classestado__t_ac4d9e27de9fa01d3df4e4890f93d2d44}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!is\+\_\+arranque@{is\+\_\+arranque}}
+\index{is\+\_\+arranque@{is\+\_\+arranque}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{is\+\_\+arranque()}{is\_arranque()}}
+{\footnotesize\ttfamily int estado\+\_\+t\+::is\+\_\+arranque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Comprueba si es un estado de arranque. 
+
+\begin{DoxyReturn}{Returns}
+Devuelve true si es un estado de arranque y false en otro caso 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_a2af7f5f4c4c72009924f4f29aadb533b}\label{classestado__t_a2af7f5f4c4c72009924f4f29aadb533b}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool estado\+\_\+t\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classestado__t}{estado\+\_\+t} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sobrecarga del operador de comparación $<$. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side estado con el que vamos a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve true si this $<$ rhs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_ad7a36a03430853701e4591e05187a14e}\label{classestado__t_ad7a36a03430853701e4591e05187a14e}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!operator=@{operator=}}
+\index{operator=@{operator=}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classestado__t}{estado\+\_\+t} \& estado\+\_\+t\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classestado__t}{estado\+\_\+t} \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Sobrecarga del operador de asignación. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side estado que vamos a copiar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve $\ast$this 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_aa79cde64582824c8e4b313dae522b4d3}\label{classestado__t_aa79cde64582824c8e4b313dae522b4d3}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!operator==@{operator==}}
+\index{operator==@{operator==}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool estado\+\_\+t\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classestado__t}{estado\+\_\+t} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sobrecarga del operador de comparación ==. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rhs} & Right Hand Side estado con el que vamos a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve true si this == rhs 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classestado__t_afc99cf41f63ca6c25bf38ef96e330ec5}\label{classestado__t_afc99cf41f63ca6c25bf38ef96e330ec5}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!set\+\_\+acept@{set\+\_\+acept}}
+\index{set\+\_\+acept@{set\+\_\+acept}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{set\+\_\+acept()}{set\_acept()}}
+{\footnotesize\ttfamily void estado\+\_\+t\+::set\+\_\+acept (\begin{DoxyParamCaption}\item[{bool}]{aux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modifica el tipo de estado de aceptación o no. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & Booleano que indica si será o no un estado de aceptación \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_a2121978a91821e553cedd8f7f0c1c71c}\label{classestado__t_a2121978a91821e553cedd8f7f0c1c71c}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!set\+\_\+arranque@{set\+\_\+arranque}}
+\index{set\+\_\+arranque@{set\+\_\+arranque}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{set\+\_\+arranque()}{set\_arranque()}}
+{\footnotesize\ttfamily void estado\+\_\+t\+::set\+\_\+arranque (\begin{DoxyParamCaption}\item[{bool}]{aux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modifica si el estado es de arranque. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & Booleano que indica si será o no un estado de arranque \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classestado__t_a387cecb303d45faa2c7b3a4a5806bc5b}\label{classestado__t_a387cecb303d45faa2c7b3a4a5806bc5b}} 
+\index{estado\+\_\+t@{estado\+\_\+t}!set\+\_\+trans@{set\+\_\+trans}}
+\index{set\+\_\+trans@{set\+\_\+trans}!estado\+\_\+t@{estado\+\_\+t}}
+\subsubsection{\texorpdfstring{set\+\_\+trans()}{set\_trans()}}
+{\footnotesize\ttfamily void estado\+\_\+t\+::set\+\_\+trans (\begin{DoxyParamCaption}\item[{trans\+\_\+map}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modifica el mapa de transiciones. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Nuevo mapa de transiciones \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{estado__t_8hpp}{estado\+\_\+t.\+hpp}\item 
+estado\+\_\+t.\+cpp\end{DoxyCompactItemize}

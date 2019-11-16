@@ -1,0 +1,118 @@
+\hypertarget{classcfg__t}{}\section{cfg\+\_\+t Class Reference}
+\label{classcfg__t}\index{cfg\+\_\+t@{cfg\+\_\+t}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcfg__t_ab231f8ec11cfeb7355e9faad6e25c848}\label{classcfg__t_ab231f8ec11cfeb7355e9faad6e25c848}} 
+\hyperlink{classcfg__t_ab231f8ec11cfeb7355e9faad6e25c848}{cfg\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la clase cfg. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcfg__t_ad822f02297a35a5557c2fce33f7c6dca}\label{classcfg__t_ad822f02297a35a5557c2fce33f7c6dca}} 
+\hyperlink{classcfg__t_ad822f02297a35a5557c2fce33f7c6dca}{$\sim$cfg\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Destructor de la clase cfg. \end{DoxyCompactList}\item 
+\hyperlink{classcfg__t_a3a78057122dddd7d1fd860bed69fca34}{cfg\+\_\+t} (std\+::string File\+In)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase cfg. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classsymbol__t}{symbol\+\_\+t} $>$ \& \hyperlink{classcfg__t_a28aad145e2844e938e5788f6b6547d9b}{get\+\_\+alfabeto} ()
+\begin{DoxyCompactList}\small\item\em Obtención del conjunto de símbolos del alfabeto. \end{DoxyCompactList}\item 
+std\+::set$<$ \hyperlink{classsymbol__t}{symbol\+\_\+t} $>$ \& \hyperlink{classcfg__t_a6ad5e12f79592554a1fd27a599e1b820}{get\+\_\+no\+\_\+terminal} ()
+\begin{DoxyCompactList}\small\item\em Obtención del conjunto de símbolos no terminales. \end{DoxyCompactList}\item 
+produccion\+\_\+t \& \hyperlink{classcfg__t_ab9208ef8e4ccc3ee5d9abf06720a4e28}{get\+\_\+producciones} ()
+\begin{DoxyCompactList}\small\item\em Obtención de las producciones de la gramática. \end{DoxyCompactList}\item 
+\hyperlink{classsymbol__t}{symbol\+\_\+t} \& \hyperlink{classcfg__t_aff31718cb0d5f8ae65d3a53ba4065f2e}{get\+\_\+arranque} ()
+\begin{DoxyCompactList}\small\item\em Obtención símbolo de arranque de la gramática. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcfg__t_a8742d8a8f0fd07f0d2a2519df40db71b}\label{classcfg__t_a8742d8a8f0fd07f0d2a2519df40db71b}} 
+void \hyperlink{classcfg__t_a8742d8a8f0fd07f0d2a2519df40db71b}{print} ()
+\begin{DoxyCompactList}\small\item\em Impresión de la gramática. \end{DoxyCompactList}\item 
+\hyperlink{classnfa__t}{nfa\+\_\+t} \hyperlink{classcfg__t_abda1afb6ae53b0b40a39d84176aab3b8}{convert\+\_\+to\+\_\+nfa} ()
+\begin{DoxyCompactList}\small\item\em Conversión de la gramática en N\+FA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcfg__t_a3a78057122dddd7d1fd860bed69fca34}\label{classcfg__t_a3a78057122dddd7d1fd860bed69fca34}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!cfg\+\_\+t@{cfg\+\_\+t}}
+\index{cfg\+\_\+t@{cfg\+\_\+t}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{cfg\+\_\+t()}{cfg\_t()}}
+{\footnotesize\ttfamily cfg\+\_\+t\+::cfg\+\_\+t (\begin{DoxyParamCaption}\item[{std\+::string}]{File\+In }\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase cfg. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em File\+In} & Nombre del fichero de entrada con el que construimos el cfg \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcfg__t_abda1afb6ae53b0b40a39d84176aab3b8}\label{classcfg__t_abda1afb6ae53b0b40a39d84176aab3b8}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!convert\+\_\+to\+\_\+nfa@{convert\+\_\+to\+\_\+nfa}}
+\index{convert\+\_\+to\+\_\+nfa@{convert\+\_\+to\+\_\+nfa}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{convert\+\_\+to\+\_\+nfa()}{convert\_to\_nfa()}}
+{\footnotesize\ttfamily \hyperlink{classnfa__t}{nfa\+\_\+t} cfg\+\_\+t\+::convert\+\_\+to\+\_\+nfa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Conversión de la gramática en N\+FA. 
+
+\begin{DoxyReturn}{Returns}
+Copia del N\+FA Resultante 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcfg__t_a28aad145e2844e938e5788f6b6547d9b}\label{classcfg__t_a28aad145e2844e938e5788f6b6547d9b}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!get\+\_\+alfabeto@{get\+\_\+alfabeto}}
+\index{get\+\_\+alfabeto@{get\+\_\+alfabeto}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+alfabeto()}{get\_alfabeto()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classsymbol__t}{symbol\+\_\+t} $>$ \& cfg\+\_\+t\+::get\+\_\+alfabeto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del conjunto de símbolos del alfabeto. 
+
+\begin{DoxyReturn}{Returns}
+Conjunto de símbolos que pertenecen al alfabeto 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcfg__t_aff31718cb0d5f8ae65d3a53ba4065f2e}\label{classcfg__t_aff31718cb0d5f8ae65d3a53ba4065f2e}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!get\+\_\+arranque@{get\+\_\+arranque}}
+\index{get\+\_\+arranque@{get\+\_\+arranque}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+arranque()}{get\_arranque()}}
+{\footnotesize\ttfamily \hyperlink{classsymbol__t}{symbol\+\_\+t} \& cfg\+\_\+t\+::get\+\_\+arranque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención símbolo de arranque de la gramática. 
+
+\begin{DoxyReturn}{Returns}
+Símbolo de arranque 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcfg__t_a6ad5e12f79592554a1fd27a599e1b820}\label{classcfg__t_a6ad5e12f79592554a1fd27a599e1b820}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!get\+\_\+no\+\_\+terminal@{get\+\_\+no\+\_\+terminal}}
+\index{get\+\_\+no\+\_\+terminal@{get\+\_\+no\+\_\+terminal}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+no\+\_\+terminal()}{get\_no\_terminal()}}
+{\footnotesize\ttfamily std\+::set$<$ \hyperlink{classsymbol__t}{symbol\+\_\+t} $>$ \& cfg\+\_\+t\+::get\+\_\+no\+\_\+terminal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención del conjunto de símbolos no terminales. 
+
+\begin{DoxyReturn}{Returns}
+Conjunto de símbolos que pertenecen a los no terminales 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcfg__t_ab9208ef8e4ccc3ee5d9abf06720a4e28}\label{classcfg__t_ab9208ef8e4ccc3ee5d9abf06720a4e28}} 
+\index{cfg\+\_\+t@{cfg\+\_\+t}!get\+\_\+producciones@{get\+\_\+producciones}}
+\index{get\+\_\+producciones@{get\+\_\+producciones}!cfg\+\_\+t@{cfg\+\_\+t}}
+\subsubsection{\texorpdfstring{get\+\_\+producciones()}{get\_producciones()}}
+{\footnotesize\ttfamily produccion\+\_\+t \& cfg\+\_\+t\+::get\+\_\+producciones (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtención de las producciones de la gramática. 
+
+\begin{DoxyReturn}{Returns}
+Mapa de producciones de la gramática 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{cfg__t_8hpp}{cfg\+\_\+t.\+hpp}\item 
+cfg\+\_\+t.\+cpp\end{DoxyCompactItemize}
