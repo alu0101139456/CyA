@@ -36,6 +36,10 @@ void alfabeto_t::insert_from_file() {
     alfa_.insert(caracter_t(aux[i], 0, OPERANDO, 0));
   }
   //Luego introducimos los OPERADORES con su prioridad y aridad
+  
+  
+  
+  
   for(int i=0; i<2; i++) {
     getline(alfaFile, aux);
     for( unsigned j=0; j<aux.size(); j+=2) {
