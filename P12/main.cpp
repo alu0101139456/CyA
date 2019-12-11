@@ -12,10 +12,12 @@
 #include<vector>
 #include<utility>
 #include<cmath>
+#include "dll_t.hpp"
+#include "dll_node_t.hpp"
 
 std::list<std::pair<int, int>> return_change( int cuantity) {
   std::list<std::pair<int,int>> returncoins;
-  std::list<int> coins;
+  AED::dll_t<AED::dll_node_t<int>> coins;
   coins = { 200, 100, 50, 20, 10, 5, 2, 1};
   int i=0;
   while (cuantity > 0 && i != coins.size() ) {
@@ -27,6 +29,10 @@ std::list<std::pair<int, int>> return_change( int cuantity) {
   return returncoins;
 }
 
+void insert_values(AED::dll_t<AED::dll_node_t<int>>& coins) {
+  
+
+}
 
 int main (void) {
 
