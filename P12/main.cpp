@@ -12,27 +12,36 @@
 #include<vector>
 #include<utility>
 #include<cmath>
-#include "dll_t.hpp"
-#include "dll_node_t.hpp"
 
 std::list<std::pair<int, int>> return_change( int cuantity) {
   std::list<std::pair<int,int>> returncoins;
-  AED::dll_t<AED::dll_node_t<int>> coins;
+  std::list<int> coins;
   coins = { 200, 100, 50, 20, 10, 5, 2, 1};
-  int i=0;
-  while (cuantity > 0 && i != coins.size() ) {
-    if (coins.front() <= cuantity) {
-      
+  bool tar = false;
+  while (cuantity > 0 && !coins.empty() ) {
+    std::cout << "Empieza bucle "<< std::endl; //DEBUG
+    std::pair<int,int> aux;
+    if(tar) {
+      std::cout << "Incrementado la lista de cambio "<< std::endl; //DEBUG
+      returncoins.push_back(aux);
+      tar = false;
     }
+    if (coins.front() <= cuantity) {
+      aux = returncoins.back();
+      aux.first = coins.back();
+      aux.second += 1;
+      returncoins.pop_back();
+      returncoins.push_back(aux);
+      cuantity = cuantity - coins.front();
+    } else {
+400        coins.pop_front();
+        tar = true;
+      }
   }
 
   return returncoins;
 }
 
-void insert_values(AED::dll_t<AED::dll_node_t<int>>& coins) {
-  
-
-}
 
 int main (void) {
 
@@ -44,7 +53,13 @@ int main (void) {
 
   returnedcoins = return_change(cuantity);
 
-  
+  while (!returnedcoins.empty()) {
+    int M = returnedcoins.front().first;
+    int C = returnedcoins.front().second;
+    std::cout << "Monedas de: " << M << " x " << C << "\n";
+    returnedcoins.pop_front();
+
+  }
 
 
 

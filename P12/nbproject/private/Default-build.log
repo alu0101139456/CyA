@@ -1,0 +1,2 @@
+g++ -std=c++17 -ggdb   -c -o main.o main.cpp
+g++ -std=c++17 -ggdb -o main main.o
