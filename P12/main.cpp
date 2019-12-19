@@ -12,33 +12,35 @@
 #include<vector>
 #include<utility>
 #include<cmath>
+#include<string>
 
 std::list<std::pair<int, int>> return_change( int cuantity) {
   std::list<std::pair<int,int>> returncoins;
   std::list<int> coins;
-  coins = { 200, 100, 50, 20, 10, 5, 2, 1};
-  bool tar = false;
+  coins = { 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+  std::pair<int,int> aux, temp;
+  temp.first = 200;
+  temp.second = 0;
+  returncoins.push_back(temp);
   while (cuantity > 0 && !coins.empty() ) {
-    std::cout << "Empieza bucle "<< std::endl; //DEBUG
-    std::pair<int,int> aux;
-    if(tar) {
-      std::cout << "Incrementado la lista de cambio "<< std::endl; //DEBUG
-      returncoins.push_back(aux);
-      tar = false;
-    }
-    if (coins.front() <= cuantity) {
-      aux = returncoins.back();
-      aux.first = coins.back();
-      aux.second += 1;
-      returncoins.pop_back();
-      returncoins.push_back(aux);
-      cuantity = cuantity - coins.front();
-    } else {
-400        coins.pop_front();
-        tar = true;
-      }
+      if (coins.front() <= cuantity) {
+        aux = returncoins.back();
+        aux.first = coins.front();
+        aux.second += 1;
+        returncoins.pop_back();
+        returncoins.push_back(aux);
+        cuantity = cuantity - coins.front();
+        } 
+        else { 
+          coins.pop_front();
+          std::pair<int,int> a;
+          a.first = coins.front();
+          a.second = 0;
+          returncoins.push_back(a);
+      }      
   }
-
+  if ( !coins.empty() && cuantity > 0)
+        std::cerr << "No es posible devolver el cambio" << std::endl;
   return returncoins;
 }
 
@@ -55,12 +57,23 @@ int main (void) {
 
   while (!returnedcoins.empty()) {
     int M = returnedcoins.front().first;
+    std::string final;
+    if (M >= 500) {
+        M = M / 100;
+        final = "Billete de " + std::to_string(M) + "€";
+    }
+    else if(M >= 100) {
+            M = M / 100;
+            final = "Monedas de " + std::to_string(M) + "€";
+        }
+        else final = "Monedas de " + std::to_string(M) + "¢";
+    
     int C = returnedcoins.front().second;
-    std::cout << "Monedas de: " << M << " x " << C << "\n";
+    if(returnedcoins.front().second != 0) {
+        std::cout << final << " x " << C << "\n";
+
+    }
     returnedcoins.pop_front();
 
   }
-
-
-
 }
